@@ -27,7 +27,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
     $scope.pay = function () {
         $invoice.createRecipt($scope.user, $scope.payment).then(function (response, status) {
-            if (!response.data.error == null) {
+            if (response.data.error == null) {
                 sendReciptToBot();
                 isPaymentSuccess = true;
             } else {
