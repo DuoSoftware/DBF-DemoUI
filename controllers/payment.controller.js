@@ -81,7 +81,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                                 "subtitle": payment.entity + " payment",
                                 "price": $scope.payment.amount,
                                 "currency": "USD",
-                                "image_url": "https://www.britishcouncil.lk/sites/default/files/5.jpg"
+                                "image_url": "http://colomboo.lk/assets/media/vendors/5260/logo_image.png"
                             }]
                         }
                     }
