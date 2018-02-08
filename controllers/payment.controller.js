@@ -77,8 +77,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                             },
                             "adjustments": [],
                             "elements": [{
-                                "title": payment.entity + " payment",
-                                "subtitle": payment.entity + " payment",
+                                "title": $scope.payment.entity + " payment",
+                                "subtitle": $scope.payment.entity + " payment",
                                 "price": $scope.payment.amount,
                                 "currency": "USD",
                                 "image_url": "http://colomboo.lk/assets/media/vendors/5260/logo_image.png"
