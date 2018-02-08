@@ -331,7 +331,7 @@
                 data: payload,
                 headers: {
                     "Content-Type": "application/json",
-                    "SecurityToken": "12c95918-17d6-4ab7-a1cb-933afee648c0,bank.app.cloudcharge.com"
+                    "securityToken": "12c95918-17d6-4ab7-a1cb-933afee648c0,bank.app.cloudcharge.com"
                 }
             });
         }
