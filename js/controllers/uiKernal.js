@@ -325,6 +325,9 @@
                 guInvoiceId : payment.invoiceNo || ""
             };
 
+            console.log(URL);
+            console.log(payload);
+
             return $http({
                 method: "POST",
                 url: URL,
