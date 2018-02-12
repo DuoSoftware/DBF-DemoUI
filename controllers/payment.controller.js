@@ -28,7 +28,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     $scope.pay = function () {
         $invoice.createRecipt($scope.user, $scope.payment).then(function (response, status) {
             if (response.data.error == null) {
+                console.log("Successfully completed the payment.");
                 sendReciptToBot();
+                console.log("Successfully created the receipt.");
                 isPaymentSuccess = true;
             } else {
                 alert(response.data.error)
@@ -88,8 +90,12 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 }
             }
         }).then(function (response, status) {
+             console.log(response);
+            console.log("Receipt sent.")
             isPaymentSuccess = true;
         }, function (response, status) {
+            console.log(response);
+            console.log("else.....")
             alert(response.data);
         });
     }
