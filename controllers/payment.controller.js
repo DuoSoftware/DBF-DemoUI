@@ -28,7 +28,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     $scope.pay = function () {
         $invoice.createRecipt($scope.user, $scope.payment).then(function (response, status) {
             if (response.data.error == null) {
-                //sendReciptToBot();
+                sendReciptToBot();
                 isPaymentSuccess = true;
             } else {
                 alert(response.data.error)
@@ -48,7 +48,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             data: {
                 "messaging_type": "RESPONSE",
                 "recipient": {
-                    "id": $scope.user.senderId,
+                    "id": $scope.user.senderId
                 },
                 "message": {
                     "attachment": {
@@ -59,21 +59,21 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                             "order_number": $scope.payment.invoiceNo,
                             "currency": "USD",
                             "payment_method": "Visa",
-                            "order_url": "",
+                            "order_url": "https://cargillsbank.lk",
                             "timestamp": Date.now(),
                             "address": {
                                 "street_1": "Cinnamon Gardens",
                                 "street_2": "Colombo 07",
                                 "city": "Colombo",
                                 "postal_code": "11010",
-                                "state": "",
+                                "state": "Western Province",
                                 "country": "Sri Lanka"
                             },
                             "summary": {
                                 "subtotal": $scope.payment.amount,
                                 "shipping_cost": 0.00,
                                 "total_tax": 0.00,
-                                "total_cost": $scope.payment.amount,
+                                "total_cost": $scope.payment.amount
                             },
                             "adjustments": [],
                             "elements": [{
