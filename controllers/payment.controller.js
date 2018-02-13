@@ -31,7 +31,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 console.log("Successfully completed the payment.");
                 sendReciptToBot();
                 console.log("Successfully created the receipt.");
-                isPaymentSuccess = true;
+                // $scope.isPaymentSuccess = true;
             } else {
                 alert(response.data.error)
             }
@@ -92,7 +92,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         }).then(function (response, status) {
              console.log(response);
             console.log("Receipt sent.")
-            isPaymentSuccess = true;
+            $scope.isPaymentSuccess = true;
         }, function (response, status) {
             console.log(response);
             console.log("else.....")
