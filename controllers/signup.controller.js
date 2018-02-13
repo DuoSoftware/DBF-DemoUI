@@ -11,7 +11,10 @@ function signupController($scope, $rootScope, $state, $timeout, $http, $systemUr
 
     if ($state.params && $state.params.name) {
         var name = $state.params.name.split(" ");
-        var sender = $state.params.sender.split(":");
+        var sender = [""];
+        if($state.params.sender != undefined){
+            sender = $state.params.sender.split(":");    
+        }
 
         $scope.user.name = $state.params.name;
         $scope.user.fname = name[0] || "";

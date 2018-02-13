@@ -401,7 +401,6 @@
     uik.factory('$systemUrls', function () {
         var p = location.protocol;
         return {
-            userService: p + "//localhost:3535/api/users",
             emailService: p + "//localhost:3535/api/verification",
             otpService: "https://smoothbotservicesdev.plus.smoothflow.io/DBF/API/1.0.0.0/OTPServiceStandAlone/OTP",
             invoiceService: "https://smoothbotservicesdev.plus.smoothflow.io/DBF/API/1.0.0.0/InvoiceSevice",
