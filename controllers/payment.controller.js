@@ -62,7 +62,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                             "currency": "USD",
                             "payment_method": "Visa",
                             "order_url": "https://cargillsbank.lk",
-                            "timestamp": Date.now(),
+                            "timestamp": Math.floor(Date.now() / 1000).toString(),
                             "address": {
                                 "street_1": "Cinnamon Gardens",
                                 "street_2": "Colombo 07",
