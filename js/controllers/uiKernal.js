@@ -226,10 +226,10 @@
 
     uik.factory('$profile', function ($http, $systemUrls) {
 
-        function createProfileOnCloudcharge (profile, subscriptionKey) {
+        function createProfileOnCloudcharge(profile, subscriptionKey) {
             var URL = $systemUrls.cloudcharge + "/profile/insert";
-            var payload = { 
-                email: profile.email || "", 
+            var payload = {
+                email: profile.email || "",
                 firstName: profile.fname || "",
                 lastName: profile.lname || "",
                 country: "Sri Lanka",
@@ -240,16 +240,16 @@
                 url: URL,
                 data: payload,
                 headers: {
-                    "Ocp-Apim-Subscription-Key": subscriptionKey || "", 
+                    "Ocp-Apim-Subscription-Key": subscriptionKey || "",
                     "Content-Type": "application/json",
                     "mode": "sandbox"
                 }
             });
         }
 
-        function createProfileOnFacetone (profile) {
+        function createProfileOnFacetone(profile) {
             var URL = $systemUrls.userService + "/ExternalUser";
-            var payload = { 
+            var payload = {
                 email: profile.email || "",
                 name: profile.name || "",
                 title: "Mr",
@@ -258,18 +258,18 @@
                 phone: profile.mobile || "",
                 ssn: "",
                 address: {},
-                contacts : [ 
+                contacts: [
                     {
-                        contact : profile.name || "",
-                        type : "facebook",
-                        verified : true
+                        contact: profile.name || "",
+                        type: "facebook",
+                        verified: true
                     }
                 ],
-                custom_fields:[
-                    {"key":"bank", "value": ""},
-                    {"key":"odel", "value": ""},
-                    {"key":"dialog", "value": ""},
-                    {"key":"ceb", "value": ""}
+                custom_fields: [
+                    { "key": "bank", "value": "" },
+                    { "key": "odel", "value": "" },
+                    { "key": "dialog", "value": "" },
+                    { "key": "ceb", "value": "" }
                 ]
             };
 
@@ -285,22 +285,22 @@
             });
         }
 
-        function registerWithBank (profile) {
+        function registerWithBank(profile) {
             createProfileOnCloudcharge(profile, '1602f50e37134d0e9b3432960c07038f');
         }
 
-        function registerWithMerchant (profile) { 
+        function registerWithMerchant(profile) {
             createProfileOnCloudcharge(profile, '7002abf4-2675-4b98-8cbf-eb8b37c6ba46,odelinv.app.cloudcharge.com');
         }
 
-        function registerWithTelecommunicationProvider (profile) {
+        function registerWithTelecommunicationProvider(profile) {
             createProfileOnCloudcharge(profile, 'a461fcc8-82d0-4a57-894d-0a70bc1c9504,dialoginv.app.cloudcharge.com');
         }
 
-        function registerWithUtilityProvider (profile) {
+        function registerWithUtilityProvider(profile) {
             createProfileOnCloudcharge(profile, '54fd39f4-dd3e-4396-901b-d336ee03d13b,cebinv.app.cloudcharge.com');
         }
-        
+
         return {
             onCloudcharge: {
                 registerWithBank: registerWithBank,
@@ -316,13 +316,13 @@
 
     uik.factory('$invoice', function ($http, $systemUrls) {
 
-        function createRecipt (profile, payment) {
+        function createRecipt(profile, payment) {
             var URL = $systemUrls.reciptService + "/invoicepay/createReceipt";
-            var payload = { 
-                email: profile.email || "", 
+            var payload = {
+                email: profile.email || "",
                 amount: payment.amount || 0,
                 paymentMethod: payment.method || "Cash",
-                guInvoiceId : payment.invoiceNo || ""
+                guInvoiceId: payment.invoiceNo || ""
             };
 
             console.log(URL);
@@ -338,7 +338,7 @@
                 }
             });
         }
-        
+
         return {
             createRecipt: createRecipt,
         }
@@ -346,13 +346,13 @@
 
     uik.factory('$otp', function ($http, $systemUrls) {
 
-        function sendOTPCode (mobile) {
+        function sendOTPCode(mobile) {
             var URL = $systemUrls.otpService + "/send";
             var COUNTRYCODE = '+94';
             var verifyingMobile = "";
 
-            if (!mobile) { return; } 
-            else { verifyingMobile = mobile; } 
+            if (!mobile) { return; }
+            else { verifyingMobile = mobile; }
 
             if (!verifyingMobile.startsWith(COUNTRYCODE)) { verifyingMobile = COUNTRYCODE + verifyingMobile; }
 
@@ -369,17 +369,17 @@
             });
         }
 
-        function verifyOTPCode (mobile, code) {
+        function verifyOTPCode(mobile, code, fromID) {
             var URL = $systemUrls.otpService + "/validate";
             var COUNTRYCODE = '+94';
             var verifyingMobile = "";
 
-            if (!mobile) { return; } 
-            else { verifyingMobile = mobile; } 
+            if (!mobile) { return; }
+            else { verifyingMobile = mobile; }
 
             if (!verifyingMobile.startsWith(COUNTRYCODE)) { verifyingMobile = COUNTRYCODE + verifyingMobile; }
 
-            var payload = { "mobile": verifyingMobile, "code": code || "" }
+            var payload = { "mobile": verifyingMobile, "code": code || "", "name": fromID || "" }
             return $http({
                 method: "POST",
                 url: URL,
@@ -393,7 +393,7 @@
         }
 
         return {
-            send: sendOTPCode, 
+            send: sendOTPCode,
             verify: verifyOTPCode
         };
     });

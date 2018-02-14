@@ -7,22 +7,22 @@ function verifyMobileController($scope, $rootScope, $state, $timeout, $http, $sy
     $scope.processing = false;
 
     if ($state.params && $state.params.user) {
-      $scope.user = $state.params.user;
+        $scope.user = $state.params.user;
     }
 
     $scope.checkVerification = function (mobile, code) {
         $scope.processing = true;
         var payment = { method: "Cash", amount: 1000000 };
 
-        $otp.verify(mobile, code).then(function (response, status) {
-            if (response.data && response.data.IsSuccess) { 
+        $otp.verify(mobile, code, $scope.user.name).then(function (response, status) {
+            if (response.data && response.data.IsSuccess) {
                 // valid otp code
                 $profile.onFacetone.registerProfile($scope.user).then(function (response, status) {
                     if (response.data && response.data.IsSuccess) {
                         registerProfileOnCloudcharge($scope.user).then(function (response) {
                             $invoice.createRecipt($scope.user, payment).then(function () {
                                 $scope.processing = false;
-                                $state.go("registration-success", {user: $scope.user});
+                                $state.go("registration-success", { user: $scope.user });
                                 $scope.user = {};
                             }, function (response) {
                                 $scope.processing = false;
@@ -32,7 +32,7 @@ function verifyMobileController($scope, $rootScope, $state, $timeout, $http, $sy
                             $scope.processing = false;
                             alert(response);
                         });
-                    }else {
+                    } else {
                         $scope.processing = false;
                         alert(response.data.CustomMessage);
                     }
@@ -40,7 +40,7 @@ function verifyMobileController($scope, $rootScope, $state, $timeout, $http, $sy
                     $scope.processing = false;
                     alert(response);
                 });
-            }else {
+            } else {
                 $scope.processing = false;
                 alert(response.data.CustomMessage);
             }
@@ -50,10 +50,10 @@ function verifyMobileController($scope, $rootScope, $state, $timeout, $http, $sy
         });
     }
 
-    function registerProfileOnCloudcharge (profile) {
+    function registerProfileOnCloudcharge(profile) {
         return Promise.all([
-            $profile.onCloudcharge.registerWithBank(profile), 
-            $profile.onCloudcharge.registerWithMerchant(profile), 
+            $profile.onCloudcharge.registerWithBank(profile),
+            $profile.onCloudcharge.registerWithMerchant(profile),
             $profile.onCloudcharge.registerWithTelecommunicationProvider(profile),
             $profile.onCloudcharge.registerWithUtilityProvider(profile)
         ]);
