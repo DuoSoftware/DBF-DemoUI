@@ -20,33 +20,36 @@ function verifyMobileController($scope, $rootScope, $state, $timeout, $http, $sy
                 $profile.onFacetone.registerProfile($scope.user).then(function (response, status) {
                     if (response.data && response.data.IsSuccess) {
                         registerProfileOnCloudcharge($scope.user).then(function (response) {
-                            $invoice.createRecipt($scope.user, payment).then(function () {
-                                $scope.processing = false;
-                                $state.go("registration-success", { user: $scope.user });
-                                $scope.user = {};
-                            }, function (response) {
-                                $scope.processing = false;
-                                alert(response.data.CustomMessage);
-                            });
+                            // $invoice.createRecipt($scope.user, payment).then(function () {
+                            //     $scope.processing = false;
+                            //     $state.go("registration-success", { user: $scope.user });
+                            //     $scope.user = {};
+                            // }, function (response) {
+                            //     $scope.processing = false;
+                            //     alert(response.data.CustomMessage);
+                            // });
+                            $scope.processing = false;
+                            $state.go("registration-success", { user: $scope.user });
+                            $scope.user = {};
                         }, function (response) {
                             $scope.processing = false;
-                            alert("Error on Cloudcharge registration: "+response.data.CustomMessage);
+                            alert("Error on Cloudcharge registration: " + response.data.CustomMessage);
                         });
                     } else {
                         $scope.processing = false;
-                        alert("Error on Facetone registration: "+response.data.CustomMessage);
+                        alert("Error on Facetone registration: " + response.data.CustomMessage);
                     }
                 }, function (response, status) {
                     $scope.processing = false;
-                    alert("Error on Facetone registration: "+response.data.CustomMessage);
+                    alert("Error on Facetone registration: " + response.data.CustomMessage);
                 });
             } else {
                 $scope.processing = false;
-                alert("Error on Verify mobile: "+response.data.CustomMessage);
+                alert("Error on Verify mobile: " + response.data.CustomMessage);
             }
         }, function (response, status) {
             // error in otp code validation
-            alert("Error on Verify mobile: "+response.data.CustomMessage);
+            alert("Error on Verify mobile: " + response.data.CustomMessage);
         });
     }
 
