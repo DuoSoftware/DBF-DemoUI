@@ -346,7 +346,7 @@
 
     uik.factory('$otp', function ($http, $systemUrls) {
 
-        function sendOTPCode(mobile) {
+        function sendOTPCode(mobile, name) {
             var URL = $systemUrls.otpService + "/send";
             var COUNTRYCODE = '+94';
             var verifyingMobile = "";
@@ -356,7 +356,7 @@
 
             if (!verifyingMobile.startsWith(COUNTRYCODE)) { verifyingMobile = COUNTRYCODE + verifyingMobile; }
 
-            var payload = { "mobile": verifyingMobile }
+            var payload = { "mobile": verifyingMobile , "name": name}
             return $http({
                 method: "POST",
                 url: URL,
