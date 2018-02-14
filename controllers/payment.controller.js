@@ -33,10 +33,10 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 console.log("Successfully created the receipt.");
                 // $scope.isPaymentSuccess = true;
             } else {
-                alert(response.data.error)
+                alert("Error occured when doing the Payment.")
             }
         }, function (response) {
-            alert(response)
+            alert("Error occured when doing the Payment.")
         });
     }
 
@@ -83,7 +83,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                                 "subtitle": $scope.payment.entity + " payment",
                                 "price": $scope.payment.amount,
                                 "currency": "USD",
-                                "image_url": "http://colomboo.lk/assets/media/vendors/5260/logo_image.png"
+                                "image_url": "http://dev.smoothflow.io/app/images/dbf/welcome.jpg"
                             }]
                         }
                     }
@@ -96,7 +96,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         }, function (response, status) {
             console.log(response);
             console.log("else.....")
-            alert(response.data);
+            alert("Error occured when sending the Receipt.")
         });
     }
 
