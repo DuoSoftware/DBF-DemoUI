@@ -25,7 +25,7 @@ function signupController($scope, $rootScope, $state, $timeout, $http, $systemUr
 
     $scope.authenticate = function () {
         $scope.processing = true;
-        $otp.send($scope.user.mobile).then(function (response, status) {
+        $otp.send($scope.user.mobile,$scope.user.name).then(function (response, status) {
             if (response.data.IsSuccess) {
                 $scope.processing = false;
                 $state.go("verify-mobile", {user: $scope.user});
