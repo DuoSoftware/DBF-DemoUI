@@ -26,27 +26,27 @@ function verifyMobileController($scope, $rootScope, $state, $timeout, $http, $sy
                                 $scope.user = {};
                             }, function (response) {
                                 $scope.processing = false;
-                                alert(response);
+                                alert(response.data.CustomMessage);
                             });
                         }, function (response) {
                             $scope.processing = false;
-                            alert(response);
+                            alert("Error on Cloudcharge registration: "+response.data.CustomMessage);
                         });
                     } else {
                         $scope.processing = false;
-                        alert(response.data.CustomMessage);
+                        alert("Error on Facetone registration: "+response.data.CustomMessage);
                     }
                 }, function (response, status) {
                     $scope.processing = false;
-                    alert(response);
+                    alert("Error on Facetone registration: "+response.data.CustomMessage);
                 });
             } else {
                 $scope.processing = false;
-                alert(response.data.CustomMessage);
+                alert("Error on Verify mobile: "+response.data.CustomMessage);
             }
         }, function (response, status) {
             // error in otp code validation
-            alert(response);
+            alert("Error on Verify mobile: "+response.data.CustomMessage);
         });
     }
 
