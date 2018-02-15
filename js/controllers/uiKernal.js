@@ -289,16 +289,19 @@
             createProfileOnCloudcharge(profile, '1602f50e37134d0e9b3432960c07038f');
         }
 
+        // odel
         function registerWithMerchant(profile) {
-            createProfileOnCloudcharge(profile, '7002abf4-2675-4b98-8cbf-eb8b37c6ba46,odelinv.app.cloudcharge.com');
+            createProfileOnCloudcharge(profile, '6e7ed9fdc06d49b9bdf3d23d6fefeac4');
         }
 
+        // dialog
         function registerWithTelecommunicationProvider(profile) {
-            createProfileOnCloudcharge(profile, 'a461fcc8-82d0-4a57-894d-0a70bc1c9504,dialoginv.app.cloudcharge.com');
+            createProfileOnCloudcharge(profile, '2835eedb712a485691e13af78dd87505');
         }
 
+        // ceb
         function registerWithUtilityProvider(profile) {
-            createProfileOnCloudcharge(profile, '54fd39f4-dd3e-4396-901b-d336ee03d13b,cebinv.app.cloudcharge.com');
+            createProfileOnCloudcharge(profile, '2bd70fe8746945b3854ad465afbce47b');
         }
 
         return {
