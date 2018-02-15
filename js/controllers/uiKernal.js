@@ -369,6 +369,7 @@
                 payMethod: payment.method || "credit",
                 guInvoiceId: payment.invoiceNo || "",
                 startDate: "2018-02-02",
+                invoiceType: "One Time",
             };
 
             console.log(URL);
