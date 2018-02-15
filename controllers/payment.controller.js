@@ -6,7 +6,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     console.log("payment page loaded");
 
     $scope.user = {};
-    $scope.payment = { method: "Cash" };
+    $scope.payment = { method: "Cash", invoiceNo: "" };
     $scope.isPaymentSuccess = false;
     $scope.processing = false;
 
@@ -15,8 +15,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         var sender = $state.params.sender.split("-");
 
         $scope.user.name = $state.params.name;
-        $scope.user.fname = name[0] || "";
-        $scope.user.lname = name[1] || "";
+        $scope.user.fname = name.shift() || "";
+        $scope.user.lname = name.join(" ") || "";
         $scope.user.senderId = sender[1] || "";
 
         $scope.payment.entity = $state.params.entity || "";
@@ -40,7 +40,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         });
     }
 
-    function sendReciptToBot () {
+    function sendReciptToBot() {
         $http({
             method: "POST",
             url: "https://graph.facebook.com/v2.6/me/messages?access_token=EAAQctctsh6UBANUX9Snmt7LB3ZAXXFZBOFsiZAIKUm0oIYoZCxMTjsjGXhcSgO4y492zriId3ceZAZBtliyPCvyNVmS7r3ShFuSZCd2TVQN10ZCQnUuOLhuByY9MruAOCpC8dbTaxZCPig9Y9ZC5dK2i9Tf2StYTWywPWAD8ZAc1tyVsAZDZD",
@@ -90,7 +90,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 }
             }
         }).then(function (response, status) {
-             console.log(response);
+            console.log(response);
             console.log("Receipt sent.")
             $scope.isPaymentSuccess = true;
         }, function (response, status) {
@@ -100,7 +100,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         });
     }
 
-    function getProfile (name) {
+    function getProfile(name) {
         $scope.processing = true;
         $http({
             method: "GET",
