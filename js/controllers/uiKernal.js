@@ -348,7 +348,7 @@
                 "paid": "true",
                 "paidAmount": 0,
                 "taxAmount": 0,
-                "qty": 1,
+                "qty": payment.amount,
                 "tax": "",
                 "itemDescription": "",
                 "itemType": "",
@@ -365,9 +365,10 @@
             }
             var payload = {
                 email: profile.email || "",
-                products:[product],
+                products: [product],
                 payMethod: payment.method || "credit",
-                guInvoiceId: payment.invoiceNo || ""
+                guInvoiceId: payment.invoiceNo || "",
+                startDate: "2018-02-02",
             };
 
             console.log(URL);

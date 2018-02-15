@@ -122,7 +122,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         }, function (response, status) {
             console.log(response);
             console.log("else.....")
-            alert("Error occured when sending the Receipt.")
+            alert("Error occured when sending the Receipt to Messenger")
         });
     }
 
