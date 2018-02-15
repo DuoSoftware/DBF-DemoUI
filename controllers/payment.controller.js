@@ -52,6 +52,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         });
 
         // invoice to merchant account
+        $scope.payment.method = "credit";
         $invoice.createInvoice($scope.user, $scope.payment, merchantToken).then(function (response, status) {
             if (response.data.error == null) {
                 console.log("Successfully completed the Invoice.");
