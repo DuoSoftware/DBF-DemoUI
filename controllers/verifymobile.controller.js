@@ -20,14 +20,16 @@ function verifyMobileController($scope, $rootScope, $state, $timeout, $http, $sy
                 $profile.onFacetone.registerProfile($scope.user).then(function (response, status) {
                     if (response.data && response.data.IsSuccess) {
                         registerProfileOnCloudcharge($scope.user).then(function (response) {
-                            // $invoice.createRecipt($scope.user, payment).then(function () {
-                            //     $scope.processing = false;
-                            //     $state.go("registration-success", { user: $scope.user });
-                            //     $scope.user = {};
-                            // }, function (response) {
-                            //     $scope.processing = false;
-                            //     alert(response.data.CustomMessage);
-                            // });
+                            $invoice.createRecipt($scope.user, payment).then(function (response) {
+                                $scope.processing = false;
+                                $state.go("registration-success", { user: $scope.user });
+                                $scope.user = {};
+                                console.log(response);
+                            }, function (response) {
+                                console.log(response);
+                                $scope.processing = false;
+                                alert(response.data.CustomMessage);
+                            });
                             $scope.processing = false;
                             $state.go("registration-success", { user: $scope.user });
                             $scope.user = {};
