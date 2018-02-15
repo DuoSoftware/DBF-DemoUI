@@ -17,8 +17,8 @@ function signupController($scope, $rootScope, $state, $timeout, $http, $systemUr
         }
 
         $scope.user.name = $state.params.name;
-        $scope.user.fname = name[0] || "";
-        $scope.user.lname = name[1] || "";
+        $scope.user.fname = name.shift() || "";
+        $scope.user.lname = name.join(" ") || "";
         $scope.user.senderId = sender[1] || "";
         //getProfile($state.params.name);
     }
