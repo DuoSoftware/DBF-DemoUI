@@ -348,13 +348,13 @@
 
         function sendOTPCode(mobile, name) {
             var URL = $systemUrls.otpService + "/send";
-            var COUNTRYCODE = '+94';
+            //var COUNTRYCODE = '+94';
             var verifyingMobile = "";
 
             if (!mobile) { return; }
             else { verifyingMobile = mobile; }
 
-            if (!verifyingMobile.startsWith(COUNTRYCODE)) { verifyingMobile = COUNTRYCODE + verifyingMobile; }
+            //if (!verifyingMobile.startsWith(COUNTRYCODE)) { verifyingMobile = COUNTRYCODE + verifyingMobile; }
 
             var payload = { "mobile": verifyingMobile , "name": name}
             return $http({
@@ -371,13 +371,13 @@
 
         function verifyOTPCode(mobile, code, fromID) {
             var URL = $systemUrls.otpService + "/validate";
-            var COUNTRYCODE = '+94';
+            //var COUNTRYCODE = '+94';
             var verifyingMobile = "";
 
             if (!mobile) { return; }
             else { verifyingMobile = mobile; }
 
-            if (!verifyingMobile.startsWith(COUNTRYCODE)) { verifyingMobile = COUNTRYCODE + verifyingMobile; }
+            //if (!verifyingMobile.startsWith(COUNTRYCODE)) { verifyingMobile = COUNTRYCODE + verifyingMobile; }
 
             var payload = { "mobile": verifyingMobile, "code": code || "", "name": fromID || "" }
             return $http({
