@@ -30,9 +30,9 @@ function verifyMobileController($scope, $rootScope, $state, $timeout, $http, $sy
                                 $scope.processing = false;
                                 alert("Error on Recipt creation: " + response.data.error.STATUS_INTERNAL_SERVER_ERROR[0]);
                             });
-                            $scope.processing = false;
-                            $state.go("registration-success", { user: $scope.user });
-                            $scope.user = {};
+                            // $scope.processing = false;
+                            // $state.go("registration-success", { user: $scope.user });
+                            // $scope.user = {};
                         }, function (response) {
                             $scope.processing = false;
                             alert("Error on Cloudcharge registration: " + response.data.CustomMessage);

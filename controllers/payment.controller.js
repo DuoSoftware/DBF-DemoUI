@@ -26,9 +26,21 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     }
 
     $scope.pay = function () {
-        $invoice.createRecipt($scope.user, $scope.payment).then(function (response, status) {
+        debugger
+        var bankToken = "12c95918-17d6-4ab7-a1cb-933afee648c0,bank.app.cloudcharge.com";
+        var merchantToken = "";
+        if($scope.payment.entity == "ceb"){
+            merchantToken = "54fd39f4-dd3e-4396-901b-d336ee03d13b,cebinv.app.cloudcharge.com";
+        } else if($scope.payment.entity == "dialog"){
+            merchantToken = "a461fcc8-82d0-4a57-894d-0a70bc1c9504,dialoginv.app.cloudcharge.com";
+        } else if($scope.payment.entity == "odel"){
+            merchantToken = "7002abf4-2675-4b98-8cbf-eb8b37c6ba46,odelinv.app.cloudcharge.com";
+        }
+
+        // recipt to bank account
+        $invoice.createRecipt($scope.user, $scope.payment, bankToken).then(function (response, status) {
             if (response.data.error == null) {
-                console.log("Successfully completed the payment.");
+                console.log("Successfully completed the payment");
                 sendReciptToBot();
                 console.log("Successfully created the receipt.");
                 // $scope.isPaymentSuccess = true;
@@ -37,6 +49,20 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             }
         }, function (response) {
             alert("Error occured when doing the Payment.")
+        });
+
+        // invoice to merchant account
+        $invoice.createInvoice($scope.user, $scope.payment, merchantToken).then(function (response, status) {
+            if (response.data.error == null) {
+                console.log("Successfully completed the Invoice.");
+                sendReciptToBot();
+                console.log("Successfully created the invoice.");
+                // $scope.isPaymentSuccess = true;
+            } else {
+                alert("Error occured when doing the Invoice.")
+            }
+        }, function (response) {
+            alert("Error occured when doing the Invoice.")
         });
     }
 

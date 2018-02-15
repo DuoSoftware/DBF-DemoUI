@@ -319,7 +319,7 @@
 
     uik.factory('$invoice', function ($http, $systemUrls) {
 
-        function createRecipt(profile, payment) {
+        function createRecipt(profile, payment, securityToken) {
             var URL = $systemUrls.reciptService + "/invoicepay/createReceipt";
             var payload = {
                 email: profile.email || "",
@@ -337,13 +337,56 @@
                 data: payload,
                 headers: {
                     "Content-Type": "application/json",
-                    "securityToken": "1602f50e37134d0e9b3432960c07038f"
+                    "securityToken": securityToken
+                }
+            });
+        }
+
+        function createInvoice(profile, payment, securityToken) {
+            var URL = $systemUrls.reciptService + "/invoicing/createInvoice";
+            var product = {
+                "paid": "true",
+                "paidAmount": 0,
+                "taxAmount": 0,
+                "qty": 1,
+                "tax": "",
+                "itemDescription": "",
+                "itemType": "",
+                "guItemID": "B5873790-26C6-2A4B-6D17-D4721F55FFBC",
+                "lineID": "",
+                "totalPrice": payment.amount,
+                "unitPrice": payment.amount,
+                "discount": 0,
+                "startDate": "2018-02-02",
+                "uom": "",
+                "subTotal": payment.amount,
+                "promotionId": "",
+                "code": "Cash-wallet"
+            }
+            var payload = {
+                email: profile.email || "",
+                products:[product],
+                payMethod: payment.method || "credit",
+                guInvoiceId: payment.invoiceNo || ""
+            };
+
+            console.log(URL);
+            console.log(payload);
+
+            return $http({
+                method: "POST",
+                url: URL,
+                data: payload,
+                headers: {
+                    "Content-Type": "application/json",
+                    "securityToken": securityToken
                 }
             });
         }
 
         return {
             createRecipt: createRecipt,
+            createInvoice: createInvoice
         }
     });
 
@@ -359,7 +402,7 @@
 
             //if (!verifyingMobile.startsWith(COUNTRYCODE)) { verifyingMobile = COUNTRYCODE + verifyingMobile; }
 
-            var payload = { "mobile": verifyingMobile , "name": name}
+            var payload = { "mobile": verifyingMobile, "name": name }
             return $http({
                 method: "POST",
                 url: URL,
