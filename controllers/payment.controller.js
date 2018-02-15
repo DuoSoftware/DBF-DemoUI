@@ -29,11 +29,11 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         debugger
         var bankToken = "12c95918-17d6-4ab7-a1cb-933afee648c0,bank.app.cloudcharge.com";
         var merchantToken = "";
-        if($scope.payment.entity == "ceb"){
+        if ($scope.payment.entity == "ceb") {
             merchantToken = "54fd39f4-dd3e-4396-901b-d336ee03d13b,cebinv.app.cloudcharge.com";
-        } else if($scope.payment.entity == "dialog"){
+        } else if ($scope.payment.entity == "dialog") {
             merchantToken = "a461fcc8-82d0-4a57-894d-0a70bc1c9504,dialoginv.app.cloudcharge.com";
-        } else if($scope.payment.entity == "odel"){
+        } else if ($scope.payment.entity == "odel") {
             merchantToken = "7002abf4-2675-4b98-8cbf-eb8b37c6ba46,odelinv.app.cloudcharge.com";
         }
 
@@ -41,7 +41,11 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         $invoice.createRecipt($scope.user, $scope.payment, bankToken).then(function (response, status) {
             if (response.data.error == null) {
                 console.log("Successfully completed the payment");
-                sendReciptToBot();
+                var invoiceID = "";
+                var imageURL = "http://dev.smoothflow.io/app/images/dbf/welcome.jpg";
+                var orderURL = "https://www.cargillsbank.com/";
+                if ($scope.payment.invoice != "") { invoiceID = $scope.payment.invoice; } else { invoiceID = "Payed to " + $scope.payment.entity; }
+                sendReciptToBot(invoiceID, orderURL, imageURL);
                 console.log("Successfully created the receipt.");
                 // $scope.isPaymentSuccess = true;
             } else {
@@ -56,7 +60,12 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         $invoice.createInvoice($scope.user, $scope.payment, merchantToken).then(function (response, status) {
             if (response.data.error == null) {
                 console.log("Successfully completed the Invoice.");
-                sendReciptToBot();
+                var invoiceID = "";
+                var imageURL = "";
+                var orderURL = "";
+                if ($scope.payment.invoice != "") { invoiceID = $scope.payment.invoice; } else { invoiceID = "Payed to " + $scope.payment.entity; }
+                if ($scope.payment.entity == "ceb") { imageURL = "http://dev.smoothflow.io/app/images/dbf/ceb.jpg"; orderURL = "http://www.ceb.lk/"; } else if ($scope.payment.entity == "odel") { imageURL = "http://dev.smoothflow.io/app/images/dbf/odel.jpg"; orderURL = "http://www.odel.lk/"; } else if ($scope.payment.entity == "dialog") { imageURL = "http://dev.smoothflow.io/app/images/dbf/dialog.jpg"; orderURL = "http://www.dialog.lk/"; }
+                sendReciptToBot(invoiceID, orderURL, imageURL);
                 console.log("Successfully created the invoice.");
                 // $scope.isPaymentSuccess = true;
             } else {
@@ -67,7 +76,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         });
     }
 
-    function sendReciptToBot() {
+    function sendReciptToBot(invoice, OrderURL, ImageURL) {
         $http({
             method: "POST",
             url: "https://graph.facebook.com/v2.6/me/messages?access_token=EAAQctctsh6UBANUX9Snmt7LB3ZAXXFZBOFsiZAIKUm0oIYoZCxMTjsjGXhcSgO4y492zriId3ceZAZBtliyPCvyNVmS7r3ShFuSZCd2TVQN10ZCQnUuOLhuByY9MruAOCpC8dbTaxZCPig9Y9ZC5dK2i9Tf2StYTWywPWAD8ZAc1tyVsAZDZD",
@@ -85,10 +94,10 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                         "payload": {
                             "template_type": "receipt",
                             "recipient_name": $scope.user.name,
-                            "order_number": $scope.payment.invoiceNo,
+                            "order_number": invoice,
                             "currency": "USD",
                             "payment_method": "Visa",
-                            "order_url": "https://cargillsbank.lk",
+                            "order_url": OrderURL,
                             "timestamp": Math.floor(Date.now() / 1000).toString(),
                             "address": {
                                 "street_1": "Cinnamon Gardens",
@@ -110,7 +119,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                                 "subtitle": $scope.payment.entity + " payment",
                                 "price": $scope.payment.amount,
                                 "currency": "USD",
-                                "image_url": "http://dev.smoothflow.io/app/images/dbf/welcome.jpg"
+                                "image_url": ImageURL
                             }]
                         }
                     }
