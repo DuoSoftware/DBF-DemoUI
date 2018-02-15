@@ -370,6 +370,11 @@
                 guInvoiceId: payment.invoiceNo || "",
                 startDate: "2018-02-02",
                 invoiceType: "One Time",
+                note: "",
+                invoicePeriod: "Days",
+                invoiceInterval: -1,
+                occurrence: -1,
+                moduleType: "invoice"
             };
 
             console.log(URL);
