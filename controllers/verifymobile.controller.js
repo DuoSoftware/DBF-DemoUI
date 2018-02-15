@@ -28,7 +28,7 @@ function verifyMobileController($scope, $rootScope, $state, $timeout, $http, $sy
                             }, function (response) {
                                 console.log(response);
                                 $scope.processing = false;
-                                alert(response.data.CustomMessage);
+                                alert("Error on Recipt creation: " + response.data.error.STATUS_INTERNAL_SERVER_ERROR[0]);
                             });
                             $scope.processing = false;
                             $state.go("registration-success", { user: $scope.user });
