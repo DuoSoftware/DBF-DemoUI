@@ -25,6 +25,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         getProfile($state.params.name);
     }
 
+    $scope.resultCount = 0;
     $scope.pay = function () {
         debugger
         var bankToken = "12c95918-17d6-4ab7-a1cb-933afee648c0,bank.app.cloudcharge.com";
@@ -40,6 +41,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         // recipt to bank account
         $invoice.createRecipt($scope.user, $scope.payment, bankToken).then(function (response, status) {
             if (response.data.error == null) {
+                resultCount++;
                 console.log("Successfully completed the payment");
                 var invoiceID = "";
                 var imageURL = "http://dev.smoothflow.io/app/images/dbf/welcome.jpg";
@@ -48,6 +50,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 sendReciptToBot(invoiceID, orderURL, imageURL);
                 console.log("Successfully created the receipt.");
                 // $scope.isPaymentSuccess = true;
+                if (resultCount == 2) {
+                    $scope.sendQuickReplyToBot();
+                }
             } else {
                 alert("Error occured when doing the Payment.")
             }
@@ -59,6 +64,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         $scope.payment.method = "credit";
         $invoice.createInvoice($scope.user, $scope.payment, merchantToken).then(function (response, status) {
             if (response.data.error == null) {
+                resultCount++;
                 console.log("Successfully completed the Invoice.");
                 var invoiceID = "";
                 var imageURL = "";
@@ -68,6 +74,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 sendReciptToBot(invoiceID, orderURL, imageURL);
                 console.log("Successfully created the invoice.");
                 // $scope.isPaymentSuccess = true;
+                if (resultCount == 2) {
+                    $scope.sendQuickReplyToBot();
+                }
             } else {
                 alert("Error occured when doing the Invoice.")
             }
@@ -123,6 +132,45 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                             }]
                         }
                     }
+                }
+            }
+        }).then(function (response, status) {
+            console.log(response);
+            console.log("Receipt sent.")
+            $scope.isPaymentSuccess = true;
+        }, function (response, status) {
+            console.log(response);
+            console.log("else.....")
+            alert("Error occured when sending the Receipt to Messenger")
+        });
+    }
+
+    $scope.sendQuickReplyToBot = function () {
+        $http({
+            method: "POST",
+            url: "https://graph.facebook.com/v2.6/me/messages?access_token=EAAQctctsh6UBANUX9Snmt7LB3ZAXXFZBOFsiZAIKUm0oIYoZCxMTjsjGXhcSgO4y492zriId3ceZAZBtliyPCvyNVmS7r3ShFuSZCd2TVQN10ZCQnUuOLhuByY9MruAOCpC8dbTaxZCPig9Y9ZC5dK2i9Tf2StYTWywPWAD8ZAc1tyVsAZDZD",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            data: {
+                "messaging_type": "RESPONSE",
+                "recipient": {
+                    "id": $scope.user.senderId
+                },
+                "message": {
+                    "text": "Would you like to use another service?",
+                    "quick_replies": [
+                        {
+                            "content_type": "text",
+                            "title": "Yes",
+                            "payload": "Yes"
+                        },
+                        {
+                            "content_type": "text",
+                            "title": "No",
+                            "payload": "cancel"
+                        }
+                    ]
                 }
             }
         }).then(function (response, status) {
