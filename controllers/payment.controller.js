@@ -44,7 +44,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 var invoiceID = "";
                 var imageURL = "http://dev.smoothflow.io/app/images/dbf/welcome.jpg";
                 var orderURL = "https://www.cargillsbank.com/";
-                if ($scope.payment.invoice != "") { invoiceID = $scope.payment.invoice; } else { invoiceID = "Payed to " + $scope.payment.entity; }
+                if ($scope.payment.invoiceNo != "") { invoiceID = $scope.payment.invoice; } else { invoiceID = "Payed to " + $scope.payment.entity; }
                 sendReciptToBot(invoiceID, orderURL, imageURL);
                 console.log("Successfully created the receipt.");
                 // $scope.isPaymentSuccess = true;
@@ -63,7 +63,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 var invoiceID = "";
                 var imageURL = "";
                 var orderURL = "";
-                if ($scope.payment.invoice != "") { invoiceID = $scope.payment.invoice; } else { invoiceID = "Payed to " + $scope.payment.entity; }
+                if ($scope.payment.invoiceNo != "") { invoiceID = $scope.payment.invoice; } else { invoiceID = "Payed to " + $scope.payment.entity; }
                 if ($scope.payment.entity == "ceb") { imageURL = "http://dev.smoothflow.io/app/images/dbf/ceb.jpg"; orderURL = "http://www.ceb.lk/"; } else if ($scope.payment.entity == "odel") { imageURL = "http://dev.smoothflow.io/app/images/dbf/odel.jpg"; orderURL = "http://www.odel.lk/"; } else if ($scope.payment.entity == "dialog") { imageURL = "http://dev.smoothflow.io/app/images/dbf/dialog.jpg"; orderURL = "http://www.dialog.lk/"; }
                 sendReciptToBot(invoiceID, orderURL, imageURL);
                 console.log("Successfully created the invoice.");
