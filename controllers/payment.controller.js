@@ -27,7 +27,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
     $scope.resultCount = 0;
     $scope.pay = function () {
-        debugger
+        $scope.processing = true;
         var bankToken = "12c95918-17d6-4ab7-a1cb-933afee648c0,bank.app.cloudcharge.com";
         var merchantToken = "";
         if ($scope.payment.entity == "ceb") {
@@ -41,7 +41,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         // recipt to bank account
         $invoice.createRecipt($scope.user, $scope.payment, bankToken).then(function (response, status) {
             if (response.data.error == null) {
-                resultCount++;
+                $scope.resultCount++;
                 console.log("Successfully completed the payment");
                 var invoiceID = "";
                 var imageURL = "http://dev.smoothflow.io/app/images/dbf/welcome.jpg";
@@ -49,10 +49,6 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 if ($scope.payment.invoiceNo != "") { invoiceID = $scope.payment.invoice; } else { invoiceID = "Payed to " + $scope.payment.entity; }
                 sendReciptToBot(invoiceID, orderURL, imageURL);
                 console.log("Successfully created the receipt.");
-                // $scope.isPaymentSuccess = true;
-                if (resultCount == 2) {
-                    $scope.sendQuickReplyToBot();
-                }
             } else {
                 alert("Error occured when doing the Payment.")
             }
@@ -64,7 +60,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         $scope.payment.method = "credit";
         $invoice.createInvoice($scope.user, $scope.payment, merchantToken).then(function (response, status) {
             if (response.data.error == null) {
-                resultCount++;
+                $scope.resultCount++;
                 console.log("Successfully completed the Invoice.");
                 var invoiceID = "";
                 var imageURL = "";
@@ -73,10 +69,6 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 if ($scope.payment.entity == "ceb") { imageURL = "http://dev.smoothflow.io/app/images/dbf/ceb.jpg"; orderURL = "http://www.ceb.lk/"; } else if ($scope.payment.entity == "odel") { imageURL = "http://dev.smoothflow.io/app/images/dbf/odel.jpg"; orderURL = "http://www.odel.lk/"; } else if ($scope.payment.entity == "dialog") { imageURL = "http://dev.smoothflow.io/app/images/dbf/dialog.jpg"; orderURL = "http://www.dialog.lk/"; }
                 sendReciptToBot(invoiceID, orderURL, imageURL);
                 console.log("Successfully created the invoice.");
-                // $scope.isPaymentSuccess = true;
-                if (resultCount == 2) {
-                    $scope.sendQuickReplyToBot();
-                }
             } else {
                 alert("Error occured when doing the Invoice.")
             }
@@ -138,10 +130,15 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             console.log(response);
             console.log("Receipt sent.")
             $scope.isPaymentSuccess = true;
+            $scope.processing = false;
+            if ($scope.resultCount == 2) {
+                $scope.sendQuickReplyToBot();
+            }
         }, function (response, status) {
             console.log(response);
             console.log("else.....")
             alert("Error occured when sending the Receipt to Messenger")
+            $scope.processing = false;
         });
     }
 
@@ -175,12 +172,14 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             }
         }).then(function (response, status) {
             console.log(response);
-            console.log("Receipt sent.")
+            console.log("Quickreply sent.")
             $scope.isPaymentSuccess = true;
+            $scope.processing = false;
         }, function (response, status) {
             console.log(response);
             console.log("else.....")
-            alert("Error occured when sending the Receipt to Messenger")
+            alert("Error occured when sending the Receipt to Messenger");
+            $scope.processing = false;
         });
     }
 
