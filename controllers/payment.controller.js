@@ -12,7 +12,16 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
     if ($state.params && $state.params.name) {
         var name = $state.params.name.split(" ");
-        var sender = $state.params.sender.split("-");
+
+        var sender = [""];
+        if ($state.params.sender.indexOf(':') >=0 ){
+                sender = $state.params.sender.replace('dbf:', '').split(":"); 
+            }else{
+                sender = $state.params.sender.split("-");    
+            }
+
+
+        //var sender = $state.params.sender.split("-");
 
         $scope.user.name = $state.params.name;
         $scope.user.fname = name.shift() || "";
