@@ -15,7 +15,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
         var sender = [""];
         if ($state.params.sender.indexOf(':') >=0 ){
-                sender = $state.params.sender.replace('dbf:', '').split(":"); 
+                sender = $state.params.sender.replace('dbf:', '');
+                sender = sender.split(":"); 
             }else{
                 sender = $state.params.sender.split("-");    
             }
