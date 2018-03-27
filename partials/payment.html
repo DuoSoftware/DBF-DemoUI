@@ -2,7 +2,7 @@
     <div class="text-center" ng-include="'partials/include.header.html'"></div>
     <div class="m-b-lg">
         <div class="wrapper text-center" ng-if="!isPaymentSuccess">
-            <h4 style="font-weight: bold;">{{payment.type}} Bill Payment - {{payment.entity}}</h4>
+            <h4 style="font-weight: bold;">Order Confirmation</h4>
             <!-- <strong>Your Account is not yet active!</strong> -->
             <!-- <p>OTP has been sent to you on your mobile number. Please enter it below.</p> -->
         </div>
@@ -11,18 +11,49 @@
         </div>
         <form name="paymentForm" ng-if="!isPaymentSuccess">
             <div class="form-group">
+                <label for="inputAddress">Customer Name</label>
+                <input type="text" class="form-control" ng-model="user.name" placeholder="" ng-readonly="true">
+            </div>
+            <div class="form-group">
                 <label for="inputAddress">Invoice No</label>
-                <input type="text" class="form-control" ng-model="payment.invoiceNo" placeholder="">
+                <input type="text" class="form-control" ng-model="payment.invoiceNo" placeholder="" ng-readonly="true">
             </div>
             <div class="form-group">
-                <label for="inputAddress2">Payment Amount</label>
-                <input type="text" class="form-control" ng-model="payment.amount" placeholder="" required>
+                <label for="inputAddress2">Category</label>
+                <input type="text" class="form-control" ng-model="payment.category" placeholder="" ng-readonly="true">
             </div>
             <div class="form-group">
-                <label for="inputState">Accounts</label>
-                <select id="inputState" class="form-control">
-                    <option selected>{{user.profileID}}</option>
-                </select>
+                <label for="inputAddress2">Vehicle</label>
+                <input type="text" class="form-control" ng-model="payment.vehicle" placeholder="" ng-readonly="true">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress2">Pick up Date</label>
+                <input type="text" class="form-control" ng-model="payment.pickupdate" placeholder="" ng-readonly="true">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress2">Drop of Date</label>
+                <input type="text" class="form-control" ng-model="payment.dropoffdate" placeholder="" ng-readonly="true">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress2">NIC / Passport Number</label>
+                <input type="text" class="form-control" ng-model="payment.nic" placeholder="" ng-readonly="true">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress2">Mobile Number</label>
+                <input type="text" class="form-control" ng-model="payment.phone" placeholder="" ng-readonly="true">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress2">Pickup at Location?</label>
+                <input type="text" class="form-control" ng-model="payment.pickuplocation" placeholder="" ng-readonly="true">
+            </div>
+            <div class="form-group">
+                <label for="inputState">Amount to Pay</label>
+                <p style="font-size: 30px;">
+                    <b>LKR {{payment.price}}.00</b>
+                </p>
+            </div>
+            <div class="form-group">
+
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary" ng-click="pay()" ng-disabled="paymentForm.$invalid || processing">Pay Now</button>

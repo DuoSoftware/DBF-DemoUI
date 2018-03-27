@@ -14,77 +14,83 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         var name = $state.params.name.split(" ");
 
         var sender = [""];
-        if ($state.params.sender.indexOf(':') >=0 ){
-                sender = $state.params.sender.replace('dbf:', '');
-                sender = sender.split(":"); 
-            }else{
-                sender = $state.params.sender.split("-");    
-            }
+        if ($state.params.sender.indexOf(':') >= 0) {
+            sender = $state.params.sender.replace('dbf:', '');
+            sender = sender.split(":");
+        } else {
+            sender = $state.params.sender.split("-");
+        }
 
 
         //var sender = $state.params.sender.split("-");
 
         $scope.user.name = $state.params.name;
-        $scope.user.fname = name.shift() || "";
-        $scope.user.lname = name.join(" ") || "";
         $scope.user.senderId = sender[1] || "";
 
-        $scope.payment.entity = $state.params.entity || "";
-        $scope.payment.type = $state.params.type || "";
+        $scope.payment.invoiceNo = Math.floor((Math.random() * 10000000) + 1);
+        $scope.payment.category = $state.params.category;
+        $scope.payment.vehicle = $state.params.vehicle;
+        $scope.payment.pickupdate = $state.params.pickupdate;
+        $scope.payment.dropoffdate = $state.params.dropoffdate;
+        $scope.payment.nic = $state.params.nic;
+        $scope.payment.phone = $state.params.phone;
+        $scope.payment.pickuplocation = $state.params.pickuplocation;
+        $scope.payment.price = Math.floor((Math.random() * 10000) + 1);
 
-        getProfile($state.params.name);
+        //getProfile($state.params.name);
     }
 
     $scope.resultCount = 0;
     $scope.pay = function () {
         $scope.processing = true;
-        var bankToken = "12c95918-17d6-4ab7-a1cb-933afee648c0,bank.app.cloudcharge.com";
-        var merchantToken = "";
-        if ($scope.payment.entity == "ceb") {
-            merchantToken = "54fd39f4-dd3e-4396-901b-d336ee03d13b,cebinv.app.cloudcharge.com";
-        } else if ($scope.payment.entity == "dialog") {
-            merchantToken = "a461fcc8-82d0-4a57-894d-0a70bc1c9504,dialoginv.app.cloudcharge.com";
-        } else if ($scope.payment.entity == "odel") {
-            merchantToken = "7002abf4-2675-4b98-8cbf-eb8b37c6ba46,odelinv.app.cloudcharge.com";
-        }
+        sendReciptToBot($scope.payment.invoiceNo, "https://www.cargillsbank.com/", "http://smoothflow.io/facetone/DBF-DemoUI/img/rentacar.png");
+        // var bankToken = "12c95918-17d6-4ab7-a1cb-933afee648c0,bank.app.cloudcharge.com";
+        // var merchantToken = "";
+        // if ($scope.payment.entity == "ceb") {
+        //     merchantToken = "54fd39f4-dd3e-4396-901b-d336ee03d13b,cebinv.app.cloudcharge.com";
+        // } else if ($scope.payment.entity == "dialog") {
+        //     merchantToken = "a461fcc8-82d0-4a57-894d-0a70bc1c9504,dialoginv.app.cloudcharge.com";
+        // } else if ($scope.payment.entity == "odel") {
+        //     merchantToken = "7002abf4-2675-4b98-8cbf-eb8b37c6ba46,odelinv.app.cloudcharge.com";
+        // }
 
-        // recipt to bank account
-        $invoice.createRecipt($scope.user, $scope.payment, bankToken).then(function (response, status) {
-            if (response.data.error == null) {
-                $scope.resultCount++;
-                console.log("Successfully completed the payment");
-                var invoiceID = "";
-                var imageURL = "http://dev.smoothflow.io/app/images/dbf/welcome.jpg";
-                var orderURL = "https://www.cargillsbank.com/";
-                if ($scope.payment.invoiceNo != "") { invoiceID = $scope.payment.invoice; } else { invoiceID = "Payed to " + $scope.payment.entity; }
-                sendReciptToBot(invoiceID, orderURL, imageURL);
-                console.log("Successfully created the receipt.");
-            } else {
-                alert("Error occured when doing the Payment.")
-            }
-        }, function (response) {
-            alert("Error occured when doing the Payment.")
-        });
+        // // recipt to bank account
+        // $invoice.createRecipt($scope.user, $scope.payment, bankToken).then(function (response, status) {
+        //     if (response.data.error == null) {
+        //         $scope.resultCount++;
+        //         console.log("Successfully completed the payment");
+        //         var invoiceID = "";
+        //         var imageURL = "http://dev.smoothflow.io/app/images/dbf/welcome.jpg";
+        //         var orderURL = "https://www.cargillsbank.com/";
+        //         if ($scope.payment.invoiceNo != "") { invoiceID = $scope.payment.invoice; } else { invoiceID = "Payed to " + $scope.payment.entity; }
+        //         sendReciptToBot(invoiceID, orderURL, imageURL);
+        //         console.log("Successfully created the receipt.");
+        //     } else {
+        //         alert("Error occured when doing the Payment.")
+        //     }
+        // }, function (response) {
+        //     alert("Error occured when doing the Payment.")
+        // });
 
-        // invoice to merchant account
-        $scope.payment.method = "credit";
-        $invoice.createInvoice($scope.user, $scope.payment, merchantToken).then(function (response, status) {
-            if (response.data.error == null) {
-                $scope.resultCount++;
-                console.log("Successfully completed the Invoice.");
-                var invoiceID = "";
-                var imageURL = "";
-                var orderURL = "";
-                if ($scope.payment.invoiceNo != "") { invoiceID = $scope.payment.invoice; } else { invoiceID = "Payed to " + $scope.payment.entity; }
-                if ($scope.payment.entity == "ceb") { imageURL = "http://dev.smoothflow.io/app/images/dbf/ceb.jpg"; orderURL = "http://www.ceb.lk/"; } else if ($scope.payment.entity == "odel") { imageURL = "http://dev.smoothflow.io/app/images/dbf/odel.jpg"; orderURL = "http://www.odel.lk/"; } else if ($scope.payment.entity == "dialog") { imageURL = "http://dev.smoothflow.io/app/images/dbf/dialog.jpg"; orderURL = "http://www.dialog.lk/"; }
-                sendReciptToBot(invoiceID, orderURL, imageURL);
-                console.log("Successfully created the invoice.");
-            } else {
-                alert("Error occured when doing the Invoice.")
-            }
-        }, function (response) {
-            alert("Error occured when doing the Invoice.")
-        });
+        // // invoice to merchant account
+        // $scope.payment.method = "credit";
+        // $invoice.createInvoice($scope.user, $scope.payment, merchantToken).then(function (response, status) {
+        //     if (response.data.error == null) {
+        //         $scope.resultCount++;
+        //         console.log("Successfully completed the Invoice.");
+        //         var invoiceID = "";
+        //         var imageURL = "";
+        //         var orderURL = "";
+        //         if ($scope.payment.invoiceNo != "") { invoiceID = $scope.payment.invoice; } else { invoiceID = "Payed to " + $scope.payment.entity; }
+        //         if ($scope.payment.entity == "ceb") { imageURL = "http://dev.smoothflow.io/app/images/dbf/ceb.jpg"; orderURL = "http://www.ceb.lk/"; } else if ($scope.payment.entity == "odel") { imageURL = "http://dev.smoothflow.io/app/images/dbf/odel.jpg"; orderURL = "http://www.odel.lk/"; } else if ($scope.payment.entity == "dialog") { imageURL = "http://dev.smoothflow.io/app/images/dbf/dialog.jpg"; orderURL = "http://www.dialog.lk/"; }
+        //         sendReciptToBot(invoiceID, orderURL, imageURL);
+        //         console.log("Successfully created the invoice.");
+        //     } else {
+        //         alert("Error occured when doing the Invoice.")
+        //     }
+        // }, function (response) {
+        //     alert("Error occured when doing the Invoice.")
+        // });
     }
 
     function sendReciptToBot(invoice, OrderURL, ImageURL) {
@@ -119,16 +125,16 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                                 "country": "Sri Lanka"
                             },
                             "summary": {
-                                "subtotal": $scope.payment.amount,
+                                "subtotal": $scope.payment.price,
                                 "shipping_cost": 0.00,
                                 "total_tax": 0.00,
-                                "total_cost": $scope.payment.amount
+                                "total_cost": $scope.payment.price
                             },
                             "adjustments": [],
                             "elements": [{
                                 "title": $scope.payment.entity + " payment",
                                 "subtitle": $scope.payment.entity + " payment",
-                                "price": $scope.payment.amount,
+                                "price": $scope.payment.price,
                                 "currency": "USD",
                                 "image_url": ImageURL
                             }]
