@@ -96,7 +96,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     function sendReciptToBot(invoice, OrderURL, ImageURL) {
         $http({
             method: "POST",
-            url: "https://graph.facebook.com/v2.6/me/messages?access_token=EAAQctctsh6UBANUX9Snmt7LB3ZAXXFZBOFsiZAIKUm0oIYoZCxMTjsjGXhcSgO4y492zriId3ceZAZBtliyPCvyNVmS7r3ShFuSZCd2TVQN10ZCQnUuOLhuByY9MruAOCpC8dbTaxZCPig9Y9ZC5dK2i9Tf2StYTWywPWAD8ZAc1tyVsAZDZD",
+            url: "https://graph.facebook.com/v2.6/me/messages?access_token=EAAZAl88dfILsBANoruPywbZBcp1ZCbZBxyFxfVNHLlW1ddGU7X0pNmbGuKiT93T09oxCm885j9vNnilCb9kCDZCfEurhZCsCiMPNaupZA9BbjcVz94vFfUpnLkMNAw00UHyZAZBULxSSnnelqx3QUEVcZC3i4mfqIqUZCyRZCYTxZCiCcUAZDZD",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -112,7 +112,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                             "template_type": "receipt",
                             "recipient_name": $scope.user.name,
                             "order_number": invoice,
-                            "currency": "USD",
+                            "currency": "LKR",
                             "payment_method": "Visa",
                             "order_url": OrderURL,
                             "timestamp": Math.floor(Date.now() / 1000).toString(),
@@ -132,10 +132,10 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                             },
                             "adjustments": [],
                             "elements": [{
-                                "title": $scope.payment.entity + " payment",
-                                "subtitle": $scope.payment.entity + " payment",
+                                "title": "Order Confirmation",
+                                "subtitle": "Your payment is confirmed.",
                                 "price": $scope.payment.price,
-                                "currency": "USD",
+                                "currency": "LKR",
                                 "image_url": ImageURL
                             }]
                         }
@@ -161,7 +161,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     $scope.sendQuickReplyToBot = function () {
         $http({
             method: "POST",
-            url: "https://graph.facebook.com/v2.6/me/messages?access_token=EAAQctctsh6UBANUX9Snmt7LB3ZAXXFZBOFsiZAIKUm0oIYoZCxMTjsjGXhcSgO4y492zriId3ceZAZBtliyPCvyNVmS7r3ShFuSZCd2TVQN10ZCQnUuOLhuByY9MruAOCpC8dbTaxZCPig9Y9ZC5dK2i9Tf2StYTWywPWAD8ZAc1tyVsAZDZD",
+            url: "https://graph.facebook.com/v2.6/me/messages?access_token=EAAZAl88dfILsBANoruPywbZBcp1ZCbZBxyFxfVNHLlW1ddGU7X0pNmbGuKiT93T09oxCm885j9vNnilCb9kCDZCfEurhZCsCiMPNaupZA9BbjcVz94vFfUpnLkMNAw00UHyZAZBULxSSnnelqx3QUEVcZC3i4mfqIqUZCyRZCYTxZCiCcUAZDZD",
             headers: {
                 "Content-Type": "application/json",
             },
