@@ -13,6 +13,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         label: 'Make Payment'
     };
 
+    $scope.pageAccessToken = "EAAMegfEn8iEBAH3KZBB2449fEm0o8OPviZAnjZCQT9dViGv62JfhbEUPNTViw92dgQmHk6U0UwZC2V3A5blx2Jwd5BJ1CU5gM0xNZBB9Ba32Yc32nyGqonNjZC6qmcjo5sZAKxo7ZCDCQaVaF9vZBcm1upGYTeN9OtiqwdbiEfrfR2AZDZD";
     $scope.user = {};
     $scope.payment = { method: "Cash", invoiceNo: "" };
     $scope.isPaymentSuccess = false;
@@ -66,7 +67,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     function sendReciptToBot(invoice, OrderURL, ImageURL) {
         $http({
             method: "POST",
-            url: "https://graph.facebook.com/v2.6/me/messages?access_token=EAAMegfEn8iEBAH3KZBB2449fEm0o8OPviZAnjZCQT9dViGv62JfhbEUPNTViw92dgQmHk6U0UwZC2V3A5blx2Jwd5BJ1CU5gM0xNZBB9Ba32Yc32nyGqonNjZC6qmcjo5sZAKxo7ZCDCQaVaF9vZBcm1upGYTeN9OtiqwdbiEfrfR2AZDZD",
+            url: "https://graph.facebook.com/v2.6/me/messages?access_token=" + $scope.pageAccessToken,
             headers: {
                 "Content-Type": "application/json",
             },
@@ -94,7 +95,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                             },
                             "adjustments": [],
                             "elements": [{
-                                "title": "Order Confirmation",
+                                "title": "Payment Receipt",
                                 "subtitle": "Your payment is confirmed.",
                                 "price": $scope.payment.price,
                                 "currency": "LKR",
@@ -102,6 +103,39 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                             }]
                         }
                     }
+                }
+            }
+        }).then(function (response, status) {
+            console.log(response);
+            console.log("Receipt sent.")
+            $scope.isPaymentSuccess = true;
+            $scope.processing = false;
+            sendMessageToBot("Thank you for choosing Dialog. A reference number has been to your mobile. Please claim your connection by visiting your closest outlet :)");
+            if ($scope.resultCount == 2) {
+                $scope.sendQuickReplyToBot();
+            }
+        }, function (response, status) {
+            console.log(response);
+            console.log("else.....")
+            alert("Error occured when sending the Receipt to Messenger")
+            $scope.processing = false;
+        });
+    }
+
+    function sendMessageToBot(message) {
+        $http({
+            method: "POST",
+            url: "https://graph.facebook.com/v2.6/me/messages?access_token=" + $scope.pageAccessToken,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            data: {
+                "messaging_type": "RESPONSE",
+                "recipient": {
+                    "id": $scope.user.senderId
+                },
+                "message": {
+                    "text": message
                 }
             }
         }).then(function (response, status) {
