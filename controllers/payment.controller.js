@@ -50,7 +50,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     $scope.resultCount = 0;
     $scope.pay = function () {
         $scope.processing = true;
-        sendReciptToBot($scope.payment.invoiceNo, "https://www.dialog.lk/", "http://smoothflow.io/facetone/DBF-DemoUI/img/dialog.png");
+        sendReciptToBot($scope.payment.invoiceNo, "https://www.dialog.lk/", "https://smoothflow.io/facetone/DBF-DemoUI/img/dialog.png");
     }
 
     function sendReciptToBot(invoice, OrderURL, ImageURL) {
