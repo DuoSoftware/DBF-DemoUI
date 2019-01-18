@@ -50,8 +50,17 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     $scope.resultCount = 0;
     $scope.pay = function () {
         $scope.processing = true;
-        sendReciptToBot($scope.payment.invoiceNo, "https://www.dialog.lk/", "https://smoothflow.io/facetone/DBF-DemoUI/img/dialog.png");
+        sendReciptToBot($scope.payment.invoiceNo, "https://www.dialog.lk/", "https://smoothflow.io/facetone/DBF-DemoUI/img/dlogo.jpg");
     }
+
+    // "address": {
+    //     "street_1": "No.06, Charles Terrance",
+    //     "street_2": "Alfred Terrece, Colombo 07",
+    //     "city": "Colombo",
+    //     "postal_code": "11010",
+    //     "state": "Western Province",
+    //     "country": "Sri Lanka"
+    // },
 
     function sendReciptToBot(invoice, OrderURL, ImageURL) {
         $http({
@@ -76,14 +85,6 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                             "payment_method": "Visa",
                             "order_url": OrderURL,
                             "timestamp": Math.floor(Date.now() / 1000).toString(),
-                            "address": {
-                                "street_1": "No.06, Charles Terrance",
-                                "street_2": "Alfred Terrece, Colombo 07",
-                                "city": "Colombo",
-                                "postal_code": "11010",
-                                "state": "Western Province",
-                                "country": "Sri Lanka"
-                            },
                             "summary": {
                                 "subtotal": $scope.payment.price,
                                 "shipping_cost": 0.00,
