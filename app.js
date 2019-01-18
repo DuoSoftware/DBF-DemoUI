@@ -1,6 +1,7 @@
 var app = angular.module('loginapp', [
     'ui.router',
-    'uiKernel'
+    'uiKernel',
+    'stripe-payment-tools'
 ]);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
@@ -32,7 +33,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'partials/registration-success.html',
             controller: 'SuccessRegistration'
         }).state('payment', {
-            url: '/payment?name&sender&category&vehicle&pickupdate&dropoffdate&nic&phone&pickuplocation',
+            url: '/payment?name&sender&package&rental',
             templateUrl: 'partials/payment.html',
             controller: 'PaymentController'
         });

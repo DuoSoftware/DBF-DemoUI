@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Auto Rent a Car</title>
+    <title>Dialog Checkout</title>
     <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -43,6 +43,9 @@
     <script type="text/javascript" src="controllers/payment.controller.js"></script>
     <script type="text/javascript" src="controllers/verifymobile.controller.js"></script>
     <script type="text/javascript" src="controllers/successRegistration.controller.js"></script>
+    <script type="text/javascript" src="js/directives/stripe.js"></script>
+    <!--payment getway-->
+    <script src="https://checkout.stripe.com/checkout.js"></script>
 
 </body>
 

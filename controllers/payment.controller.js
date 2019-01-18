@@ -5,6 +5,14 @@ app.controller('PaymentController', ['$scope', '$rootScope', '$state', '$timeout
 function paymentController($scope, $rootScope, $state, $timeout, $http, $systemUrls, $helpers, $invoice) {
     console.log("payment page loaded");
 
+    $scope.config = {
+        publishKey: 'pk_test_L5zUHIzLje2UXP0oPVJ8FoX3',
+        title: 'Dialog',
+        description: "Complete your order",
+        logo: 'img/dlogo.jpg',
+        label: 'Make Payment'
+    };
+
     $scope.user = {};
     $scope.payment = { method: "Cash", invoiceNo: "" };
     $scope.isPaymentSuccess = false;
@@ -28,69 +36,21 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         $scope.user.senderId = sender[1] || "";
 
         $scope.payment.invoiceNo = Math.floor((Math.random() * 10000000) + 1);
-        $scope.payment.category = $state.params.category;
-        $scope.payment.vehicle = $state.params.vehicle;
-        $scope.payment.pickupdate = $state.params.pickupdate;
-        $scope.payment.dropoffdate = $state.params.dropoffdate;
-        $scope.payment.nic = $state.params.nic;
-        $scope.payment.phone = $state.params.phone;
-        $scope.payment.pickuplocation = $state.params.pickuplocation;
-        $scope.payment.price = Math.floor((Math.random() * 10000) + 1);
+        $scope.payment.package = $state.params.package;
+        $scope.payment.price = $state.params.rental;
+        //$scope.payment.price = Math.floor((Math.random() * 10000) + 1);
 
         //getProfile($state.params.name);
     }
 
+    $scope.$on('stripe-token-received', function (event, args) {
+        $scope.pay();
+    });
+
     $scope.resultCount = 0;
     $scope.pay = function () {
         $scope.processing = true;
-        sendReciptToBot($scope.payment.invoiceNo, "https://www.cargillsbank.com/", "http://smoothflow.io/facetone/DBF-DemoUI/img/rentacar.png");
-        // var bankToken = "12c95918-17d6-4ab7-a1cb-933afee648c0,bank.app.cloudcharge.com";
-        // var merchantToken = "";
-        // if ($scope.payment.entity == "ceb") {
-        //     merchantToken = "54fd39f4-dd3e-4396-901b-d336ee03d13b,cebinv.app.cloudcharge.com";
-        // } else if ($scope.payment.entity == "dialog") {
-        //     merchantToken = "a461fcc8-82d0-4a57-894d-0a70bc1c9504,dialoginv.app.cloudcharge.com";
-        // } else if ($scope.payment.entity == "odel") {
-        //     merchantToken = "7002abf4-2675-4b98-8cbf-eb8b37c6ba46,odelinv.app.cloudcharge.com";
-        // }
-
-        // // recipt to bank account
-        // $invoice.createRecipt($scope.user, $scope.payment, bankToken).then(function (response, status) {
-        //     if (response.data.error == null) {
-        //         $scope.resultCount++;
-        //         console.log("Successfully completed the payment");
-        //         var invoiceID = "";
-        //         var imageURL = "http://dev.smoothflow.io/app/images/dbf/welcome.jpg";
-        //         var orderURL = "https://www.cargillsbank.com/";
-        //         if ($scope.payment.invoiceNo != "") { invoiceID = $scope.payment.invoice; } else { invoiceID = "Payed to " + $scope.payment.entity; }
-        //         sendReciptToBot(invoiceID, orderURL, imageURL);
-        //         console.log("Successfully created the receipt.");
-        //     } else {
-        //         alert("Error occured when doing the Payment.")
-        //     }
-        // }, function (response) {
-        //     alert("Error occured when doing the Payment.")
-        // });
-
-        // // invoice to merchant account
-        // $scope.payment.method = "credit";
-        // $invoice.createInvoice($scope.user, $scope.payment, merchantToken).then(function (response, status) {
-        //     if (response.data.error == null) {
-        //         $scope.resultCount++;
-        //         console.log("Successfully completed the Invoice.");
-        //         var invoiceID = "";
-        //         var imageURL = "";
-        //         var orderURL = "";
-        //         if ($scope.payment.invoiceNo != "") { invoiceID = $scope.payment.invoice; } else { invoiceID = "Payed to " + $scope.payment.entity; }
-        //         if ($scope.payment.entity == "ceb") { imageURL = "http://dev.smoothflow.io/app/images/dbf/ceb.jpg"; orderURL = "http://www.ceb.lk/"; } else if ($scope.payment.entity == "odel") { imageURL = "http://dev.smoothflow.io/app/images/dbf/odel.jpg"; orderURL = "http://www.odel.lk/"; } else if ($scope.payment.entity == "dialog") { imageURL = "http://dev.smoothflow.io/app/images/dbf/dialog.jpg"; orderURL = "http://www.dialog.lk/"; }
-        //         sendReciptToBot(invoiceID, orderURL, imageURL);
-        //         console.log("Successfully created the invoice.");
-        //     } else {
-        //         alert("Error occured when doing the Invoice.")
-        //     }
-        // }, function (response) {
-        //     alert("Error occured when doing the Invoice.")
-        // });
+        sendReciptToBot($scope.payment.invoiceNo, "https://www.dialog.lk/", "http://smoothflow.io/facetone/DBF-DemoUI/img/dialog.png");
     }
 
     function sendReciptToBot(invoice, OrderURL, ImageURL) {
@@ -117,8 +77,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                             "order_url": OrderURL,
                             "timestamp": Math.floor(Date.now() / 1000).toString(),
                             "address": {
-                                "street_1": "Cinnamon Gardens",
-                                "street_2": "Colombo 07",
+                                "street_1": "No.06, Charles Terrance",
+                                "street_2": "Alfred Terrece, Colombo 07",
                                 "city": "Colombo",
                                 "postal_code": "11010",
                                 "state": "Western Province",
