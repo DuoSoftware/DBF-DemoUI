@@ -53,6 +53,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         sendReciptToBot($scope.payment.invoiceNo, "https://www.dialog.lk/", "https://smoothflow.io/facetone/DBF-DemoUI/img/dlogo.jpg");
     }
 
+    // "recipient_name": $scope.user.name,
     // "address": {
     //     "street_1": "No.06, Charles Terrance",
     //     "street_2": "Alfred Terrece, Colombo 07",
@@ -79,7 +80,6 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                         "type": "template",
                         "payload": {
                             "template_type": "receipt",
-                            "recipient_name": $scope.user.name,
                             "order_number": invoice,
                             "currency": "LKR",
                             "payment_method": "Visa",
