@@ -56,7 +56,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     function sendReciptToBot(invoice, OrderURL, ImageURL) {
         $http({
             method: "POST",
-            url: "https://graph.facebook.com/v2.6/me/messages?access_token=EAAZAl88dfILsBANoruPywbZBcp1ZCbZBxyFxfVNHLlW1ddGU7X0pNmbGuKiT93T09oxCm885j9vNnilCb9kCDZCfEurhZCsCiMPNaupZA9BbjcVz94vFfUpnLkMNAw00UHyZAZBULxSSnnelqx3QUEVcZC3i4mfqIqUZCyRZCYTxZCiCcUAZDZD",
+            url: "https://graph.facebook.com/v2.6/me/messages?access_token=EAAMegfEn8iEBAH3KZBB2449fEm0o8OPviZAnjZCQT9dViGv62JfhbEUPNTViw92dgQmHk6U0UwZC2V3A5blx2Jwd5BJ1CU5gM0xNZBB9Ba32Yc32nyGqonNjZC6qmcjo5sZAKxo7ZCDCQaVaF9vZBcm1upGYTeN9OtiqwdbiEfrfR2AZDZD",
             headers: {
                 "Content-Type": "application/json",
             },
