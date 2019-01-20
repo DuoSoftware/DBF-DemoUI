@@ -110,7 +110,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             console.log("Receipt sent.")
             $scope.isPaymentSuccess = true;
             $scope.processing = false;
-            sendMessageToBot("Thank you for choosing Dialog. A reference number has been to your mobile. Please claim your connection by visiting your closest outlet :)");
+            sendMessageToBot("Thank you for choosing Dialog. A reference number has been sent to your mobile. Please claim your connection by visiting your closest outlet :)");
             if ($scope.resultCount == 2) {
                 $scope.sendQuickReplyToBot();
             }
