@@ -19,8 +19,31 @@
                 <input type="text" class="form-control" ng-model="payment.invoiceNo" placeholder="" ng-readonly="true">
             </div>
             <div class="form-group">
-                <label for="inputAddress">Package Type</label>
-                <input type="text" class="form-control" ng-model="payment.package" placeholder="" ng-readonly="true">
+                <label for="inputAddress">Cart Items</label>
+                <ul class="list-group">
+                    <li class="list-group-item row" style="margin: 0">
+                        <div class="col-md-4">
+                            <img height="50px" src="https://buyabans.com/upload/product/TV/JVTV32N355/webz.jpg">
+                        </div>
+                        <div class="col-md-6">
+                            <span>JVC 32" LED Television</span>
+                        </div>
+                        <div class="col-md-2">
+                            x 1
+                        </div>
+                    </li>
+                    <li class="list-group-item row" style="margin: 0">
+                        <div class="col-md-4">
+                            <img height="50px" src="https://buyabans.com/upload/product/printer/HPPR1112/webgf.jpg">
+                        </div>
+                        <div class="col-md-6">
+                            <span>HP Deskjet Printer 1112</span>
+                        </div>
+                        <div class="col-md-2">
+                            x 1
+                        </div>
+                    </li>
+                </ul>
             </div>
             <div class="form-group">
                 <label for="inputState">Amount to Pay</label>
@@ -33,7 +56,8 @@
             </div>
             <!-- ng-click="pay()"  -->
             <div class="text-center">
-                <button type="submit" class="btn btn-primary" stripe-payment="config" ng-disabled="paymentForm.$invalid || processing">{{checkoutbutton}}</button>
+                <button type="submit" class="btn btn-primary" stripe-payment="config"
+                    ng-disabled="paymentForm.$invalid || processing">{{checkoutbutton}}</button>
             </div>
         </form>
         <div class="line line-dashed" ng-if="isPaymentSuccess"></div>
