@@ -2,7 +2,7 @@
     <div class="text-center" ng-include="'partials/include.header.html'"></div>
     <div class="m-b-lg">
         <div class="wrapper text-center" ng-if="!isPaymentSuccess">
-            <h4 style="font-weight: bold;">Order Confirmation</h4>
+            <h4 style="font-weight: bold;">{{title}}</h4>
             <!-- <strong>Your Account is not yet active!</strong> -->
             <!-- <p>OTP has been sent to you on your mobile number. Please enter it below.</p> -->
         </div>
@@ -33,7 +33,7 @@
             </div>
             <!-- ng-click="pay()"  -->
             <div class="text-center">
-                <button type="submit" class="btn btn-primary" stripe-payment="config" ng-disabled="paymentForm.$invalid || processing">Confirm Order</button>
+                <button type="submit" class="btn btn-primary" stripe-payment="config" ng-disabled="paymentForm.$invalid || processing">{{checkoutbutton}}</button>
             </div>
         </form>
         <div class="line line-dashed" ng-if="isPaymentSuccess"></div>

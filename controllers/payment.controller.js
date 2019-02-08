@@ -5,14 +5,6 @@ app.controller('PaymentController', ['$scope', '$rootScope', '$state', '$timeout
 function paymentController($scope, $rootScope, $state, $timeout, $http, $systemUrls, $helpers, $invoice) {
     console.log("payment page loaded");
 
-    $scope.config = {
-        publishKey: 'pk_test_L5zUHIzLje2UXP0oPVJ8FoX3',
-        title: 'Dialog',
-        description: "Complete your order",
-        logo: 'img/dlogo.jpg',
-        label: 'Make Payment'
-    };
-
     $scope.pageAccessToken = "EAAMegfEn8iEBAH3KZBB2449fEm0o8OPviZAnjZCQT9dViGv62JfhbEUPNTViw92dgQmHk6U0UwZC2V3A5blx2Jwd5BJ1CU5gM0xNZBB9Ba32Yc32nyGqonNjZC6qmcjo5sZAKxo7ZCDCQaVaF9vZBcm1upGYTeN9OtiqwdbiEfrfR2AZDZD";
     $scope.user = {};
     $scope.payment = { method: "Cash", invoiceNo: "" };
@@ -30,6 +22,23 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             sender = $state.params.sender.split("-");
         }
 
+        debugger
+        $scope.title = $state.params.title;
+        $scope.companyname = $state.params.companyname;
+        $scope.companylogolarge = $state.params.companylogolarge;//     https://smoothflow.io/facetone/DBF-DemoUI/img/dialog.png
+        $scope.companylogosmall = $state.params.companylogosmall;//     https://smoothflow.io/facetone/DBF-DemoUI/img/dialog.png
+        $scope.checkoutbutton = $state.params.checkoutbutton;
+        $scope.stripdescription = $state.params.stripdescription;
+        $scope.stripebutton = $state.params.stripebutton;
+        $scope.stripepublishkey = $state.params.stripepublishkey;
+
+        $scope.config = {
+            publishKey: $scope.stripepublishkey,
+            title: $scope.companyname,
+            description: $scope.stripdescription,
+            logo: $scope.companylogosmall,
+            label: $scope.stripebutton
+        };
 
         //var sender = $state.params.sender.split("-");
 

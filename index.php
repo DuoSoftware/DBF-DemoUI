@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Dialog Checkout</title>
+    <title>Smoothflow Checkout Page</title>
     <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />

@@ -33,7 +33,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'partials/registration-success.html',
             controller: 'SuccessRegistration'
         }).state('payment', {
-            url: '/payment?name&sender&package&rental',
+            url: '/payment?name&sender&title&companyname&companylogolarge&stripdescription&companylogosmall&stripebutton&stripepublishkey&checkoutbutton',
             templateUrl: 'partials/payment.html',
             controller: 'PaymentController'
         });
