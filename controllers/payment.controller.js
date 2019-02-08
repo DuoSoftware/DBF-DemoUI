@@ -22,7 +22,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             sender = $state.params.sender.split("-");
         }
 
-        debugger
+        //debugger
         $scope.title = $state.params.title;
         $scope.companyname = $state.params.companyname;
         $scope.companylogolarge = $state.params.companylogolarge;//     https://smoothflow.io/facetone/DBF-DemoUI/img/dialog.png
