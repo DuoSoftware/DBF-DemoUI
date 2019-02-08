@@ -59,6 +59,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
     $scope.resultCount = 0;
     $scope.pay = function () {
+        debugger
         $scope.processing = true;
         $scope.isPaymentSuccess = true;
         $scope.processing = false;
