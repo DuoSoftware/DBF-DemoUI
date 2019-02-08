@@ -54,15 +54,16 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     }
 
     $scope.$on('stripe-token-received', function (event, args) {
+        $scope.processing = true;
         $scope.pay();
     });
 
     $scope.resultCount = 0;
     $scope.pay = function () {
         debugger
-        $scope.processing = true;
         $scope.isPaymentSuccess = true;
         $scope.processing = false;
+        $scope.$apply();
         //sendReciptToBot($scope.payment.invoiceNo, "https://www.dialog.lk/", "https://smoothflow.io/facetone/DBF-DemoUI/img/dlogo.jpg");
     }
 
