@@ -60,7 +60,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     $scope.resultCount = 0;
     $scope.pay = function () {
         $scope.processing = true;
-        sendReciptToBot($scope.payment.invoiceNo, "https://www.dialog.lk/", "https://smoothflow.io/facetone/DBF-DemoUI/img/dlogo.jpg");
+        $scope.isPaymentSuccess = true;
+        $scope.processing = false;
+        //sendReciptToBot($scope.payment.invoiceNo, "https://www.dialog.lk/", "https://smoothflow.io/facetone/DBF-DemoUI/img/dlogo.jpg");
     }
 
     // 
