@@ -5,7 +5,7 @@ app.controller('PaymentController', ['$scope', '$rootScope', '$state', '$timeout
 function paymentController($scope, $rootScope, $state, $timeout, $http, $systemUrls, $helpers, $invoice) {
     console.log("payment page loaded");
 
-    $scope.pageAccessToken = "EAAMegfEn8iEBAH3KZBB2449fEm0o8OPviZAnjZCQT9dViGv62JfhbEUPNTViw92dgQmHk6U0UwZC2V3A5blx2Jwd5BJ1CU5gM0xNZBB9Ba32Yc32nyGqonNjZC6qmcjo5sZAKxo7ZCDCQaVaF9vZBcm1upGYTeN9OtiqwdbiEfrfR2AZDZD";
+    $scope.pageAccessToken = "EAAMegfEn8iEBAB7DqOh0roEZB3LvjQcxQsGOrGfTpiQLvO7c1EJzsHMqXqkYqmXeaf3ctj1JZAj3h45odjev5MSswAi3JWZAQHolMIxlwSbTzATmIYxxta4wvyLymp0oDDJ0Iw6L4YKPaouadv77gamVf3n1U7ootbluZCZBJTAZDZD";
     $scope.user = {};
     $scope.payment = { method: "Cash", invoiceNo: "" };
     $scope.isPaymentSuccess = false;
@@ -47,8 +47,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
         $scope.payment.invoiceNo = Math.floor((Math.random() * 10000000) + 1);
         $scope.payment.package = $state.params.package;
-        //$scope.payment.price = $state.params.rental;
-        $scope.payment.price = Math.floor((Math.random() * 10000) + 1);
+        $scope.payment.price = "23,999";
+        //$scope.payment.price = Math.floor((Math.random() * 10000) + 1);
 
         //getProfile($state.params.name);
     }
@@ -64,7 +64,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         $scope.isPaymentSuccess = true;
         $scope.processing = false;
         $scope.$apply();
-        //sendReciptToBot($scope.payment.invoiceNo, "https://www.dialog.lk/", "https://smoothflow.io/facetone/DBF-DemoUI/img/dlogo.jpg");
+        sendReciptToBot($scope.payment.invoiceNo, "https://www.smoothflow.io/", $scope.companylogosmall);
     }
 
     // 
