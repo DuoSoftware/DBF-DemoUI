@@ -64,7 +64,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         $scope.isPaymentSuccess = true;
         $scope.processing = false;
         $scope.$apply();
-        sendReciptToBot($scope.payment.invoiceNo, "https://www.smoothflow.io/", $scope.companylogosmall);
+        sendReciptToBot($scope.payment.invoiceNo, "https://www.smoothflow.io/", "https://5.imimg.com/data5/AG/ER/MY-51415375/jbl-bluetooth-portable-speaker-500x500.jpg");
     }
 
     // 
@@ -108,8 +108,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                             },
                             "adjustments": [],
                             "elements": [{
-                                "title": "Payment Receipt",
-                                "subtitle": "Your payment is confirmed.",
+                                "title": "JBL-PORTABLE SOUND SYSTEM",
+                                "subtitle": "Amplify your listning experience to epic levels.",
                                 "price": $scope.payment.price,
                                 "currency": "LKR",
                                 "image_url": ImageURL
