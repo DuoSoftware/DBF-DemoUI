@@ -123,7 +123,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             console.log("Receipt sent.")
             $scope.isPaymentSuccess = true;
             $scope.processing = false;
-            sendMessageToBot("Thank you for choosing Dialog. A reference number has been sent to your mobile. Please claim your connection by visiting your closest outlet :)");
+            sendMessageToBot("Thank you for shopping with us. A rference number has been sent to your mobile. Your order will be delivered with in 5 working days. For more info call 0112 500 500.");
             if ($scope.resultCount == 2) {
                 $scope.sendQuickReplyToBot();
             }
