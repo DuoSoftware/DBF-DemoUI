@@ -47,7 +47,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
         $scope.payment.invoiceNo = Math.floor((Math.random() * 10000000) + 1);
         $scope.payment.package = $state.params.package;
-        $scope.payment.price = "23,999";
+        $scope.payment.price = 23999;
         //$scope.payment.price = Math.floor((Math.random() * 10000) + 1);
 
         //getProfile($state.params.name);
