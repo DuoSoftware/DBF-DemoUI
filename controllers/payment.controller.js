@@ -13,7 +13,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         label: 'Make Payment'
     };
 
-    $scope.pageAccessToken = "EAAMegfEn8iEBAH3KZBB2449fEm0o8OPviZAnjZCQT9dViGv62JfhbEUPNTViw92dgQmHk6U0UwZC2V3A5blx2Jwd5BJ1CU5gM0xNZBB9Ba32Yc32nyGqonNjZC6qmcjo5sZAKxo7ZCDCQaVaF9vZBcm1upGYTeN9OtiqwdbiEfrfR2AZDZD";
+    $scope.pageAccessToken = "EAAMegfEn8iEBAKWGxlwNfpaxuZBAh3rLGMv996y58USfG9mcPfW2w60QAutGZBPngFTC4ncqFxnLRG6qyEeZBCb5wZC6W7SH66AfeYZB8M739hXlVQUlLYJEEvk8Qar56JM9RrlysDOrIPAHZBh3cs9JDjZCQct2CLvQvAnLR6ZCjwZDZD";
     $scope.user = {};
     $scope.payment = { method: "Cash", invoiceNo: "" };
     $scope.isPaymentSuccess = false;
