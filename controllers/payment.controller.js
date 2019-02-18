@@ -5,7 +5,8 @@ app.controller('PaymentController', ['$scope', '$rootScope', '$state', '$timeout
 function paymentController($scope, $rootScope, $state, $timeout, $http, $systemUrls, $helpers, $invoice) {
     console.log("payment page loaded");
 
-    $scope.pageAccessToken = "EAAMegfEn8iEBAB7DqOh0roEZB3LvjQcxQsGOrGfTpiQLvO7c1EJzsHMqXqkYqmXeaf3ctj1JZAj3h45odjev5MSswAi3JWZAQHolMIxlwSbTzATmIYxxta4wvyLymp0oDDJ0Iw6L4YKPaouadv77gamVf3n1U7ootbluZCZBJTAZDZD";
+    // smooth dialog = EAAMegfEn8iEBAB7DqOh0roEZB3LvjQcxQsGOrGfTpiQLvO7c1EJzsHMqXqkYqmXeaf3ctj1JZAj3h45odjev5MSswAi3JWZAQHolMIxlwSbTzATmIYxxta4wvyLymp0oDDJ0Iw6L4YKPaouadv77gamVf3n1U7ootbluZCZBJTAZDZD
+    $scope.pageAccessToken = "EAAMegfEn8iEBAP7beeCLwEL36plT7EXJbgqD9Lr9oSURMu2KZBh9ruDsdInXLW8eqZBZBLM9zozZAiNWZCZAdvTOIHra1KQC42gmUb2g8I04hMZA3BqUIT7u5Gq4bkFJUXqpI3CS0LukrzH00IAOm9vXjMGlEi7TX1fCPheG1x4yU0KcVFGNM5Y4cwRHLp1Ef8ZD";
     $scope.user = {};
     $scope.payment = { method: "Cash", invoiceNo: "" };
     $scope.isPaymentSuccess = false;
@@ -66,7 +67,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         $scope.isPaymentSuccess = true;
         $scope.processing = false;
         $scope.$apply();
-        sendReciptToBot($scope.payment.invoiceNo, "https://www.smoothflow.io/", "https://5.imimg.com/data5/AG/ER/MY-51415375/jbl-bluetooth-portable-speaker-500x500.jpg");
+        sendReciptToBot($scope.payment.invoiceNo, "https://www.smoothflow.io/", "https://s3.amazonaws.com/botmediastorage/smooth%20insurance.jpg");
     }
 
     // 
@@ -110,8 +111,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                             },
                             "adjustments": [],
                             "elements": [{
-                                "title": "JBL-PORTABLE SOUND SYSTEM",
-                                "subtitle": "Amplify your listning experience to epic levels.",
+                                "title": $scope.payment.name,
+                                "subtitle": $scope.payment.tenture + " of Policy Tenure",
                                 "price": $scope.payment.price,
                                 "currency": "LKR",
                                 "image_url": ImageURL
