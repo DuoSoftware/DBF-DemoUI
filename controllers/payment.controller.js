@@ -5,8 +5,7 @@ app.controller('PaymentController', ['$scope', '$rootScope', '$state', '$timeout
 function paymentController($scope, $rootScope, $state, $timeout, $http, $systemUrls, $helpers, $invoice) {
     console.log("payment page loaded");
 
-    // smooth dialog = EAAMegfEn8iEBAB7DqOh0roEZB3LvjQcxQsGOrGfTpiQLvO7c1EJzsHMqXqkYqmXeaf3ctj1JZAj3h45odjev5MSswAi3JWZAQHolMIxlwSbTzATmIYxxta4wvyLymp0oDDJ0Iw6L4YKPaouadv77gamVf3n1U7ootbluZCZBJTAZDZD
-    $scope.pageAccessToken = "EAAMegfEn8iEBAP7beeCLwEL36plT7EXJbgqD9Lr9oSURMu2KZBh9ruDsdInXLW8eqZBZBLM9zozZAiNWZCZAdvTOIHra1KQC42gmUb2g8I04hMZA3BqUIT7u5Gq4bkFJUXqpI3CS0LukrzH00IAOm9vXjMGlEi7TX1fCPheG1x4yU0KcVFGNM5Y4cwRHLp1Ef8ZD";
+    
     $scope.user = {};
     $scope.payment = { method: "Cash", invoiceNo: "" };
     $scope.isPaymentSuccess = false;
@@ -19,6 +18,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         if ($state.params.sender.indexOf(':') >= 0) {
             sender = $state.params.sender.replace('dbf:', '');
             sender = sender.split(":");
+            $scope.botID = sender[0];
         } else {
             sender = $state.params.sender.split("-");
         }
@@ -47,11 +47,24 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         $scope.user.senderId = sender[1] || "";
 
         $scope.payment.invoiceNo = Math.floor((Math.random() * 10000000) + 1);
+
+
         $scope.payment.package = $state.params.package;
-        $scope.payment.price = 10000;
-        $scope.payment.name = "Life Saver";
-        $scope.payment.tenture = "1 Year";
         //$scope.payment.price = Math.floor((Math.random() * 10000) + 1);
+
+        // the the page token
+        // smooth dialog = EAAMegfEn8iEBAB7DqOh0roEZB3LvjQcxQsGOrGfTpiQLvO7c1EJzsHMqXqkYqmXeaf3ctj1JZAj3h45odjev5MSswAi3JWZAQHolMIxlwSbTzATmIYxxta4wvyLymp0oDDJ0Iw6L4YKPaouadv77gamVf3n1U7ootbluZCZBJTAZDZD
+        if($scope.botID == "5c66bc5cf9c5660c4a14b85f"){
+            // Smooth Insurance
+            $scope.pageAccessToken = "EAAMegfEn8iEBAP7beeCLwEL36plT7EXJbgqD9Lr9oSURMu2KZBh9ruDsdInXLW8eqZBZBLM9zozZAiNWZCZAdvTOIHra1KQC42gmUb2g8I04hMZA3BqUIT7u5Gq4bkFJUXqpI3CS0LukrzH00IAOm9vXjMGlEi7TX1fCPheG1x4yU0KcVFGNM5Y4cwRHLp1Ef8ZD";
+            $scope.receiptUrl = "https://www.smoothflow.io/";
+            $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/smooth%20insurance.jpg";
+            $scope.messagetobot = "Insurance payment has been received. Your reference no is XXXXX. Get insured with Smooth Insurance. ";
+
+            $scope.payment.price = 10000;
+            $scope.payment.name = "Life Saver";
+            $scope.payment.tenture = "1 Year";
+        }
 
         //getProfile($state.params.name);
     }
@@ -67,7 +80,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         $scope.isPaymentSuccess = true;
         $scope.processing = false;
         $scope.$apply();
-        sendReciptToBot($scope.payment.invoiceNo, "https://www.smoothflow.io/", "https://s3.amazonaws.com/botmediastorage/smooth%20insurance.jpg");
+        sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
     }
 
     // 
@@ -126,7 +139,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             console.log("Receipt sent.")
             $scope.isPaymentSuccess = true;
             $scope.processing = false;
-            sendMessageToBot("Insurance payment has been received. Your reference no is XXXXX. Get insured with Smooth Insurance. ");
+            sendMessageToBot($scope.messagetobot);
             if ($scope.resultCount == 2) {
                 $scope.sendQuickReplyToBot();
             }

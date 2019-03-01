@@ -18,22 +18,27 @@
                 <label for="inputAddress">Invoice No.</label>
                 <input type="text" class="form-control" ng-model="payment.invoiceNo" placeholder="" ng-readonly="true">
             </div>
-            <div class="form-group">
-                <label for="inputAddress">Policy Name</label>
-                <input type="text" class="form-control" ng-model="payment.name" placeholder="" ng-readonly="true">
+            <div ng-if="botID == '5c66bc5cf9c5660c4a14b85f'">
+                <div class="form-group">
+                    <label for="inputAddress">Policy Name</label>
+                    <input type="text" class="form-control" ng-model="payment.name" placeholder="" ng-readonly="true">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Policy Tenure</label>
+                    <input type="text" class="form-control" ng-model="payment.tenture" placeholder=""
+                        ng-readonly="true">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Premium</label>
+                    <input type="text" class="form-control" ng-model="payment.price" placeholder="" ng-readonly="true">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Auto Renew Policy</label>
+                    <input type="checkbox" ng-model="payment.renewal" placeholder="" ng-readonly="true"
+                        style="margin:5px;">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="inputAddress">Policy Tenure</label>
-                <input type="text" class="form-control" ng-model="payment.tenture" placeholder="" ng-readonly="true">
-            </div>
-            <div class="form-group">
-                <label for="inputAddress">Premium</label>
-                <input type="text" class="form-control" ng-model="payment.price" placeholder="" ng-readonly="true">
-            </div>
-            <div class="form-group">
-                <label for="inputAddress">Auto Renew Policy</label>
-                <input type="checkbox" ng-model="payment.renewal" placeholder="" ng-readonly="true" style="margin:5px;">
-            </div>
+
             <!-- <div class="form-group">
                 <label for="inputAddress">My Cart</label>
                 <ul class="list-group">
