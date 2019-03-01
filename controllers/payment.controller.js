@@ -63,7 +63,18 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
             $scope.payment.price = 10000;
             $scope.payment.name = "Life Saver";
-            $scope.payment.tenture = "1 Year";
+            $scope.payment.tenture = "1 Year of Policy Tenure";
+        }
+        if($scope.botID == "5c517f1a24b77186e0297aa4"){
+            // Smooth Telecom
+            $scope.pageAccessToken = "EAAMegfEn8iEBAKWGxlwNfpaxuZBAh3rLGMv996y58USfG9mcPfW2w60QAutGZBPngFTC4ncqFxnLRG6qyEeZBCb5wZC6W7SH66AfeYZB8M739hXlVQUlLYJEEvk8Qar56JM9RrlysDOrIPAHZBh3cs9JDjZCQct2CLvQvAnLR6ZCjwZDZD";
+            $scope.receiptUrl = "https://www.smoothflow.io/";
+            $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/Steapel%20Clothing.jpg";
+            $scope.messagetobot = "Thank you for choosing Smooth Telecom. Your order has been confirmed. A reference has been sent to your mobile. Please visit the chosen branch to collect your order.";
+
+            $scope.payment.price = 168990;
+            $scope.payment.name = "Samsung Galaxy S10";
+            $scope.payment.tenture = "Samsung Galaxy S10 is a line of Android smartphones manufactured by Samsung Electronics.";
         }
 
         //getProfile($state.params.name);
