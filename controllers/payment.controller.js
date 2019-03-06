@@ -5,7 +5,7 @@ app.controller('PaymentController', ['$scope', '$rootScope', '$state', '$timeout
 function paymentController($scope, $rootScope, $state, $timeout, $http, $systemUrls, $helpers, $invoice) {
     console.log("payment page loaded");
 
-    
+
     $scope.user = {};
     $scope.payment = { method: "Cash", invoiceNo: "" };
     $scope.isPaymentSuccess = false;
@@ -50,31 +50,73 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
 
         $scope.payment.package = $state.params.package;
-        //$scope.payment.price = Math.floor((Math.random() * 10000) + 1);
+        //$scope.payment.totalamount = Math.floor((Math.random() * 10000) + 1);
 
         // the the page token
         // smooth dialog = EAAMegfEn8iEBAB7DqOh0roEZB3LvjQcxQsGOrGfTpiQLvO7c1EJzsHMqXqkYqmXeaf3ctj1JZAj3h45odjev5MSswAi3JWZAQHolMIxlwSbTzATmIYxxta4wvyLymp0oDDJ0Iw6L4YKPaouadv77gamVf3n1U7ootbluZCZBJTAZDZD
-        if($scope.botID == "5c66bc5cf9c5660c4a14b85f"){
+        if ($scope.botID == "5c66bc5cf9c5660c4a14b85f") {
             // Smooth Insurance
             $scope.pageAccessToken = "EAAMegfEn8iEBAP7beeCLwEL36plT7EXJbgqD9Lr9oSURMu2KZBh9ruDsdInXLW8eqZBZBLM9zozZAiNWZCZAdvTOIHra1KQC42gmUb2g8I04hMZA3BqUIT7u5Gq4bkFJUXqpI3CS0LukrzH00IAOm9vXjMGlEi7TX1fCPheG1x4yU0KcVFGNM5Y4cwRHLp1Ef8ZD";
             $scope.receiptUrl = "https://www.smoothflow.io/";
             $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/smooth%20insurance.jpg";
             $scope.messagetobot = "Insurance payment has been received. Your reference no is XXXXX. Get insured with Smooth Insurance. ";
 
-            $scope.payment.price = 10000;
+            $scope.payment.totalamount = 10000;
+            $scope.payment.currency = "LKR";
             $scope.payment.name = "Life Saver";
             $scope.payment.tenture = "1 Year of Policy Tenure";
         }
-        if($scope.botID == "5c517f1a24b77186e0297aa4"){
+        if ($scope.botID == "5c517f1a24b77186e0297aa4") {
             // Smooth Telecom
             $scope.pageAccessToken = "EAAMegfEn8iEBAKWGxlwNfpaxuZBAh3rLGMv996y58USfG9mcPfW2w60QAutGZBPngFTC4ncqFxnLRG6qyEeZBCb5wZC6W7SH66AfeYZB8M739hXlVQUlLYJEEvk8Qar56JM9RrlysDOrIPAHZBh3cs9JDjZCQct2CLvQvAnLR6ZCjwZDZD";
             $scope.receiptUrl = "https://www.smoothflow.io/";
             $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/Steapel%20Clothing.jpg";
             $scope.messagetobot = "Thank you for choosing Smooth Telecom. Your order has been confirmed. A reference has been sent to your mobile. Please visit the chosen branch to collect your order.";
 
-            $scope.payment.price = 168990;
-            $scope.payment.name = "Samsung Galaxy S10";
-            $scope.payment.tenture = "Samsung Galaxy S10 is a line of Android smartphones manufactured by Samsung Electronics.";
+            $scope.payment.totalamount = 168990;
+            $scope.payment.currency = "LKR";
+            $scope.payment.items = [
+                {
+                    "title": "Samsung Galaxy S10",
+                    "subtitle": "Samsung Galaxy S10 is a line of Android smartphones manufactured by Samsung Electronics.",
+                    "price": 168990,
+                    "currency": "LKR",
+                    "image_url": "https://s3.amazonaws.com/botmediastorage/samsung-galaxy-s10-1.jpg"
+                }
+            ]
+        }
+        if ($scope.botID == "5bc8649c629e48a59214e7cd") {
+            // Smooth Apperal
+            $scope.pageAccessToken = "EAAMegfEn8iEBAKYf9HSH47JPZAz5i0NRW8HZA2zZCRLCyV8UeC4HUdTkhevS0PU5eFbcS4e1HhWoeuzcvLzjxwvkvBEdZAd1EOVHiZCdOKcTCFVyskUKch6yXlHiJitZCyNWsx7tt5KiCE02xOn1t82QixzYZAEGHZCNWSqV5xMcuAZDZD";
+            $scope.receiptUrl = "https://www.smoothflow.io/";
+            $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/SMOOTH%20INSURANCE%20(1).jpg";
+            $scope.messagetobot = "Thank you for choosing Smooth Apperal. Your order has been confirmed. A reference has been sent to your mobile. Please visit the chosen branch to collect your order.";
+
+            $scope.payment.totalamount = 175;
+            $scope.payment.currency = "USD";
+            $scope.payment.items = [
+                {
+                    "title": "JEAN PANTACOURT DÉCONTRACTÉ",
+                    "subtitle": "",
+                    "price": 75,
+                    "currency": "USD",
+                    "image_url": "https://s3.amazonaws.com/botmediastorage/regular_DÉCONTRACTÉ.jpg"
+                },
+                {
+                    "title": "BRILLIANT LIGHTING T-SHIRT",
+                    "subtitle": "",
+                    "price": 50,
+                    "currency": "USD",
+                    "image_url": "https://s3.amazonaws.com/botmediastorage/BRILLIANT_LIGHTING_T-SHIRT.jpg"
+                },
+                {
+                    "title": "CHINO TROUSERS NEW",
+                    "subtitle": "",
+                    "price": 50,
+                    "currency": "USD",
+                    "image_url": "https://s3.amazonaws.com/botmediastorage/CHINO_TROUSERS_NEW_SHORT_CUT.jpg"
+                }
+            ]
         }
 
         //getProfile($state.params.name);
@@ -104,6 +146,14 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     //     "country": "Sri Lanka"
     // },
 
+    // [{
+    //     "title": $scope.payment.name,
+    //     "subtitle": $scope.payment.tenture + " of Policy Tenure",
+    //     "price": $scope.payment.price,
+    //     "currency": "LKR",
+    //     "image_url": ImageURL
+    // }]
+
     function sendReciptToBot(invoice, OrderURL, ImageURL) {
         $http({
             method: "POST",
@@ -128,19 +178,13 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                             "order_url": OrderURL,
                             "timestamp": Math.floor(Date.now() / 1000).toString(),
                             "summary": {
-                                "subtotal": $scope.payment.price,
+                                "subtotal": $scope.payment.totalamount,
                                 "shipping_cost": 0.00,
                                 "total_tax": 0.00,
-                                "total_cost": $scope.payment.price
+                                "total_cost": $scope.payment.totalamount
                             },
                             "adjustments": [],
-                            "elements": [{
-                                "title": $scope.payment.name,
-                                "subtitle": $scope.payment.tenture + " of Policy Tenure",
-                                "price": $scope.payment.price,
-                                "currency": "LKR",
-                                "image_url": ImageURL
-                            }]
+                            "elements": $scope.payment.items
                         }
                     }
                 }
