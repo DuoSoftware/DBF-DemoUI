@@ -73,7 +73,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/smooth-Telecom.jpg";
             $scope.messagetobot = "Thank you for choosing Smooth Telecom. Your order has been confirmed. A reference has been sent to your mobile. Please visit the chosen branch to collect your order.";
 
-            $scope.payment.totalamount = $scope.payment.totalamount;
+            $scope.payment.totalamount = 0;
             $scope.payment.currency = "LKR";
             $scope.payment.items = [
                 {
