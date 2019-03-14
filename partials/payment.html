@@ -1,4 +1,4 @@
-<div class="container w-xxl w-auto-xs" ng-init="app.settings.container = false;">
+<div class="container" ng-init="app.settings.container = false;">
     <div class="text-center" ng-include="'partials/include.header.html'"></div>
     <div class="m-b-lg">
         <div class="wrapper text-center" ng-if="!isPaymentSuccess">
@@ -30,31 +30,68 @@
                 </div>
                 <div class="form-group">
                     <label for="inputAddress">Premium</label>
-                    <input type="text" class="form-control" ng-model="payment.totalamount" placeholder="" ng-readonly="true">
+                    <input type="text" class="form-control" ng-model="payment.totalamount" placeholder=""
+                        ng-readonly="true">
                 </div>
                 <div class="form-group">
                     <label for="inputAddress">Auto Renew Policy</label>
                     <input type="checkbox" ng-model="payment.renewal" placeholder="" ng-readonly="true"
                         style="margin:5px;">
                 </div>
+                <div class="form-group">
+                    <label for="inputState">Amount to Pay</label>
+                    <p style="font-size: 20px;">
+                        <b>{{payment.currency}} {{payment.totalamount}}.00</b>
+                        <!-- <b>LKR 23,999.00</b> -->
+                    </p>
+                </div>
             </div>
             <div ng-if="botID == '5c517f1a24b77186e0297aa4'">
                 <div class="form-group">
+                    <label for="inputAddress">Payment Type</label>
+                    <div>
+                        <center>
+                            <input type="radio" name="paymenttype" value="post"> Postpaid
+                            <input type="radio" name="paymenttype" value="pre"> Prepaid
+                        </center>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Mobile No</label>
+                    <input type="text" class="form-control" ng-model="user.mobile" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Re-enter</label>
+                    <input type="text" class="form-control" ng-model="user.mobile2" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Email Addreess</label>
+                    <input type="email" class="form-control" ng-model="user.email" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="inputState">Amount to Pay</label>
+                    <input type="number" class="form-control" ng-model="payment.totalamount" placeholder="">
+                </div>
+                <!-- <div class="form-group">
                     <label for="inputAddress">My Cart</label>
                     <ul ng-repeat="item in payment.items" class="list-group">
                         <li class="list-group-item row" style="margin: 0;height: 80px">
                             <div class="col-xs-2">
                                 <img height="50px" src="{{item.image_url}}">
                             </div>
-                            <div class="col-xs-6" style="height: 100%;display: flex;align-items: center;justify-content: center">
+                            <div class="col-xs-6"
+                                style="height: 100%;display: flex;align-items: center;justify-content: center">
                                 <span>{{item.title}}</span>
                             </div>
-                            <div class="col-xs-4" style="height: 100%;display: flex;align-items: center;justify-content: center">
-                                <span style="display: inline-block;height: 20px;margin-top: 11%;margin-bottom: 11%">{{item.currency}} {{item.price}}</span>
+                            <div class="col-xs-4"
+                                style="height: 100%;display: flex;align-items: center;justify-content: center">
+                                <span
+                                    style="display: inline-block;height: 20px;margin-top: 11%;margin-bottom: 11%">{{item.currency}}
+                                    {{item.price}}</span>
                             </div>
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </div>
             <div ng-if="botID == '5bc8649c629e48a59214e7cd'">
                 <div class="form-group">
@@ -64,14 +101,25 @@
                             <div class="col-xs-2">
                                 <img height="50px" src="{{item.image_url}}">
                             </div>
-                            <div class="col-xs-6" style="height: 100%;display: flex;align-items: center;justify-content: center">
+                            <div class="col-xs-6"
+                                style="height: 100%;display: flex;align-items: center;justify-content: center">
                                 <span>{{item.title}}</span>
                             </div>
-                            <div class="col-xs-4" style="height: 100%;display: flex;align-items: center;justify-content: center">
-                                <span style="display: inline-block;height: 20px;margin-top: 11%;margin-bottom: 11%">{{item.currency}} {{item.price}}</span>
+                            <div class="col-xs-4"
+                                style="height: 100%;display: flex;align-items: center;justify-content: center">
+                                <span
+                                    style="display: inline-block;height: 20px;margin-top: 11%;margin-bottom: 11%">{{item.currency}}
+                                    {{item.price}}</span>
                             </div>
                         </li>
                     </ul>
+                </div>
+                <div class="form-group">
+                    <label for="inputState">Amount to Pay</label>
+                    <p style="font-size: 20px;">
+                        <b>{{payment.currency}} {{payment.totalamount}}.00</b>
+                        <!-- <b>LKR 23,999.00</b> -->
+                    </p>
                 </div>
             </div>
 
@@ -91,13 +139,6 @@
                     </li>
                 </ul>
             </div> -->
-            <div class="form-group">
-                <label for="inputState">Amount to Pay</label>
-                <p style="font-size: 30px;">
-                    <b>{{payment.currency}} {{payment.totalamount}}.00</b>
-                    <!-- <b>LKR 23,999.00</b> -->
-                </p>
-            </div>
             <div class="form-group">
 
             </div>

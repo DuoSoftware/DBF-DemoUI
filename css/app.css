@@ -692,13 +692,13 @@ body {
   z-index: -1;
   display: block;
   width: inherit;
-  background-color: #f0f3f4;
+  background-color:#ffffff;
   border: inherit;
   content: "";
 }
 
 .app-header-fixed {
-  padding-top: 50px;
+  padding-top: 30px;
 }
 
 .app-header-fixed .app-header {

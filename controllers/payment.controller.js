@@ -73,15 +73,15 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/Steapel%20Clothing.jpg";
             $scope.messagetobot = "Thank you for choosing Smooth Telecom. Your order has been confirmed. A reference has been sent to your mobile. Please visit the chosen branch to collect your order.";
 
-            $scope.payment.totalamount = 168990;
+            $scope.payment.totalamount = $scope.payment.totalamount;
             $scope.payment.currency = "LKR";
             $scope.payment.items = [
                 {
-                    "title": "Samsung Galaxy S10",
-                    "subtitle": "Samsung Galaxy S10 is a line of Android smartphones manufactured by Samsung Electronics.",
-                    "price": 168990,
-                    "currency": "LKR",
-                    "image_url": "https://s3.amazonaws.com/botmediastorage/samsung-galaxy-s10-1.jpg"
+                    "title": "Smooth Telecom",
+                    "subtitle": "",
+                    "price": $scope.payment.totalamount,
+                    "currency": $scope.payment.currency,
+                    "image_url": "https://s3.amazonaws.com/botmediastorage/Steapel%20Clothing.jpg"
                 }
             ]
         }
