@@ -70,7 +70,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             // Smooth Telecom
             $scope.pageAccessToken = "EAAMegfEn8iEBAKWGxlwNfpaxuZBAh3rLGMv996y58USfG9mcPfW2w60QAutGZBPngFTC4ncqFxnLRG6qyEeZBCb5wZC6W7SH66AfeYZB8M739hXlVQUlLYJEEvk8Qar56JM9RrlysDOrIPAHZBh3cs9JDjZCQct2CLvQvAnLR6ZCjwZDZD";
             $scope.receiptUrl = "https://www.smoothflow.io/";
-            $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/Steapel%20Clothing.jpg";
+            $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/smooth-Telecom.jpg";
             $scope.messagetobot = "Thank you for choosing Smooth Telecom. Your order has been confirmed. A reference has been sent to your mobile. Please visit the chosen branch to collect your order.";
 
             $scope.payment.totalamount = $scope.payment.totalamount;
@@ -81,7 +81,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                     "subtitle": "",
                     "price": $scope.payment.totalamount,
                     "currency": $scope.payment.currency,
-                    "image_url": "https://s3.amazonaws.com/botmediastorage/Steapel%20Clothing.jpg"
+                    "image_url": "https://s3.amazonaws.com/botmediastorage/smooth-Telecom.jpg"
                 }
             ]
         }
