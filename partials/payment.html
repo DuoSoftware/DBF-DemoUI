@@ -96,6 +96,7 @@
             <div ng-if="botID == '5bc8649c629e48a59214e7cd' || botID == '5c94b7fd158f7fa10acf68b8'">
                 <div class="form-group">
                     <label for="inputAddress">My Cart</label>
+                    <p ng-if="payment.items.length == 0">Your cart is empty!</p>
                     <ul ng-repeat="item in payment.items" class="list-group">
                         <li class="list-group-item row" style="margin: 0;height: 80px">
                             <div class="col-xs-2">
