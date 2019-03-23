@@ -19,6 +19,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             sender = $state.params.sender.replace('dbf:', '');
             sender = sender.split(":");
             $scope.botID = sender[0];
+            $scope.userID = sender[1];
         } else {
             sender = $state.params.sender.split("-");
         }
@@ -117,6 +118,16 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                     "image_url": "https://s3.amazonaws.com/botmediastorage/CHINO_TROUSERS_NEW_SHORT_CUT.jpg"
                 }
             ]
+        }
+        if ($scope.botID == "5c94b7fd158f7fa10acf68b8") {
+            debugger
+            // Smoothflow Cart
+            $scope.pageAccessToken = "EAAMegfEn8iEBAM8L6UUo26ttMd9Bc4v0HvS5gdGFVZBttnE3Eax1ZCTisZBQvWIEiKlyOtUwQn6HeNDtNBs0CVXKL2bauRwE8MewhHhdARiMl6wSGEWihpKuet8vCh6ZAdpr9OOvBik7o7drKy9r00JIVacx50ZCHZApemTVnCKQZDZD";
+            $scope.receiptUrl = "https://www.smoothflow.io/";
+            $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/1/13/smoothflowlogo.png";
+            $scope.messagetobot = "Thank you for choosing Smoothflow Cart. Your order has been confirmed. A reference has been sent to your mobile. Please visit the chosen branch to collect your order.";
+
+            getCartItems($scope.userID)
         }
 
         //getProfile($state.params.name);
@@ -296,6 +307,44 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 $scope.user['lname'] = profile.last_name;
                 $scope.user['email'] = profile.email_addr;
                 $scope.user['profileID'] = profile.profileId;
+                $scope.processing = false;
+            } else {
+                alert(response.data.CustomMessage);
+                $scope.processing = false;
+            }
+        }, function (response, status) {
+            alert(response.data.CustomMessage);
+            $scope.processing = false;
+        });
+    }
+
+    function getCartItems(userID) {
+        $scope.processing = true;
+        $http({
+            method: "GET",
+            url: "https://ylo8l1i5j2.execute-api.us-east-1.amazonaws.com/Prod/cart/" + userID,
+            headers: {
+                "Authorization": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzdWtpdGhhIiwianRpIjoiYWEzOGRmZWYtNDFhOC00MWUyLTgwMzktOTJjZTY0YjM4ZDFmIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE5MDIzODExMTgsInRlbmFudCI6LTEsImNvbXBhbnkiOi0xLCJzY29wZSI6W3sicmVzb3VyY2UiOiJhbGwiLCJhY3Rpb25zIjoiYWxsIn1dLCJpYXQiOjE0NzAzODExMTh9.Gmlu00Uj66Fzts-w6qEwNUz46XYGzE8wHUhAJOFtiRo",
+                "Content-Type": "application/json",
+                "companyInfo": "1:103"
+            }
+        }).then(function (response, status) {
+            if (response.data.IsSuccess) {
+                $scope.payment.items = [];
+                $scope.payment.totalamount = 0;
+                var items = response.data.Result.cartItems;
+                angular.forEach(items, function (item) {
+                    var obj = {
+                        "title": item.name,
+                        "subtitle": "",
+                        "price": parseInt(item.value),
+                        "currency": "USD",
+                        "image_url": "https://s3.amazonaws.com/botmediastorage/placeholder.png"
+                    }
+                    $scope.payment.items.push(obj);
+                    $scope.payment.totalamount += parseInt(item.value);
+                });
+                $scope.payment.currency = "USD";
                 $scope.processing = false;
             } else {
                 alert(response.data.CustomMessage);
