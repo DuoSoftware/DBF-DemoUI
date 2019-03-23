@@ -46,6 +46,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
         $scope.user.name = $state.params.name;
         $scope.user.senderId = sender[1] || "";
+        $scope.removeCartOncompletion = false;
 
         $scope.payment.invoiceNo = Math.floor((Math.random() * 10000000) + 1);
 
@@ -128,6 +129,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.messagetobot = "Thank you for choosing Smoothflow Cart. Your order has been confirmed. A reference has been sent to your mobile. Please visit the chosen branch to collect your order.";
 
             getCartItems($scope.userID)
+            $scope.removeCartOncompletion = true;
         }
 
         //getProfile($state.params.name);
@@ -241,6 +243,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             if ($scope.resultCount == 2) {
                 $scope.sendQuickReplyToBot();
             }
+            if($scope.removeCartOncompletion){
+                removeCart($scope.userID);
+            }
         }, function (response, status) {
             console.log(response);
             console.log("else.....")
@@ -350,6 +355,24 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 alert(response.data.CustomMessage);
                 $scope.processing = false;
             }
+        }, function (response, status) {
+            alert(response.data.CustomMessage);
+            $scope.processing = false;
+        });
+    }
+
+    function removeCart(userID) {
+        $scope.processing = true;
+        $http({
+            method: "DELETE",
+            url: "https://ylo8l1i5j2.execute-api.us-east-1.amazonaws.com/Prod/cart/" + userID,
+            headers: {
+                "Authorization": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzdWtpdGhhIiwianRpIjoiYWEzOGRmZWYtNDFhOC00MWUyLTgwMzktOTJjZTY0YjM4ZDFmIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE5MDIzODExMTgsInRlbmFudCI6LTEsImNvbXBhbnkiOi0xLCJzY29wZSI6W3sicmVzb3VyY2UiOiJhbGwiLCJhY3Rpb25zIjoiYWxsIn1dLCJpYXQiOjE0NzAzODExMTh9.Gmlu00Uj66Fzts-w6qEwNUz46XYGzE8wHUhAJOFtiRo",
+                "Content-Type": "application/json",
+                "companyInfo": "1:103"
+            }
+        }).then(function (response, status) {
+            console.log("Cart is not deleted");
         }, function (response, status) {
             alert(response.data.CustomMessage);
             $scope.processing = false;
