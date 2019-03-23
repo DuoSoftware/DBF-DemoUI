@@ -243,7 +243,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             if ($scope.resultCount == 2) {
                 $scope.sendQuickReplyToBot();
             }
-            if($scope.removeCartOncompletion){
+            if ($scope.removeCartOncompletion) {
                 removeCart($scope.userID);
             }
         }, function (response, status) {
@@ -337,18 +337,20 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             if (response.data.IsSuccess) {
                 $scope.payment.items = [];
                 $scope.payment.totalamount = 0;
-                var items = response.data.Result.cartItems;
-                angular.forEach(items, function (item) {
-                    var obj = {
-                        "title": item.name,
-                        "subtitle": "",
-                        "price": parseInt(item.value),
-                        "currency": "USD",
-                        "image_url": "https://s3.amazonaws.com/botmediastorage/placeholder.png"
-                    }
-                    $scope.payment.items.push(obj);
-                    $scope.payment.totalamount += parseInt(item.value);
-                });
+                if (response.data.Result != null) {
+                    var items = response.data.Result.cartItems;
+                    angular.forEach(items, function (item) {
+                        var obj = {
+                            "title": item.name,
+                            "subtitle": "",
+                            "price": parseInt(item.value),
+                            "currency": "USD",
+                            "image_url": "https://s3.amazonaws.com/botmediastorage/placeholder.png"
+                        }
+                        $scope.payment.items.push(obj);
+                        $scope.payment.totalamount += parseInt(item.value);
+                    });
+                }
                 $scope.payment.currency = "USD";
                 $scope.processing = false;
             } else {
@@ -373,6 +375,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             }
         }).then(function (response, status) {
             console.log("Cart is not deleted");
+            $scope.processing = false;
         }, function (response, status) {
             alert(response.data.CustomMessage);
             $scope.processing = false;
