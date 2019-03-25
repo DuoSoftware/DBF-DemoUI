@@ -344,8 +344,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                             "title": item.name,
                             "subtitle": "",
                             "price": parseInt(item.value),
-                            "currency": "USD",
-                            "image_url": "https://s3.amazonaws.com/botmediastorage/placeholder.png"
+                            "currency": response.data.Result.rawData.currency,
+                            "subtitle" : item.shortdescription,
+                            "image_url": item.image_url
                         }
                         $scope.payment.items.push(obj);
                         $scope.payment.totalamount += parseInt(item.value);
