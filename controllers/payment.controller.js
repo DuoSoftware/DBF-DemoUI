@@ -131,6 +131,28 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             getCartItems($scope.userID)
             $scope.removeCartOncompletion = true;
         }
+        if ($scope.botID == "5c94b7fd158f7fa10acf68b8") {
+            debugger
+            // Smoothflow Cart
+            $scope.pageAccessToken = "EAAMegfEn8iEBAM8L6UUo26ttMd9Bc4v0HvS5gdGFVZBttnE3Eax1ZCTisZBQvWIEiKlyOtUwQn6HeNDtNBs0CVXKL2bauRwE8MewhHhdARiMl6wSGEWihpKuet8vCh6ZAdpr9OOvBik7o7drKy9r00JIVacx50ZCHZApemTVnCKQZDZD";
+            $scope.receiptUrl = "https://www.smoothflow.io/";
+            $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/1/13/smoothflowlogo.png";
+            $scope.messagetobot = "Thank you for choosing Smoothflow Cart. Your order has been confirmed. A reference has been sent to your mobile. Please visit the chosen branch to collect your order.";
+
+            getCartItems($scope.userID)
+            $scope.removeCartOncompletion = true;
+        }
+        if ($scope.botID == "5c8747e6f9c5669f7a151c85") {
+            debugger
+            // Smoothflow Cart
+            $scope.pageAccessToken = "EAAMegfEn8iEBAIJYS3RZCUVN8joBRkD3NsikDPbtNIEa3ceaXpgNuNY0QECQSvSaSD12p3Egy13bgkLZAOZB7MfswCdEJEZBnU7cn9b4LYq9geakAaIUIYuMbFCnZAZAehHIEMZACsYOOFZAzq3yB0UG8czK7E6DpZBuey3oh0ZA2ZA0jZCgZCNvLj23BKeG0tox2T1IZD";
+            $scope.receiptUrl = "https://www.smoothflow.io/";
+            $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/carelalogo.png";
+            $scope.messagetobot = "Thank you for shopping with us. Your order has been confirmed. A reference has been sent to your mobile. Please visit the chosen branch to collect your order.";
+
+            getCartItems($scope.userID)
+            $scope.removeCartOncompletion = true;
+        }
 
         //getProfile($state.params.name);
     }
