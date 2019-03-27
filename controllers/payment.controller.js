@@ -190,6 +190,13 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     // }]
 
     function sendReciptToBot(invoice, OrderURL, ImageURL) {
+
+        // remove qty before sending receipt
+        
+        angular.forEach($scope.payment.items, function (item) {
+            delete item.qty;
+        });
+
         $http({
             method: "POST",
             url: "https://graph.facebook.com/v2.6/me/messages?access_token=" + $scope.pageAccessToken,
@@ -208,7 +215,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                             "template_type": "receipt",
                             "recipient_name": $scope.user.name,
                             "order_number": invoice,
-                            "currency": "LKR",
+                            "currency": $scope.payment.currency,
                             "payment_method": "Visa",
                             "order_url": OrderURL,
                             "timestamp": Math.floor(Date.now() / 1000).toString(),
