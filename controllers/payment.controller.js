@@ -367,8 +367,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                             "subtitle": "",
                             "price": parseInt(item.value),
                             "currency": response.data.Result.rawData.currency,
-                            "subtitle" : item.shortdescription,
-                            "image_url": item.image_url
+                            "subtitle": item.shortdescription,
+                            "image_url": item.image_url,
+                            "qty": item.qty
                         }
                         $scope.payment.items.push(obj);
                         $scope.payment.totalamount += parseInt(item.value);
