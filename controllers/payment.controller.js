@@ -374,7 +374,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                         $scope.payment.totalamount += parseInt(item.value);
                     });
                 }
-                $scope.payment.currency = "USD";
+                $scope.payment.currency = response.data.Result.rawData.currency;
                 $scope.processing = false;
             } else {
                 alert(response.data.CustomMessage);
