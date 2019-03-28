@@ -10,12 +10,14 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     $scope.payment = { method: "Cash", invoiceNo: "" };
     $scope.isPaymentSuccess = false;
     $scope.processing = false;
+    $scope.callAutomationFlow = false;
 
     if ($state.params && $state.params.name) {
         var name = $state.params.name.split(" ");
 
         var sender = [""];
         if ($state.params.sender.indexOf(':') >= 0) {
+            $scope.SessionID = $state.params.sender;
             sender = $state.params.sender.replace('dbf:', '');
             sender = sender.split(":");
             $scope.botID = sender[0];
@@ -152,6 +154,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
             getCartItems($scope.userID)
             $scope.removeCartOncompletion = true;
+            $scope.callAutomationFlow = true;
+            getContextData($scope.SessionID);
         }
 
         //getProfile($state.params.name);
@@ -192,7 +196,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     function sendReciptToBot(invoice, OrderURL, ImageURL) {
 
         // remove qty before sending receipt
-        
+
         angular.forEach($scope.payment.items, function (item) {
             delete item.qty;
         });
@@ -272,8 +276,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             if ($scope.resultCount == 2) {
                 $scope.sendQuickReplyToBot();
             }
-            if ($scope.removeCartOncompletion) {
-                removeCart($scope.userID);
+            if ($scope.callAutomationFlow) {
+                callautomation($scope.SessionID);
             }
         }, function (response, status) {
             console.log(response);
@@ -394,6 +398,36 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         });
     }
 
+    function callautomation(sessionID) {
+        debugger
+        $scope.processing = true;
+        var payload = {
+            "InSessionID": sessionID,
+            "SessionData": "{}",
+            "InCustName" : $scope.contextData.custName,
+            "InCustAddress" : $scope.contextData.custAddress,
+            "InCustMobile" : $scope.contextData.custMobile,
+            "InCustEmail" : $scope.contextData.custEmail
+        }
+        $http({
+            method: "POST",
+            url: "https://eshwaranbroscarelaemailconfirmation.plus.smoothflow.io/eshwaranbroscarelaemailconfirmation/smoothflow/Invoke?apikey=",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            data: payload
+        }).then(function (response, status) {
+            console.log("Automation invoked");
+            $scope.processing = false;
+            // if ($scope.removeCartOncompletion) {
+            //     removeCart($scope.userID);
+            // }
+        }, function (response, status) {
+            alert(response.data.CustomMessage);
+            $scope.processing = false;
+        });
+    }
+
     function removeCart(userID) {
         $scope.processing = true;
         $http({
@@ -405,10 +439,36 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 "companyInfo": "1:103"
             }
         }).then(function (response, status) {
-            console.log("Cart is not deleted");
+            console.log("Cart is deleted");
             $scope.processing = false;
         }, function (response, status) {
             alert(response.data.CustomMessage);
+            $scope.processing = false;
+        });
+    }
+
+    $scope.contextData = {};
+    function getContextData(sessionID) {
+        debugger
+        // accepting the session ID like the bellow
+        //dbf-5c8747e6f9c5669f7a151c85-2549010211837333
+        sessionID = sessionID.replace(':', '-');
+        sessionID = sessionID.replace(':', '-');
+        $scope.processing = true;
+        $http({
+            method: "GET",
+            url: "https://smoothbotdispatcher.plus.smoothflow.io/DBF/API/1.0.0/getContext/" + sessionID,
+            headers: {
+                "Authorization": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzdWtpdGhhIiwianRpIjoiYWEzOGRmZWYtNDFhOC00MWUyLTgwMzktOTJjZTY0YjM4ZDFmIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE5MDIzODExMTgsInRlbmFudCI6LTEsImNvbXBhbnkiOi0xLCJzY29wZSI6W3sicmVzb3VyY2UiOiJhbGwiLCJhY3Rpb25zIjoiYWxsIn1dLCJpYXQiOjE0NzAzODExMTh9.Gmlu00Uj66Fzts-w6qEwNUz46XYGzE8wHUhAJOFtiRo",
+                "Content-Type": "application/json",
+                "companyInfo": "1:103"
+            }
+        }).then(function (response, status) {
+            console.log("Context Data retrived.");
+            debugger
+            $scope.contextData = response.data.message;
+            $scope.processing = false;
+        }, function (response, status) {
             $scope.processing = false;
         });
     }
