@@ -492,7 +492,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
         $http({
             method: "POST",
-            url: "https://dev.smoothflow.io/DBF/API/1.0.0/Payments/stripePayment",
+            url: "https://stripepaymentsdev.plus.smoothflow.io/DBF/API/1/Payments/stripePayment",
             headers: {
                 "Content-Type": "application/json"
             },
