@@ -8,7 +8,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
     $scope.user = {};
     $scope.payment = { method: "Cash", invoiceNo: "" };
-    $scope.isPaymentSuccess = false;
+    $scope.isPaymentSuccess = 0;
     $scope.processing = false;
     $scope.callAutomationFlow = false;
 
@@ -41,7 +41,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             title: $scope.companyname,
             description: $scope.stripdescription,
             logo: $scope.companylogosmall,
-            label: $scope.stripebutton
+            label: $scope.stripebutton,
+            amount: 0,
+            currency: ""
         };
 
         //var sender = $state.params.sender.split("-");
@@ -145,7 +147,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.removeCartOncompletion = true;
         }
         if ($scope.botID == "5c8747e6f9c5669f7a151c85") {
-            debugger
+            //debugger
             // Smoothflow Cart
             $scope.pageAccessToken = "EAAMegfEn8iEBAIJYS3RZCUVN8joBRkD3NsikDPbtNIEa3ceaXpgNuNY0QECQSvSaSD12p3Egy13bgkLZAOZB7MfswCdEJEZBnU7cn9b4LYq9geakAaIUIYuMbFCnZAZAehHIEMZACsYOOFZAzq3yB0UG8czK7E6DpZBuey3oh0ZA2ZA0jZCgZCNvLj23BKeG0tox2T1IZD";
             $scope.receiptUrl = "https://www.smoothflow.io/";
@@ -161,18 +163,17 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         //getProfile($state.params.name);
     }
 
-    $scope.$on('stripe-token-received', function (event, args) {
-        $scope.processing = true;
-        $scope.pay();
+    $scope.$on('stripe-token-received', function (event, data) {
+        $scope.isPaymentSuccess = 1;
+        //$scope.processing = true;
+        $scope.$apply();
+        getMakePayment(data)
     });
 
     $scope.resultCount = 0;
-    $scope.pay = function () {
-        debugger
-        $scope.isPaymentSuccess = true;
-        $scope.processing = false;
-        $scope.$apply();
-        sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
+    $scope.pay = function (token) {
+        //debugger
+
     }
 
     // 
@@ -238,7 +239,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         }).then(function (response, status) {
             console.log(response);
             console.log("Receipt sent.")
-            $scope.isPaymentSuccess = true;
+            $scope.isPaymentSuccess = 1;
             $scope.processing = false;
             sendMessageToBot($scope.messagetobot);
             if ($scope.resultCount == 2) {
@@ -271,7 +272,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         }).then(function (response, status) {
             console.log(response);
             console.log("Receipt sent.")
-            $scope.isPaymentSuccess = true;
+            $scope.isPaymentSuccess = 1;
             $scope.processing = false;
             if ($scope.resultCount == 2) {
                 $scope.sendQuickReplyToBot();
@@ -318,7 +319,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         }).then(function (response, status) {
             console.log(response);
             console.log("Quickreply sent.")
-            $scope.isPaymentSuccess = true;
+            $scope.isPaymentSuccess = 1;
             $scope.processing = false;
         }, function (response, status) {
             console.log(response);
@@ -385,8 +386,13 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                         $scope.payment.items.push(obj);
                         $scope.payment.totalamount += parseInt(item.value) * parseInt(item.qty);
                     });
+                    // setting config currency and amount
+                    $scope.config.amount = $scope.payment.totalamount * 100
+                    $scope.config.currency = response.data.Result.rawData.currency;
+                    $scope.payment.currency = response.data.Result.rawData.currency;
                 }
-                $scope.payment.currency = response.data.Result.rawData.currency;
+                // update stripe config
+                $rootScope.$broadcast('stripe-config-updated', $scope.config);
                 $scope.processing = false;
             } else {
                 alert(response.data.CustomMessage);
@@ -404,10 +410,10 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         var payload = {
             "InSessionID": sessionID,
             "SessionData": "{}",
-            "InCustName" : $scope.contextData.custName,
-            "InCustAddress" : $scope.contextData.custAddress,
-            "InCustMobile" : $scope.contextData.custMobile,
-            "InCustEmail" : $scope.contextData.custEmail
+            "InCustName": $scope.contextData.custName,
+            "InCustAddress": $scope.contextData.custAddress,
+            "InCustMobile": $scope.contextData.custMobile,
+            "InCustEmail": $scope.contextData.custEmail
         }
         $http({
             method: "POST",
@@ -419,6 +425,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         }).then(function (response, status) {
             console.log("Automation invoked");
             $scope.processing = false;
+            $scope.isPaymentSuccess = 2;
             // if ($scope.removeCartOncompletion) {
             //     removeCart($scope.userID);
             // }
@@ -449,7 +456,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
     $scope.contextData = {};
     function getContextData(sessionID) {
-        debugger
+        //debugger
         // accepting the session ID like the bellow
         //dbf-5c8747e6f9c5669f7a151c85-2549010211837333
         sessionID = sessionID.replace(':', '-');
@@ -465,9 +472,35 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             }
         }).then(function (response, status) {
             console.log("Context Data retrived.");
-            debugger
+            // debugger
             $scope.contextData = response.data.message;
             $scope.processing = false;
+        }, function (response, status) {
+            $scope.processing = false;
+        });
+    }
+
+    function getMakePayment(token) {
+        debugger
+
+        var payload = {
+            amount: $scope.config.amount,
+            currency: $scope.config.currency,
+            description: "",
+            token: token
+        }
+
+        $http({
+            method: "POST",
+            url: "https://dev.smoothflow.io/DBF/API/1.0.0/Payments/stripePayment",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            data: payload
+        }).then(function (response, status) {
+            console.log("Context Data retrived.");
+            debugger
+            sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
         }, function (response, status) {
             $scope.processing = false;
         });

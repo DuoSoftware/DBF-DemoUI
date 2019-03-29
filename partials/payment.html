@@ -1,15 +1,15 @@
 <div class="container" ng-init="app.settings.container = false;">
     <div class="text-center" ng-include="'partials/include.header.html'"></div>
     <div class="m-b-lg">
-        <div class="wrapper text-center" ng-if="!isPaymentSuccess">
+        <div class="wrapper text-center" ng-if="isPaymentSuccess == 0">
             <h4 style="font-weight: bold;">{{title}}</h4>
             <!-- <strong>Your Account is not yet active!</strong> -->
             <!-- <p>OTP has been sent to you on your mobile number. Please enter it below.</p> -->
         </div>
         <div class="box" ng-if="processing">
-            <img src="img/progress.gif" alt="Paris" class="center">
+            <img src="img/loading.gif" alt="Paris" class="center" style="height: 75px; width: 75px;">
         </div>
-        <form name="paymentForm" ng-if="!isPaymentSuccess">
+        <form name="paymentForm" ng-if="isPaymentSuccess == 0">
             <div class="form-group">
                 <label for="inputAddress">Customer Name</label>
                 <input type="text" class="form-control" ng-model="user.name" placeholder="" ng-readonly="true">
@@ -93,7 +93,8 @@
                     </ul>
                 </div> -->
             </div>
-            <div ng-if="botID == '5bc8649c629e48a59214e7cd' || botID == '5c94b7fd158f7fa10acf68b8' || botID == '5c8747e6f9c5669f7a151c85'">
+            <div
+                ng-if="botID == '5bc8649c629e48a59214e7cd' || botID == '5c94b7fd158f7fa10acf68b8' || botID == '5c8747e6f9c5669f7a151c85'">
                 <div class="form-group">
                     <label for="inputAddress">My Cart</label>
                     <p ng-if="payment.items.length == 0">Your cart is empty!</p>
@@ -149,14 +150,20 @@
                     ng-disabled="paymentForm.$invalid || processing">{{checkoutbutton}}</button>
             </div>
         </form>
-        <div class="line line-dashed" ng-if="isPaymentSuccess"></div>
-        <div class="line line-dashed" ng-if="isPaymentSuccess"></div>
-        <div class="line line-dashed" ng-if="isPaymentSuccess"></div>
-        <div class="wrapper text-center" ng-if="isPaymentSuccess">
+        <div class="line line-dashed" ng-if="isPaymentSuccess == 1"></div>
+        <div class="line line-dashed" ng-if="isPaymentSuccess == 1"></div>
+        <div class="line line-dashed" ng-if="isPaymentSuccess == 1"></div>
+        <div class="wrapper text-center" ng-if="isPaymentSuccess == 2">
             <img src="img/checked.png">
             <div class="line line-dashed"></div>
             <h4 style="font-weight: bold;">Payment successfull</h4>
             <p>Your payment has been processed. Please close the window to proceed.</p>
+        </div>
+        <div class="wrapper text-center" ng-if="isPaymentSuccess == 1">
+            <img src="img/loading.gif" style="height: 75px;">
+            <div class="line line-dashed"></div>
+            <h4 style="font-weight: bold;">Processing Payment</h4>
+            <p>Please do not close this window.</p>
         </div>
     </div>
 </div>

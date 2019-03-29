@@ -3,15 +3,15 @@
 		Version 1.0.1
 */
 
-(function(spt) {
+(function (spt) {
 
 	spt.directive('stripePayment', ['$window', function ($window) {
 		return {
 			restrict: 'A',
 			scope: {
 				config: '=stripePayment',
-				isNewCard:'@newCard',
-				walletId:'=walletId'
+				isNewCard: '@newCard',
+				walletId: '=walletId'
 			},
 			controller: ['$scope', '$rootScope', function ($scope, $rootScope) {
 
@@ -33,15 +33,15 @@
 							history: false
 						}
 					})).get().on('pnotify.confirm', function () {
-							OkCallback(true);
-						}).on('pnotify.cancel', function () {
-							OkCallback(false);
-						});
+						OkCallback(true);
+					}).on('pnotify.cancel', function () {
+						OkCallback(false);
+					});
 
 				};
 
 
-				$scope.showError = function (tittle,content) {
+				$scope.showError = function (tittle, content) {
 					new PNotify({
 						title: tittle,
 						text: content,
@@ -61,66 +61,78 @@
 				};
 
 				var config = $scope.config;
-				if(!config.hasOwnProperty('publishKey')){
+				if (!config.hasOwnProperty('publishKey')) {
 					console.error("Stripe api key not provided."); return;
 				}
 
-				var handler = (function() {
+				$rootScope.$on('stripe-config-updated', function (data) {
+					var config = data;
+					$scope.setConfiguration();
+				});
 
-					var handler = StripeCheckout.configure({
-						key: config.publishKey,
-						image: config.logo,
-						panelLabel: config.label,
-						token: function(token) {
-							if($scope.isNewCard==='true'){
-								walletService.CreateWallet(token.id,token.email).then(function(result){
-									if(result){
-										$scope.showAlert("Credit","Wallet Create Successfully. Please add Some Credit to your wallet.");
-										$rootScope.$broadcast('stripe-token-received', 123);
-									}else{
-										$scope.showError("Credit","Fail To Create Wallet.");
-									}
+				var handler = {};
 
-								},function(err){
-									$scope.showError("Credit","Fail To Create Wallet.");
-								});
+				$scope.setConfiguration = function () {
+					handler = (function () {
+
+						var handler = StripeCheckout.configure({
+							key: config.publishKey,
+							image: config.logo,
+							locale: 'auto',
+							panelLabel: config.label,
+							currency: config.currency,
+							token: function (token) {
+								if ($scope.isNewCard === 'true') {
+									walletService.CreateWallet(token.id, token.email).then(function (result) {
+										if (result) {
+											$scope.showAlert("Credit", "Wallet Create Successfully. Please add Some Credit to your wallet.");
+											$rootScope.$broadcast('stripe-token-received', token.id);
+										} else {
+											$scope.showError("Credit", "Fail To Create Wallet.");
+										}
+
+									}, function (err) {
+										$scope.showError("Credit", "Fail To Create Wallet.");
+									});
+								}
+								else {
+									$rootScope.$broadcast('stripe-token-received', token.id);
+								}
 							}
-							else{
-								$rootScope.$broadcast('stripe-token-received', 123);
-							}
-						}
-					});
-
-					var open = function(ev) {
-						handler.open({
-							name: config.title,
-							description: config.description
 						});
 
-						ev.preventDefault();
-					};
+						var open = function (ev) {
+							handler.open({
+								name: config.title,
+								description: config.description,
+								amount: config.amount
+							});
 
-					var close = function() {
-						handler.close();
-					};
+							ev.preventDefault();
+						};
 
-					return {
-						open: open,
-						close: close
-					}
+						var close = function () {
+							handler.close();
+						};
 
-				})();
+						return {
+							open: open,
+							close: close
+						}
 
-				$scope.open = handler.open;
-				$scope.close = handler.close;
+					})();
 
+					$scope.open = handler.open;
+					$scope.close = handler.close;
+				}
+				$scope.setConfiguration();
 			}],
 			link: function (scope, element, attrs) {
-				element.bind('click', function(ev) {
+				element.bind('click', function (ev) {
 					scope.open(ev);
 				});
 
-				angular.element($window).on('popstate', function() {
+				angular.element($window).on('popstate', function () {
 					scope.close();
 				});
 
@@ -131,12 +143,12 @@
 
 })(angular.module('stripe-payment-tools', []));
 
-/* 
+/*
 	How to use
 	----------
-	
+
 	first include these dependencies to your script.
-		-	angular.min.js 
+		-	angular.min.js
 				<script type="text/javascript" src="angular.min.js"></script>
 		- 	checkout.js
 				<script src="https://checkout.stripe.com/checkout.js"></script>
@@ -160,7 +172,7 @@
 				logo: 'img/small-logo.png',
 				label: 'New Card',
 			}
-	
+
 	catch token that genarated by stripe as below.
 		$scope.$on('stripe-token-received', function(event, args) {
 			console.log(args);
