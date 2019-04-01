@@ -5125,6 +5125,33 @@ a.text-#000000:hover {
           animation: movingbar 0.75s infinite;
 }
 
+.cart-item-image,
+.cart-item-rem {
+  position: relative;
+  padding: 0;
+  height: 100%;
+}
+.cart-item-image img {
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+}
+.cart-item-rem i.fa {
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
+}
+.cart-item-rem.cart-item-centered i.fa,
+.cart-item-image.cart-item-centered img
+{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
 /* Moving bar */
 
 @-webkit-keyframes movingbar {
