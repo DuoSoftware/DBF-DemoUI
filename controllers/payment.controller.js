@@ -151,7 +151,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         if ($scope.botID == "5c8747e6f9c5669f7a151c85") {
             //debugger
             // Smoothflow Cart
-            $scope.pageAccessToken = "EAAMegfEn8iEBAIJYS3RZCUVN8joBRkD3NsikDPbtNIEa3ceaXpgNuNY0QECQSvSaSD12p3Egy13bgkLZAOZB7MfswCdEJEZBnU7cn9b4LYq9geakAaIUIYuMbFCnZAZAehHIEMZACsYOOFZAzq3yB0UG8czK7E6DpZBuey3oh0ZA2ZA0jZCgZCNvLj23BKeG0tox2T1IZD";
+            $scope.pageAccessToken = "EAAMegfEn8iEBAEVZAVFTlFdtuI0QVW4okDUqeL1m95UJ1PfJcGC4miPPsWUdXE97RFAXo5CtCBQNehSx63vkRhQNXpHP3yYi8XK1R2Cnxk1sZAjr5KgpOqjtVSZAPMUuZCs90Di09vKqWrJZBEZBgpIwwlWw3gHD17IJO31OEZA8zjAZCRljdWom";
             $scope.receiptUrl = "https://www.smoothflow.io/";
             $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/carelalogo.png";
             $scope.messagetobot = "Thank you for reaching Carela GCC. One of our representative will contact you soon. ";
@@ -241,7 +241,6 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         }).then(function (response, status) {
             console.log(response);
             console.log("Receipt sent.")
-            $scope.isPaymentSuccess = 1;
             $scope.processing = false;
             sendMessageToBot($scope.messagetobot);
             if ($scope.resultCount == 2) {
@@ -274,7 +273,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         }).then(function (response, status) {
             console.log(response);
             console.log("Receipt sent.")
-            $scope.isPaymentSuccess = 1;
+            $scope.isPaymentSuccess = 2;
             $scope.processing = false;
             if ($scope.resultCount == 2) {
                 $scope.sendQuickReplyToBot();
@@ -424,7 +423,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         }).then(function (response, status) {
             console.log("Automation invoked");
             $scope.processing = false;
-            $scope.isPaymentSuccess = 2;
+            sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
         }, function (response, status) {
             alert(response.data.CustomMessage);
             $scope.processing = false;
@@ -450,26 +449,31 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         });
     }
 
-    function removeFromCart(userID) {
+    $scope.removeme = function (id) {
+        if (confirm('Are you sure you want to remove the item from the cart?')) {
+            removeFromCart(id);
+        }
+    }
+    function removeFromCart(id) {
         $scope.processing = true;
-        
+
         var payload = {
             "item": {
-                "name" : "IPhone X"
-            },
-            "total": "100.00"
+                "id": id
+            }
         }
         $http({
-            method: "POST",
-            url: "https://ylo8l1i5j2.execute-api.us-east-1.amazonaws.com/Prod/removefromcart/" + userID,
+            method: "PUT",
+            url: "https://ylo8l1i5j2.execute-api.us-east-1.amazonaws.com/Prod/removefromcart/" + $scope.userID,
             headers: {
                 "Authorization": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzdWtpdGhhIiwianRpIjoiYWEzOGRmZWYtNDFhOC00MWUyLTgwMzktOTJjZTY0YjM4ZDFmIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE5MDIzODExMTgsInRlbmFudCI6LTEsImNvbXBhbnkiOi0xLCJzY29wZSI6W3sicmVzb3VyY2UiOiJhbGwiLCJhY3Rpb25zIjoiYWxsIn1dLCJpYXQiOjE0NzAzODExMTh9.Gmlu00Uj66Fzts-w6qEwNUz46XYGzE8wHUhAJOFtiRo",
                 "Content-Type": "application/json",
                 "companyInfo": "1:103"
             }
         }).then(function (response, status) {
-            console.log("Cart is deleted");
+            console.log("itme is deleted");
             $scope.processing = false;
+            getCartItems($scope.userID);
         }, function (response, status) {
             alert(response.data.CustomMessage);
             $scope.processing = false;
@@ -523,7 +527,6 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             console.log("Payment Confirmation received.");
             debugger
             callautomation($scope.SessionID)
-            sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
         }, function (response, status) {
             $scope.processing = false;
             alert(response);
