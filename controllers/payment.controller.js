@@ -375,14 +375,14 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                         var obj = {
                             "title": item.name,
                             "subtitle": "",
-                            "price": parseInt(item.value),
+                            "price": parseFloat(item.value),
                             "currency": response.data.Result.rawData.currency,
                             "subtitle": item.shortdescription,
                             "image_url": item.image_url,
                             "qty": item.qty
                         }
                         $scope.payment.items.push(obj);
-                        $scope.payment.totalamount += parseInt(item.value) * parseInt(item.qty);
+                        $scope.payment.totalamount += parseFloat(item.value) * parseInt(item.qty);
                     });
                     // setting config currency and amount
                     $scope.config.amount = $scope.payment.totalamount * 100
