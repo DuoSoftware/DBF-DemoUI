@@ -32,6 +32,10 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         $scope.companylogolarge = $state.params.companylogolarge;//     https://smoothflow.io/facetone/DBF-DemoUI/img/dialog.png
         $scope.companylogosmall = $state.params.companylogosmall;//     https://smoothflow.io/facetone/DBF-DemoUI/img/dialog.png
         $scope.checkoutbutton = $state.params.checkoutbutton;
+        debugger
+        if ($scope.checkoutbutton[$scope.checkoutbutton.length - 1] == "/") {
+            $scope.checkoutbutton = $scope.checkoutbutton.substring(0, $scope.checkoutbutton.length - 1);
+        }
         $scope.stripdescription = $state.params.stripdescription;
         $scope.stripebutton = $state.params.stripebutton;
         $scope.stripepublishkey = $state.params.stripepublishkey;
@@ -167,7 +171,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         $scope.isPaymentSuccess = 1;
         //$scope.processing = true;
         $scope.$apply();
-        getMakePayment(data)
+        callautomation($scope.SessionID)
+        //getMakePayment(data)
     });
 
     $scope.resultCount = 0;
