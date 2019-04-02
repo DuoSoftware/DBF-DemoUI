@@ -507,7 +507,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     }
 
     function getMakePayment(token) {
-        debugger
+        //debugger
 
         var payload = {
             amount: $scope.config.amount,
@@ -516,6 +516,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             token: token
         }
 
+        //https://b9d637f4.ngrok.io
+        //https://stripepaymentsdev.plus.smoothflow.io
         $http({
             method: "POST",
             url: "https://stripepaymentsdev.plus.smoothflow.io/DBF/API/1/Payments/stripePayment",
@@ -524,9 +526,14 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             },
             data: payload
         }).then(function (response, status) {
-            console.log("Payment Confirmation received.");
             debugger
-            callautomation($scope.SessionID)
+            if(response.data.IsSuccess){
+                console.log("Payment Confirmation received.");
+                callautomation($scope.SessionID)
+            }else{
+                alert(response.data.Exception.Message);
+                $scope.isPaymentSuccess = 0;
+            }
         }, function (response, status) {
             $scope.processing = false;
             alert(response);
