@@ -408,6 +408,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
     $scope.updatedQty = function (prod) {
         //alert("changed");
+        if(prod.qty == "0" || prod.qty == "" || prod.qty == null){
+            return
+        }
         $rootScope.processing = true;
         angular.forEach($scope.myCart.cartItems, function (item) {
             if (item.id == prod.id) {
