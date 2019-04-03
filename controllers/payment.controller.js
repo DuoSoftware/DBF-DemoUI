@@ -9,8 +9,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     $scope.user = {};
     $scope.payment = { method: "Cash", invoiceNo: "" };
     $scope.isPaymentSuccess = 0;
-    $scope.processing = false;
+    $rootScope.processing = true;
     $scope.callAutomationFlow = false;
+    $scope.myCart = null;
 
     if ($state.params && $state.params.name) {
         var name = $state.params.name.split(" ");
@@ -167,7 +168,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
     $scope.$on('stripe-token-received', function (event, data) {
         $scope.isPaymentSuccess = 1;
-        //$scope.processing = true;
+        //$rootScope.processing = true;
         $scope.$apply();
         getMakePayment(data);
     });
@@ -202,6 +203,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
         angular.forEach($scope.payment.items, function (item) {
             delete item.qty;
+            delete item.id;
         });
 
         $http({
@@ -241,7 +243,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         }).then(function (response, status) {
             console.log(response);
             console.log("Receipt sent.")
-            $scope.processing = false;
+            $rootScope.processing = false;
             sendMessageToBot($scope.messagetobot);
             if ($scope.resultCount == 2) {
                 $scope.sendQuickReplyToBot();
@@ -250,7 +252,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             console.log(response);
             console.log("else.....")
             alert("Error occured when sending the Receipt to Messenger")
-            $scope.processing = false;
+            $rootScope.processing = false;
         });
     }
 
@@ -274,7 +276,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             console.log(response);
             console.log("Receipt sent.")
             $scope.isPaymentSuccess = 2;
-            $scope.processing = false;
+            $rootScope.processing = false;
             if ($scope.resultCount == 2) {
                 $scope.sendQuickReplyToBot();
             }
@@ -282,7 +284,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             console.log(response);
             console.log("else.....")
             alert("Error occured when sending the Receipt to Messenger")
-            $scope.processing = false;
+            $rootScope.processing = false;
         });
     }
 
@@ -318,17 +320,17 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             console.log(response);
             console.log("Quickreply sent.")
             $scope.isPaymentSuccess = 1;
-            $scope.processing = false;
+            $rootScope.processing = false;
         }, function (response, status) {
             console.log(response);
             console.log("else.....")
             alert("Error occured when sending the Receipt to Messenger");
-            $scope.processing = false;
+            $rootScope.processing = false;
         });
     }
 
     function getProfile(name) {
-        $scope.processing = true;
+        $rootScope.processing = true;
         $http({
             method: "GET",
             url: $systemUrls.invoiceService + "/GetProfile/" + (name || ""),
@@ -344,19 +346,19 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 $scope.user['lname'] = profile.last_name;
                 $scope.user['email'] = profile.email_addr;
                 $scope.user['profileID'] = profile.profileId;
-                $scope.processing = false;
+                $rootScope.processing = false;
             } else {
                 alert(response.data.CustomMessage);
-                $scope.processing = false;
+                $rootScope.processing = false;
             }
         }, function (response, status) {
             alert(response.data.CustomMessage);
-            $scope.processing = false;
+            $rootScope.processing = false;
         });
     }
 
     function getCartItems(userID) {
-        $scope.processing = true;
+        $rootScope.processing = true;
         $http({
             method: "GET",
             url: "https://ylo8l1i5j2.execute-api.us-east-1.amazonaws.com/Prod/cart/" + userID,
@@ -370,16 +372,17 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 $scope.payment.items = [];
                 $scope.payment.totalamount = 0;
                 if (response.data.Result != null) {
-                    var items = response.data.Result.cartItems;
-                    angular.forEach(items, function (item) {
+                    $scope.myCart = response.data.Result;
+                    angular.forEach($scope.myCart.cartItems, function (item) {
                         var obj = {
+                            "id": item.id,
                             "title": item.name,
                             "subtitle": "",
                             "price": parseFloat(item.value),
                             "currency": response.data.Result.rawData.currency,
                             "subtitle": item.shortdescription,
                             "image_url": item.image_url,
-                            "qty": item.qty
+                            "qty": parseInt(item.qty)
                         }
                         $scope.payment.items.push(obj);
                         $scope.payment.totalamount += parseFloat(item.value) * parseInt(item.qty);
@@ -391,20 +394,47 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 }
                 // update stripe config
                 $rootScope.$broadcast('stripe-config-updated', $scope.config);
-                $scope.processing = false;
+                $rootScope.processing = false;
+                $scope.$apply();
             } else {
                 alert(response.data.CustomMessage);
-                $scope.processing = false;
+                $rootScope.processing = false;
             }
         }, function (response, status) {
             alert(response.data.CustomMessage);
-            $scope.processing = false;
+            $rootScope.processing = false;
+        });
+    }
+
+    $scope.updatedQty = function (prod) {
+        //alert("changed");
+        $rootScope.processing = true;
+        angular.forEach($scope.myCart.cartItems, function (item) {
+            if (item.id == prod.id) {
+                item.qty = prod.qty.toString();
+            }
+        });
+        $http({
+            method: "PUT",
+            url: "https://ylo8l1i5j2.execute-api.us-east-1.amazonaws.com/Prod/cart/" + $scope.userID,
+            headers: {
+                "Authorization": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzdWtpdGhhIiwianRpIjoiYWEzOGRmZWYtNDFhOC00MWUyLTgwMzktOTJjZTY0YjM4ZDFmIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE5MDIzODExMTgsInRlbmFudCI6LTEsImNvbXBhbnkiOi0xLCJzY29wZSI6W3sicmVzb3VyY2UiOiJhbGwiLCJhY3Rpb25zIjoiYWxsIn1dLCJpYXQiOjE0NzAzODExMTh9.Gmlu00Uj66Fzts-w6qEwNUz46XYGzE8wHUhAJOFtiRo",
+                "Content-Type": "application/json",
+                "companyInfo": "1:103"
+            },
+            data: $scope.myCart
+        }).then(function (response, status) {
+            console.log("Cart is updated");
+            getCartItems($scope.userID);
+        }, function (response, status) {
+            alert(response.data.CustomMessage);
+            $rootScope.processing = false;
         });
     }
 
     function callautomation(sessionID) {
         debugger
-        $scope.processing = true;
+        $rootScope.processing = true;
         var payload = {
             "InSessionID": sessionID,
             "SessionData": "{}",
@@ -422,16 +452,16 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             data: payload
         }).then(function (response, status) {
             console.log("Automation invoked");
-            $scope.processing = false;
+            $rootScope.processing = false;
             sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
         }, function (response, status) {
             alert(response.data.CustomMessage);
-            $scope.processing = false;
+            $rootScope.processing = false;
         });
     }
 
     function removeCart(userID) {
-        $scope.processing = true;
+        $rootScope.processing = true;
         $http({
             method: "DELETE",
             url: "https://ylo8l1i5j2.execute-api.us-east-1.amazonaws.com/Prod/cart/" + userID,
@@ -442,20 +472,28 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             }
         }).then(function (response, status) {
             console.log("Cart is deleted");
-            $scope.processing = false;
+            $rootScope.processing = false;
         }, function (response, status) {
             alert(response.data.CustomMessage);
-            $scope.processing = false;
+            $rootScope.processing = false;
         });
     }
 
+    $scope.removenow = function () {
+        document.getElementById('id01').style.display = 'none'
+        removeFromCart($scope.itemIDtoremove);
+    }
+
     $scope.removeme = function (id) {
-        if (confirm('Are you sure you want to remove the item from the cart?')) {
-            removeFromCart(id);
-        }
+        $scope.itemIDtoremove = id;
+        document.getElementById('id01').style.display = 'block';
+        // if (confirm('Are you sure you want to remove the item from the cart?')) {
+        //     removeFromCart(id);
+        // }
+        $scope.$apply();
     }
     function removeFromCart(id) {
-        $scope.processing = true;
+        $rootScope.processing = true;
 
         var payload = {
             "item": {
@@ -472,11 +510,11 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             }
         }).then(function (response, status) {
             console.log("itme is deleted");
-            $scope.processing = false;
+            $rootScope.processing = false;
             getCartItems($scope.userID);
         }, function (response, status) {
             alert(response.data.CustomMessage);
-            $scope.processing = false;
+            $rootScope.processing = false;
         });
     }
 
@@ -487,7 +525,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         //dbf-5c8747e6f9c5669f7a151c85-2549010211837333
         sessionID = sessionID.replace(':', '-');
         sessionID = sessionID.replace(':', '-');
-        $scope.processing = true;
+        $rootScope.processing = true;
         $http({
             method: "GET",
             url: "https://smoothbotdispatcher.plus.smoothflow.io/DBF/API/1.0.0/getContext/" + sessionID,
@@ -500,9 +538,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             console.log("Context Data retrived.");
             // debugger
             $scope.contextData = response.data.message;
-            $scope.processing = false;
         }, function (response, status) {
-            $scope.processing = false;
+            $rootScope.processing = false;
         });
     }
 
@@ -527,15 +564,15 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             data: payload
         }).then(function (response, status) {
             debugger
-            if(response.data.IsSuccess){
+            if (response.data.IsSuccess) {
                 console.log("Payment Confirmation received.");
                 callautomation($scope.SessionID)
-            }else{
+            } else {
                 alert(response.data.Exception.Message);
                 $scope.isPaymentSuccess = 0;
             }
         }, function (response, status) {
-            $scope.processing = false;
+            $rootScope.processing = false;
             alert(response);
         });
     }

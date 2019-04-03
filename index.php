@@ -18,10 +18,15 @@
 
     <link rel="stylesheet" href="css/font.css" type="text/css" />
     <link rel="stylesheet" href="css/app.css" type="text/css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 </head>
 
-<body ng-controller="MainController">
+<body ng-controller="MainController" ng-init="$root.processing = true">
+    <div class="box" ng-if="$root.processing == true"> <!---->
+        <img src="img/loading.gif" alt="Paris" style="height: 75px; width: 75px;  margin-left: calc(50% - 37px);
+  margin-top: calc(50vh - 37px);">
+    </div>
     <div class="app app-header-fixed ">
         <div ui-view></div>
     </div>
