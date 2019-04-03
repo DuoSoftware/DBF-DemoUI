@@ -149,8 +149,30 @@
             <!-- ng-click="pay()"  -->
             <div class="text-center">
                 <button type="submit" class="btn btn-primary" stripe-payment="config"
-                    ng-disabled="paymentForm.$invalid || processing">{{checkoutbutton}}</button>
+                    ng-disabled="paymentForm.$invalid || processing"
+                    style="padding: 10px 20px;/*font-size: large;*/">{{checkoutbutton}}</button>
             </div>
+
+            <div class="text-center">
+
+                <div style="margin-top:20px;">
+                    <img style="padding:5px; height: 50px;" src="img/visa.png" alt="visa">
+                    <img style="padding:5px; height: 50px;" src="img/mastercard.png" alt="visa">
+                    <img style="padding:5px; height: 50px;" src="img/amex.png" alt="visa">
+                    <img style="padding:5px; height: 50px;" src="img/discover.png" alt="visa">
+                    <img style="padding:5px; height: 50px;" src="img/jbc.png" alt="visa">
+                    <img style="padding:5px; height: 50px;" src="img/dinersclub.png" alt="visa">
+                </div>
+
+                <img style="padding:15px;" src="img/powered_by_stripe.svg" alt="stripe">
+
+                <ul style="list-style: none;padding: 0px;">
+                    <li><span style="color:green; font-weight: bold">✓</span> HTTPS and HSTS Connection</li>
+                    <li><span style="color:green; font-weight: bold">✓</span> Encryption of Sensitive</li>
+                    <li><span style="color:green; font-weight: bold">✓</span> PGP Standards</li>
+                </ul>
+            </div>
+
         </form>
         <div class="line line-dashed" ng-if="isPaymentSuccess == 1"></div>
         <div class="line line-dashed" ng-if="isPaymentSuccess == 1"></div>
