@@ -65,15 +65,25 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         // smooth dialog = EAAMegfEn8iEBAB7DqOh0roEZB3LvjQcxQsGOrGfTpiQLvO7c1EJzsHMqXqkYqmXeaf3ctj1JZAj3h45odjev5MSswAi3JWZAQHolMIxlwSbTzATmIYxxta4wvyLymp0oDDJ0Iw6L4YKPaouadv77gamVf3n1U7ootbluZCZBJTAZDZD
         if ($scope.botID == "5c66bc5cf9c5660c4a14b85f") {
             // Smooth Insurance
-            $scope.pageAccessToken = "EAAMegfEn8iEBAP7beeCLwEL36plT7EXJbgqD9Lr9oSURMu2KZBh9ruDsdInXLW8eqZBZBLM9zozZAiNWZCZAdvTOIHra1KQC42gmUb2g8I04hMZA3BqUIT7u5Gq4bkFJUXqpI3CS0LukrzH00IAOm9vXjMGlEi7TX1fCPheG1x4yU0KcVFGNM5Y4cwRHLp1Ef8ZD";
+            $scope.pageAccessToken = "EAAMegfEn8iEBAFD0VC8IHRxIRt5SaLKtHWN9SKEsC3udnR6Hual2JvdadWV1ZC4xlNWIZCim17Ecspv1LbDNp9aemzZBAzuGYDphP9hEQNUd2IA1Yz0e4ff1YWDPn1QdDoJLKlo0cSISmZA7GldKPI9pd21ttY5tMMZCYYbmx7Mwhy7NNKsVC7zlHJBx8xhsZD";
             $scope.receiptUrl = "https://www.smoothflow.io/";
             $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/smooth%20insurance.jpg";
             $scope.messagetobot = "Insurance payment has been received. Your reference no is XXXXX. Get insured with Smooth Insurance. ";
 
             $scope.payment.totalamount = 10000;
             $scope.payment.currency = "LKR";
-            $scope.payment.name = "Life Saver";
+            $scope.payment.name = "Health Protector";
             $scope.payment.tenture = "1 Year of Policy Tenure";
+            $scope.payment.items = [
+                {
+                    "title": $scope.payment.name,
+                    "subtitle": $scope.payment.tenture,
+                    "price": $scope.payment.totalamount,
+                    "currency": $scope.payment.currency,
+                    "image_url": $scope.receiptImage
+                }
+            ]
+            $rootScope.processing = false;
         }
         if ($scope.botID == "5c517f1a24b77186e0297aa4") {
             // Smooth Telecom
@@ -167,10 +177,16 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     }
 
     $scope.$on('stripe-token-received', function (event, data) {
-        $scope.isPaymentSuccess = 1;
-        //$rootScope.processing = true;
-        $scope.$apply();
-        getMakePayment(data);
+        if ($scope.botID == "5c8747e6f9c5669f7a151c85") {
+            $scope.isPaymentSuccess = 1;
+            //$rootScope.processing = true;
+            $scope.$apply();
+            getMakePayment(data);
+        }
+        if ($scope.botID == "5c66bc5cf9c5660c4a14b85f") {
+            $scope.isPaymentSuccess = 1;
+            sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
+        }
     });
 
     $scope.resultCount = 0;
@@ -408,7 +424,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
     $scope.updatedQty = function (prod) {
         //alert("changed");
-        if(prod.qty == "0" || prod.qty == "" || prod.qty == null){
+        if (prod.qty == "0" || prod.qty == "" || prod.qty == null) {
             return
         }
         $rootScope.processing = true;
