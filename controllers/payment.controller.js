@@ -85,6 +85,28 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             ]
             $rootScope.processing = false;
         }
+        if ($scope.botID == "5cac5bb3158f7fabbad05141") {
+            // Insurance demo
+            $scope.pageAccessToken = "EAAMegfEn8iEBAAo7SgVCuUUbgsddMC8zIgxRhZBgSXilLtWUyhuFYRREEIuIZAZC8H9sbYFG7hAQKybrMwiGhaRnQoDwOZBVVKxM8bLnO6hNeBHQVTmZBhWslZBmFAvqjD4l7iOs9c5nupLG6FqOWqRs6gR8cROivxlBfiC0Bs7Qgza7WLcxFUGLtP3uuCwlgZD";
+            $scope.receiptUrl = "https://www.smoothflow.io/";
+            $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/smooth%20insurance.jpg";
+            $scope.messagetobot = "Insurance payment has been received. Your reference no is XXXXX. Get insured with Smooth Insurance. ";
+
+            $scope.payment.totalamount = 10000;
+            $scope.payment.currency = "LKR";
+            $scope.payment.name = "Good Health";
+            $scope.payment.tenture = "1 Year of Policy Tenure";
+            $scope.payment.items = [
+                {
+                    "title": $scope.payment.name,
+                    "subtitle": $scope.payment.tenture,
+                    "price": $scope.payment.totalamount,
+                    "currency": $scope.payment.currency,
+                    "image_url": $scope.receiptImage
+                }
+            ]
+            $rootScope.processing = false;
+        }
         if ($scope.botID == "5c517f1a24b77186e0297aa4") {
             // Smooth Telecom
             $scope.pageAccessToken = "EAAMegfEn8iEBAKWGxlwNfpaxuZBAh3rLGMv996y58USfG9mcPfW2w60QAutGZBPngFTC4ncqFxnLRG6qyEeZBCb5wZC6W7SH66AfeYZB8M739hXlVQUlLYJEEvk8Qar56JM9RrlysDOrIPAHZBh3cs9JDjZCQct2CLvQvAnLR6ZCjwZDZD";
@@ -183,7 +205,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.$apply();
             getMakePayment(data);
         }
-        if ($scope.botID == "5c66bc5cf9c5660c4a14b85f") {
+        if ($scope.botID == "5c66bc5cf9c5660c4a14b85f" ||
+            $scope.botID == "5cac5bb3158f7fabbad05141"
+        ) {
             $scope.isPaymentSuccess = 1;
             sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
         }
