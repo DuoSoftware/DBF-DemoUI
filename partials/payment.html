@@ -21,10 +21,54 @@
                     <label for="inputAddress">Policy Name</label>
                     <input type="text" class="form-control" ng-model="payment.name" placeholder="" ng-readonly="true">
                 </div>
-                <div class="form-group">
+                <div class="form-check">
                     <label for="inputAddress">Policy Tenure</label>
-                    <input type="text" class="form-control" ng-model="payment.tenture" placeholder=""
-                        ng-readonly="true">
+                    <table style="width:100%">
+                        <tr>
+                            <th>
+                                <center>
+                                    <button type="button" class="btn btn-secondary btn-group btn-group-lg"><input
+                                            class="form-check-input" type="radio" name="exampleRadios"
+                                            id="exampleRadios1" ng-value="{{tentureOpt1}}" checked
+                                            ng-model="payment.totalamount">
+                                        <label class="form-check-label" for="exampleRadios1">
+                                            1 Year
+                                        </label></center></button>
+
+                            </th>
+                            <th>
+                                <center>
+                                    <button type="button" class="btn btn-secondary"><input class="form-check-input"
+                                            type="radio" name="exampleRadios" id="exampleRadios1"
+                                            ng-value="{{tentureOpt2}}" ng-model="payment.totalamount">
+                                        <label class="form-check-label" for="exampleRadios1">
+                                            2 Years
+                                        </label></button>
+                                </center>
+                            </th>
+                            <th>
+                                <center>
+                                    <button type="button" class="btn btn-secondary"><input class="form-check-input"
+                                            type="radio" name="exampleRadios" id="exampleRadios1"
+                                            ng-value="{{tentureOpt3}}" ng-model="payment.totalamount">
+                                        <label class="form-check-label" for="exampleRadios1">
+                                            3 Years
+                                        </label></button>
+                                </center>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <center>LKR {{tentureOpt1}}</center>
+                            </td>
+                            <td>
+                                <center>LKR {{tentureOpt2}}</center>
+                            </td>
+                            <td>
+                                <center>LKR {{tentureOpt3}}</center>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="form-group">
                     <label for="inputAddress">Premium</label>

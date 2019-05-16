@@ -92,7 +92,11 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/smooth%20insurance.jpg";
             $scope.messagetobot = "Insurance payment has been received. Your reference no is XXXXX. Get insured with Smooth Insurance. ";
 
-            $scope.payment.totalamount = 10000;
+            $scope.tentureOpt1 = 15000;
+            $scope.tentureOpt2 = 25000;
+            $scope.tentureOpt3 = 35000;
+
+            $scope.payment.totalamount = 15000;
             $scope.payment.currency = "LKR";
             $scope.payment.name = "Good Health";
             $scope.payment.tenture = "1 Year of Policy Tenure";
