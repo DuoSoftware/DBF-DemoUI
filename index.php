@@ -44,6 +44,7 @@
     <script type="text/javascript" src="js/controllers/uiKernal.js"></script>
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="controllers/signin.controller.js"></script>
+    <script type="text/javascript" src="controllers/dialog.controller.js"></script>
     <script type="text/javascript" src="controllers/signup.controller.js"></script>
     <script type="text/javascript" src="controllers/payment.controller.js"></script>
     <script type="text/javascript" src="controllers/verifymobile.controller.js"></script>
