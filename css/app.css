@@ -1076,7 +1076,7 @@ body {
 
 @media (max-width: 767px) {
   body {
-    height: auto;
+    /* height: auto; */
     min-height: 100%;
   }
   .navbar-fixed-bottom {
