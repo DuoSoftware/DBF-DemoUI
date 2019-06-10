@@ -130,38 +130,41 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 }
             ]
         }
-        if ($scope.botID == "5bc8649c629e48a59214e7cd") {
+        if ($scope.botID == "5cfa4cd8aa087d1136c7e6c0") {
+            debugger
             // Smooth Apperal
-            $scope.pageAccessToken = "EAAMegfEn8iEBAKYf9HSH47JPZAz5i0NRW8HZA2zZCRLCyV8UeC4HUdTkhevS0PU5eFbcS4e1HhWoeuzcvLzjxwvkvBEdZAd1EOVHiZCdOKcTCFVyskUKch6yXlHiJitZCyNWsx7tt5KiCE02xOn1t82QixzYZAEGHZCNWSqV5xMcuAZDZD";
+            $scope.pageAccessToken = "EAAMegfEn8iEBACZCkddYgddkBUFytZCt4rzBat2MB5n3z5woEHYI7hknxos7nAfAOIl8q78Gxvd0dDI2KZCjibZBjrvPObyUpi1deYh82WUPGaMgTxpGP37IntJwEWMJdVEVwOiH1ZBIcbhbOEnJiI1LFx3YNIQHfF6YMpxqRFVYgZCd3dBQUj";
             $scope.receiptUrl = "https://www.smoothflow.io/";
             $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/SMOOTH%20INSURANCE%20(1).jpg";
             $scope.messagetobot = "Thank you for choosing Smooth Apperal. Your order has been confirmed. A reference has been sent to your mobile. Please visit the chosen branch to collect your order.";
 
-            $scope.payment.totalamount = 175;
-            $scope.payment.currency = "USD";
-            $scope.payment.items = [
-                {
-                    "title": "JEAN PANTACOURT DÉCONTRACTÉ",
-                    "subtitle": "",
-                    "price": 75,
-                    "currency": "USD",
-                    "image_url": "https://s3.amazonaws.com/botmediastorage/regular_DÉCONTRACTÉ.jpg"
-                },
-                {
-                    "title": "BRILLIANT LIGHTING T-SHIRT",
-                    "subtitle": "",
-                    "price": 50,
-                    "currency": "USD",
-                    "image_url": "https://s3.amazonaws.com/botmediastorage/BRILLIANT_LIGHTING_T-SHIRT.jpg"
-                },
-                {
-                    "title": "CHINO TROUSERS NEW",
-                    "subtitle": "",
-                    "price": 50,
-                    "currency": "USD",
-                    "image_url": "https://s3.amazonaws.com/botmediastorage/CHINO_TROUSERS_NEW_SHORT_CUT.jpg"
-                }
-            ]
+            getCartItems($scope.userID)
+            $scope.removeCartOncompletion = true;
+            $scope.callAutomationFlow = true;
+            getContextData($scope.SessionID);
+            // $scope.payment.items = [
+            //     {
+            //         "title": "JEAN PANTACOURT DÉCONTRACTÉ",
+            //         "subtitle": "",
+            //         "price": 75,
+            //         "currency": "USD",
+            //         "image_url": "https://s3.amazonaws.com/botmediastorage/regular_DÉCONTRACTÉ.jpg"
+            //     },
+            //     {
+            //         "title": "BRILLIANT LIGHTING T-SHIRT",
+            //         "subtitle": "",
+            //         "price": 50,
+            //         "currency": "USD",
+            //         "image_url": "https://s3.amazonaws.com/botmediastorage/BRILLIANT_LIGHTING_T-SHIRT.jpg"
+            //     },
+            //     {
+            //         "title": "CHINO TROUSERS NEW",
+            //         "subtitle": "",
+            //         "price": 50,
+            //         "currency": "USD",
+            //         "image_url": "https://s3.amazonaws.com/botmediastorage/CHINO_TROUSERS_NEW_SHORT_CUT.jpg"
+            //     }
+            // ]
         }
         if ($scope.botID == "5c94b7fd158f7fa10acf68b8") {
             debugger
@@ -203,6 +206,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     }
 
     $scope.$on('stripe-token-received', function (event, data) {
+        debugger
         if ($scope.botID == "5c8747e6f9c5669f7a151c85") {
             $scope.isPaymentSuccess = 1;
             //$rootScope.processing = true;
@@ -210,7 +214,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             getMakePayment(data);
         }
         if ($scope.botID == "5c66bc5cf9c5660c4a14b85f" ||
-            $scope.botID == "5cac5bb3158f7fabbad05141"
+            $scope.botID == "5cac5bb3158f7fabbad05141" ||
+            $scope.botID == "5cfa4cd8aa087d1136c7e6c0"
         ) {
             $scope.isPaymentSuccess = 1;
             sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
