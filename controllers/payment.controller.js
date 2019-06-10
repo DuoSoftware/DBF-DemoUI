@@ -300,6 +300,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             console.log("Receipt sent.")
             $scope.isPaymentSuccess = 2;
             $rootScope.processing = false;
+            if($scope.removeCartOncompletion){
+                removeCart($scope.userID);
+            }
             if ($scope.resultCount == 2) {
                 $scope.sendQuickReplyToBot();
             }
