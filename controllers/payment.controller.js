@@ -111,24 +111,17 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             ]
             $rootScope.processing = false;
         }
-        if ($scope.botID == "5c517f1a24b77186e0297aa4") {
+        if ($scope.botID == "5cfdf9dcb855a87edbd756ac") {
             // Smooth Telecom
-            $scope.pageAccessToken = "EAAMegfEn8iEBAKWGxlwNfpaxuZBAh3rLGMv996y58USfG9mcPfW2w60QAutGZBPngFTC4ncqFxnLRG6qyEeZBCb5wZC6W7SH66AfeYZB8M739hXlVQUlLYJEEvk8Qar56JM9RrlysDOrIPAHZBh3cs9JDjZCQct2CLvQvAnLR6ZCjwZDZD";
+            $scope.pageAccessToken = "EAAMegfEn8iEBADwZBU6CsEv5uBl4NMXjKe6Xh3X53Kyhbtd4hQNiyvf86WXjTtR1uaxbfqSlmxoZAjuZBsUZBU9QddcgWDyQYSf5vdjJSDCLfE1fae43BcA3DN02sn3ARfAbPUaOb01PuKGGRf5gmdf7ZChGnEUtEErfxES9ZBEgZDZD";
             $scope.receiptUrl = "https://www.smoothflow.io/";
             $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/smooth-Telecom.jpg";
-            $scope.messagetobot = "Thank you for choosing Smooth Telecom. Your order has been confirmed. A reference has been sent to your mobile. Please visit the chosen branch to collect your order.";
+            $scope.messagetobot = "Thank you for choosing Sri Lanka Telecom. Your order has been confirmed. A reference has been sent to your mobile. Please visit the chosen branch to collect your order.";
 
-            $scope.payment.totalamount = 0;
-            $scope.payment.currency = "LKR";
-            $scope.payment.items = [
-                {
-                    "title": "Smooth Telecom",
-                    "subtitle": "",
-                    "price": $scope.payment.totalamount,
-                    "currency": $scope.payment.currency,
-                    "image_url": "https://s3.amazonaws.com/botmediastorage/smooth-Telecom.jpg"
-                }
-            ]
+            getCartItems($scope.userID)
+            $scope.removeCartOncompletion = true;
+            $scope.callAutomationFlow = true;
+            getContextData($scope.SessionID);
         }
         if ($scope.botID == "5cfa4cd8aa087d1136c7e6c0") {
             debugger
@@ -195,7 +188,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         if ($scope.botID == "5c66bc5cf9c5660c4a14b85f" ||
             $scope.botID == "5cac5bb3158f7fabbad05141" ||
             $scope.botID == "5cfa4cd8aa087d1136c7e6c0" ||
-            $scope.botID == "5cf8f455b3bddfc7f663af82"
+            $scope.botID == "5cf8f455b3bddfc7f663af82" ||
+            $scope.botID == "5cfdf9dcb855a87edbd756ac"
         ) {
             $scope.isPaymentSuccess = 1;
             sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
