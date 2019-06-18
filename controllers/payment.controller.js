@@ -387,9 +387,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         $rootScope.processing = true;
         $http({
             method: "GET",
-            url: "https://ylo8l1i5j2.execute-api.us-east-1.amazonaws.com/Prod/cart/" + userID,
+            url: "https://7b69tvp6cj.execute-api.us-east-1.amazonaws.com/Prod/cart/" + userID,
             headers: {
-                "Authorization": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzdWtpdGhhIiwianRpIjoiYWEzOGRmZWYtNDFhOC00MWUyLTgwMzktOTJjZTY0YjM4ZDFmIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE5MDIzODExMTgsInRlbmFudCI6LTEsImNvbXBhbnkiOi0xLCJzY29wZSI6W3sicmVzb3VyY2UiOiJhbGwiLCJhY3Rpb25zIjoiYWxsIn1dLCJpYXQiOjE0NzAzODExMTh9.Gmlu00Uj66Fzts-w6qEwNUz46XYGzE8wHUhAJOFtiRo",
+                "x-api-key": "XcY9lhgnud1JUum05XFT02r37wagFtOLdCH7RKz8",
                 "Content-Type": "application/json",
                 "companyInfo": "1:103"
             }
@@ -445,9 +445,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         });
         $http({
             method: "PUT",
-            url: "https://ylo8l1i5j2.execute-api.us-east-1.amazonaws.com/Prod/cart/" + $scope.userID,
+            url: "https://7b69tvp6cj.execute-api.us-east-1.amazonaws.com/Prod/cart/" + $scope.userID,
             headers: {
-                "Authorization": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzdWtpdGhhIiwianRpIjoiYWEzOGRmZWYtNDFhOC00MWUyLTgwMzktOTJjZTY0YjM4ZDFmIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE5MDIzODExMTgsInRlbmFudCI6LTEsImNvbXBhbnkiOi0xLCJzY29wZSI6W3sicmVzb3VyY2UiOiJhbGwiLCJhY3Rpb25zIjoiYWxsIn1dLCJpYXQiOjE0NzAzODExMTh9.Gmlu00Uj66Fzts-w6qEwNUz46XYGzE8wHUhAJOFtiRo",
+                "x-api-key": "XcY9lhgnud1JUum05XFT02r37wagFtOLdCH7RKz8",
                 "Content-Type": "application/json",
                 "companyInfo": "1:103"
             },
@@ -474,7 +474,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         }
         $http({
             method: "POST",
-            url: "https://eshwaranbroscarelaemailconfirmation.plus.smoothflow.io/eshwaranbroscarelaemailconfirmation/smoothflow/Invoke?apikey=",
+            url: "https://222245carelaemailconfirmation.plus.smoothflow.io/222245carelaemailconfirmation/smoothflow/Invoke?apikey=",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -493,9 +493,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         $rootScope.processing = true;
         $http({
             method: "DELETE",
-            url: "https://ylo8l1i5j2.execute-api.us-east-1.amazonaws.com/Prod/cart/" + userID,
+            url: "https://7b69tvp6cj.execute-api.us-east-1.amazonaws.com/Prod/cart/" + userID,
             headers: {
-                "Authorization": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzdWtpdGhhIiwianRpIjoiYWEzOGRmZWYtNDFhOC00MWUyLTgwMzktOTJjZTY0YjM4ZDFmIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE5MDIzODExMTgsInRlbmFudCI6LTEsImNvbXBhbnkiOi0xLCJzY29wZSI6W3sicmVzb3VyY2UiOiJhbGwiLCJhY3Rpb25zIjoiYWxsIn1dLCJpYXQiOjE0NzAzODExMTh9.Gmlu00Uj66Fzts-w6qEwNUz46XYGzE8wHUhAJOFtiRo",
+                "x-api-key": "XcY9lhgnud1JUum05XFT02r37wagFtOLdCH7RKz8",
                 "Content-Type": "application/json",
                 "companyInfo": "1:103"
             }
@@ -531,9 +531,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         }
         $http({
             method: "PUT",
-            url: "https://ylo8l1i5j2.execute-api.us-east-1.amazonaws.com/Prod/removefromcart/" + $scope.userID,
+            url: "https://7b69tvp6cj.execute-api.us-east-1.amazonaws.com/Prod/removefromcart/" + $scope.userID,
             headers: {
-                "Authorization": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzdWtpdGhhIiwianRpIjoiYWEzOGRmZWYtNDFhOC00MWUyLTgwMzktOTJjZTY0YjM4ZDFmIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE5MDIzODExMTgsInRlbmFudCI6LTEsImNvbXBhbnkiOi0xLCJzY29wZSI6W3sicmVzb3VyY2UiOiJhbGwiLCJhY3Rpb25zIjoiYWxsIn1dLCJpYXQiOjE0NzAzODExMTh9.Gmlu00Uj66Fzts-w6qEwNUz46XYGzE8wHUhAJOFtiRo",
+                "x-api-key": "XcY9lhgnud1JUum05XFT02r37wagFtOLdCH7RKz8",
                 "Content-Type": "application/json",
                 "companyInfo": "1:103"
             }
