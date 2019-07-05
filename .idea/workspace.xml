@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f94e2eda-0fa4-4103-95ac-8c12bc665ddd" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/controllers/janashakthi.controller.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/partials/janashakthi_additional_cover.html" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change beforePath="$PROJECT_DIR$/controllers/payment.controller.js" afterPath="$PROJECT_DIR$/controllers/payment.controller.js" />
       <change beforePath="$PROJECT_DIR$/css/app.css" afterPath="$PROJECT_DIR$/css/app.css" />
+      <change beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
       <change beforePath="$PROJECT_DIR$/partials/payment.html" afterPath="$PROJECT_DIR$/partials/payment.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -16,28 +22,37 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="361">
+              <caret line="28" column="10" lean-forward="true" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="payment.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="payment.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/partials/payment.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="569">
-              <caret line="111" column="37" lean-forward="false" selection-start-line="111" selection-start-column="37" selection-end-line="111" selection-end-column="37" />
+            <state relative-caret-position="338">
+              <caret line="185" column="37" lean-forward="false" selection-start-line="185" selection-start-column="37" selection-end-line="185" selection-end-column="37" />
               <folding>
-                <element signature="e#4119#5304#0" expanded="false" />
-                <element signature="n#style#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#div#4;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#li#0;n#ul#0;n#div#0;n#div#4;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#7239#8244#0" expanded="false" />
+                <element signature="e#9969#10974#0" expanded="false" />
+                <marker date="1562308508000" expanded="true" signature="1082:9952" ph="..." />
+                <marker date="1562308508000" expanded="false" signature="15686:15702" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="317">
+              <caret line="40" column="168" lean-forward="true" selection-start-line="40" selection-start-column="168" selection-end-line="40" selection-end-column="168" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -45,9 +60,149 @@
       <file leaf-file-name="app.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/app.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="5144" column="33" lean-forward="false" selection-start-line="5144" selection-start-column="33" selection-end-line="5144" selection-end-column="33" />
+            <state relative-caret-position="240">
+              <caret line="5296" column="22" lean-forward="true" selection-start-line="5296" selection-start-column="22" selection-end-line="5296" selection-end-column="22" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="payment.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/payment.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1539">
+              <caret line="72" column="57" lean-forward="true" selection-start-line="72" selection-start-column="57" selection-end-line="72" selection-end-column="57" />
+              <folding>
+                <element signature="e#2832#2949#0" expanded="false" />
+                <element signature="e#3165#3445#0" expanded="false" />
+                <element signature="e#3874#3895#0" expanded="false" />
+                <element signature="e#4156#5351#0" expanded="false" />
+                <element signature="e#4974#5298#0" expanded="false" />
+                <element signature="e#4992#5284#0" expanded="false" />
+                <element signature="e#5991#6015#0" expanded="false" />
+                <element signature="e#6367#6691#0" expanded="false" />
+                <element signature="e#6385#6677#0" expanded="false" />
+                <element signature="e#6802#7609#0" expanded="false" />
+                <element signature="e#7666#8507#0" expanded="false" />
+                <element signature="e#8564#9399#0" expanded="false" />
+                <element signature="e#9456#10196#0" expanded="false" />
+                <element signature="e#10253#10999#0" expanded="false" />
+                <element signature="e#10267#10277#0" expanded="false" />
+                <element signature="e#11070#11080#0" expanded="false" />
+                <element signature="e#11967#12652#0" expanded="false" />
+                <element signature="e#12042#12201#0" expanded="false" />
+                <element signature="e#12499#12646#0" expanded="false" />
+                <element signature="e#12718#12745#0" expanded="false" />
+                <element signature="e#12751#12754#0" expanded="false" />
+                <element signature="e#13032#13037#0" expanded="false" />
+                <element signature="n#!!block;n#sendReciptToBot#0;n#!!block;n#paymentController#0" expanded="false" />
+                <element signature="e#13433#13501#0" expanded="false" />
+                <element signature="e#13519#14997#0" expanded="false" />
+                <element signature="e#13673#13740#0" expanded="false" />
+                <element signature="e#13760#14987#0" expanded="false" />
+                <element signature="e#13837#13903#0" expanded="false" />
+                <element signature="e#13932#14973#0" expanded="false" />
+                <element signature="e#13968#14955#0" expanded="false" />
+                <element signature="e#14049#14933#0" expanded="false" />
+                <element signature="e#14516#14798#0" expanded="false" />
+                <element signature="e#15032#15316#0" expanded="false" />
+                <element signature="e#15245#15306#0" expanded="false" />
+                <element signature="e#15346#15545#0" expanded="false" />
+                <element signature="n#!!block;n#sendMessageToBot#0;n#!!block;n#paymentController#0" expanded="false" />
+                <element signature="e#15610#16102#0" expanded="false" />
+                <element signature="e#15764#15831#0" expanded="false" />
+                <element signature="e#15851#16092#0" expanded="false" />
+                <element signature="e#15928#15994#0" expanded="false" />
+                <element signature="e#16023#16078#0" expanded="false" />
+                <element signature="e#16137#16515#0" expanded="false" />
+                <element signature="e#16344#16402#0" expanded="false" />
+                <element signature="e#16444#16505#0" expanded="false" />
+                <element signature="e#16545#16744#0" expanded="false" />
+                <element signature="e#16799#18397#0" expanded="false" />
+                <element signature="e#16815#17950#0" expanded="false" />
+                <element signature="e#17128#17195#0" expanded="false" />
+                <element signature="e#17215#17940#0" expanded="false" />
+                <element signature="e#17292#17358#0" expanded="false" />
+                <element signature="e#17387#17926#0" expanded="false" />
+                <element signature="e#17496#17908#0" expanded="false" />
+                <element signature="e#17522#17690#0" expanded="false" />
+                <element signature="e#17716#17886#0" expanded="false" />
+                <element signature="e#17985#18159#0" expanded="false" />
+                <element signature="e#18189#18389#0" expanded="false" />
+                <element signature="n#!!block;n#getProfile#0;n#!!block;n#paymentController#0" expanded="false" />
+                <element signature="e#18483#19159#0" expanded="false" />
+                <element signature="e#18610#19149#0" expanded="false" />
+                <element signature="e#19194#19719#0" expanded="false" />
+                <element signature="e#19237#19589#0" expanded="false" />
+                <element signature="e#19595#19709#0" expanded="false" />
+                <element signature="e#19749#19851#0" expanded="false" />
+                <element signature="e#19949#20283#0" expanded="false" />
+                <element signature="e#20094#20273#0" expanded="false" />
+                <element signature="e#20702#21178#0" expanded="false" />
+                <element signature="e#22339#22453#0" expanded="false" />
+                <element signature="e#23079#24083#0" expanded="false" />
+                <element signature="e#23176#23206#0" expanded="false" />
+                <element signature="e#23310#23421#0" expanded="false" />
+                <element signature="e#23348#23411#0" expanded="false" />
+                <element signature="e#23438#23812#0" expanded="false" />
+                <element signature="e#23590#23769#0" expanded="false" />
+                <element signature="e#23847#23943#0" expanded="false" />
+                <element signature="e#23973#24075#0" expanded="false" />
+                <element signature="n#!!block;n#callautomation#0;n#!!block;n#paymentController#0" expanded="false" />
+                <element signature="e#24203#24516#0" expanded="false" />
+                <element signature="e#24531#24818#0" expanded="false" />
+                <element signature="e#24715#24781#0" expanded="false" />
+                <element signature="e#24853#25049#0" expanded="false" />
+                <element signature="e#25079#25181#0" expanded="false" />
+                <element signature="n#!!block;n#removeCart#0;n#!!block;n#paymentController#0" expanded="false" />
+                <element signature="e#25277#25614#0" expanded="false" />
+                <element signature="e#25425#25604#0" expanded="false" />
+                <element signature="e#25649#25747#0" expanded="false" />
+                <element signature="e#25777#25879#0" expanded="false" />
+                <element signature="e#25924#26041#0" expanded="false" />
+                <element signature="e#26079#26345#0" expanded="false" />
+                <element signature="e#26190#26266#0" expanded="false" />
+                <element signature="n#!!block;n#removeFromCart#0;n#!!block;n#paymentController#0" expanded="false" />
+                <element signature="e#26441#26513#0" expanded="false" />
+                <element signature="e#26463#26503#0" expanded="false" />
+                <element signature="e#26528#26879#0" expanded="false" />
+                <element signature="e#26690#26869#0" expanded="false" />
+                <element signature="e#26914#27053#0" expanded="false" />
+                <element signature="e#27083#27185#0" expanded="false" />
+                <element signature="n#!!block;n#getContextData#0;n#!!block;n#paymentController#0" expanded="false" />
+                <element signature="e#27273#27283#0" expanded="false" />
+                <element signature="e#27542#28246#0" expanded="false" />
+                <element signature="e#27697#28236#0" expanded="false" />
+                <element signature="e#28281#28423#0" expanded="false" />
+                <element signature="e#28453#28507#0" expanded="false" />
+                <element signature="n#!!block;n#getMakePayment#0;n#!!block;n#paymentController#0" expanded="false" />
+                <element signature="e#28596#28749#0" expanded="false" />
+                <element signature="e#28759#28786#0" expanded="false" />
+                <element signature="e#28856#29108#0" expanded="false" />
+                <element signature="e#29005#29071#0" expanded="false" />
+                <element signature="e#29143#29466#0" expanded="false" />
+                <element signature="e#29207#29334#0" expanded="false" />
+                <element signature="e#29340#29456#0" expanded="false" />
+                <element signature="e#29496#29579#0" expanded="false" />
+                <element signature="e#31369#31617#0" expanded="false" />
+                <element signature="e#31428#31591#0" expanded="false" />
+                <element signature="e#31647#31801#0" expanded="false" />
+                <element signature="e#31853#31908#0" expanded="false" />
+                <marker date="1562308196000" expanded="false" signature="535:1724" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="janashakthi_additional_cover.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/partials/janashakthi_additional_cover.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="8" column="22" lean-forward="true" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h4#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -59,6 +214,22 @@
       <find>check out now</find>
       <find>fa-remove</find>
       <find>bin</find>
+      <find>botid</find>
+      <find>tentureOpt1</find>
+      <find>$scope.additionalCover</find>
+      <find>$scope.payment.additionalCover</find>
+      <find>$scope.payment</find>
+      <find>5cac5bb3158f7fabbad05141</find>
+      <find>userID</find>
+      <find>$scope.userID</find>
+      <find>additionalCover</find>
+      <find>Proceed</find>
+      <find>av</find>
+      <find>totalamount</find>
+      <find>getCartItems</find>
+      <find>getCart</find>
+      <find>amount to pay</find>
+      <find>1500</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -67,9 +238,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/partials/janashakthi_basic.html" />
+        <option value="$PROJECT_DIR$/controllers/janashakthi.controller.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/controllers/payment.controller.js" />
+        <option value="$PROJECT_DIR$/partials/janashakthi_additional_cover.html" />
         <option value="$PROJECT_DIR$/css/app.css" />
         <option value="$PROJECT_DIR$/partials/payment.html" />
+        <option value="$PROJECT_DIR$/index.php" />
       </list>
     </option>
   </component>
@@ -82,7 +258,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-348" />
     <option name="y" value="-1057" />
-    <option name="width" value="1146" />
+    <option name="width" value="1115" />
     <option name="height" value="1057" />
   </component>
   <component name="ProjectView">
@@ -100,6 +276,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -108,32 +285,10 @@
               <item name="DBF-DemoUI" type="b2602c69:ProjectViewProjectNode" />
               <item name="DBF-DemoUI" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="DBF-DemoUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DBF-DemoUI" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DBF-DemoUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DBF-DemoUI" type="462c0819:PsiDirectoryNode" />
-              <item name="libs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DBF-DemoUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DBF-DemoUI" type="462c0819:PsiDirectoryNode" />
-              <item name="libs" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DBF-DemoUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DBF-DemoUI" type="462c0819:PsiDirectoryNode" />
-              <item name="partials" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -168,17 +323,20 @@
       <option name="presentableId" value="Default" />
       <updated>1554107861905</updated>
       <workItem from="1554107863180" duration="2742000" />
+      <workItem from="1562222428994" duration="11497000" />
+      <workItem from="1562258361990" duration="75000" />
+      <workItem from="1562300315882" duration="5435000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2742000" />
+    <option name="totallyTimeSpent" value="19749000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-348" y="-1057" width="1146" height="1057" extended-state="0" />
+    <frame x="-348" y="-1057" width="1115" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23822464" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18825722" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -186,7 +344,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33242753" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33198708" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -206,10 +364,420 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="25" column="58" lean-forward="false" selection-start-line="25" selection-start-column="58" selection-end-line="25" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/payment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1863">
+          <caret line="231" column="78" lean-forward="false" selection-start-line="231" selection-start-column="78" selection-end-line="231" selection-end-column="78" />
+          <folding>
+            <element signature="e#9969#10974#0" expanded="false" />
+            <marker date="1562308508000" expanded="true" signature="1082:9952" ph="..." />
+            <marker date="1562308508000" expanded="false" signature="15686:15702" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1058">
+          <caret line="46" column="63" lean-forward="false" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122107">
+          <caret line="5309" column="13" lean-forward="false" selection-start-line="5309" selection-start-column="13" selection-end-line="5309" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/janashakthi_additional_cover.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="31" lean-forward="false" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h4#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/signin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="39" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/signup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/verify-mobile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/dialog-compare.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/payment.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2737">
+          <caret line="225" column="223" lean-forward="false" selection-start-line="225" selection-start-column="38" selection-end-line="225" selection-end-column="223" />
+          <folding>
+            <element signature="e#2832#2949#0" expanded="false" />
+            <element signature="e#3165#3445#0" expanded="false" />
+            <element signature="e#3874#3895#0" expanded="false" />
+            <element signature="e#4156#5351#0" expanded="false" />
+            <element signature="e#4974#5298#0" expanded="false" />
+            <element signature="e#4992#5284#0" expanded="false" />
+            <element signature="e#5991#6015#0" expanded="false" />
+            <element signature="e#6367#6691#0" expanded="false" />
+            <element signature="e#6385#6677#0" expanded="false" />
+            <element signature="e#6802#7609#0" expanded="false" />
+            <element signature="e#7666#8507#0" expanded="false" />
+            <element signature="e#8564#9399#0" expanded="false" />
+            <element signature="e#9456#10196#0" expanded="false" />
+            <element signature="e#10253#10999#0" expanded="false" />
+            <element signature="e#10267#10277#0" expanded="false" />
+            <element signature="e#11070#11080#0" expanded="false" />
+            <element signature="e#11967#12652#0" expanded="false" />
+            <element signature="e#12042#12201#0" expanded="false" />
+            <element signature="e#12499#12646#0" expanded="false" />
+            <element signature="e#12718#12745#0" expanded="false" />
+            <element signature="e#12751#12754#0" expanded="false" />
+            <element signature="e#13032#13037#0" expanded="false" />
+            <element signature="n#!!block;n#sendReciptToBot#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#13433#13501#0" expanded="false" />
+            <element signature="e#13519#14997#0" expanded="false" />
+            <element signature="e#13673#13740#0" expanded="false" />
+            <element signature="e#13760#14987#0" expanded="false" />
+            <element signature="e#13837#13903#0" expanded="false" />
+            <element signature="e#13932#14973#0" expanded="false" />
+            <element signature="e#13968#14955#0" expanded="false" />
+            <element signature="e#14049#14933#0" expanded="false" />
+            <element signature="e#14516#14798#0" expanded="false" />
+            <element signature="e#15032#15316#0" expanded="false" />
+            <element signature="e#15245#15306#0" expanded="false" />
+            <element signature="e#15346#15545#0" expanded="false" />
+            <element signature="n#!!block;n#sendMessageToBot#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#15610#16102#0" expanded="false" />
+            <element signature="e#15764#15831#0" expanded="false" />
+            <element signature="e#15851#16092#0" expanded="false" />
+            <element signature="e#15928#15994#0" expanded="false" />
+            <element signature="e#16023#16078#0" expanded="false" />
+            <element signature="e#16137#16515#0" expanded="false" />
+            <element signature="e#16344#16402#0" expanded="false" />
+            <element signature="e#16444#16505#0" expanded="false" />
+            <element signature="e#16545#16744#0" expanded="false" />
+            <element signature="e#16799#18397#0" expanded="false" />
+            <element signature="e#16815#17950#0" expanded="false" />
+            <element signature="e#17128#17195#0" expanded="false" />
+            <element signature="e#17215#17940#0" expanded="false" />
+            <element signature="e#17292#17358#0" expanded="false" />
+            <element signature="e#17387#17926#0" expanded="false" />
+            <element signature="e#17496#17908#0" expanded="false" />
+            <element signature="e#17522#17690#0" expanded="false" />
+            <element signature="e#17716#17886#0" expanded="false" />
+            <element signature="e#17985#18159#0" expanded="false" />
+            <element signature="e#18189#18389#0" expanded="false" />
+            <element signature="n#!!block;n#getProfile#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#18483#19159#0" expanded="false" />
+            <element signature="e#18610#19149#0" expanded="false" />
+            <element signature="e#19194#19719#0" expanded="false" />
+            <element signature="e#19237#19589#0" expanded="false" />
+            <element signature="e#19595#19709#0" expanded="false" />
+            <element signature="e#19749#19851#0" expanded="false" />
+            <element signature="e#19949#20283#0" expanded="false" />
+            <element signature="e#20094#20273#0" expanded="false" />
+            <element signature="e#20702#21178#0" expanded="false" />
+            <element signature="e#22339#22453#0" expanded="false" />
+            <element signature="e#23079#24083#0" expanded="false" />
+            <element signature="e#23176#23206#0" expanded="false" />
+            <element signature="e#23310#23421#0" expanded="false" />
+            <element signature="e#23348#23411#0" expanded="false" />
+            <element signature="e#23438#23812#0" expanded="false" />
+            <element signature="e#23590#23769#0" expanded="false" />
+            <element signature="e#23847#23943#0" expanded="false" />
+            <element signature="e#23973#24075#0" expanded="false" />
+            <element signature="n#!!block;n#callautomation#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#24203#24516#0" expanded="false" />
+            <element signature="e#24531#24818#0" expanded="false" />
+            <element signature="e#24715#24781#0" expanded="false" />
+            <element signature="e#24853#25049#0" expanded="false" />
+            <element signature="e#25079#25181#0" expanded="false" />
+            <element signature="n#!!block;n#removeCart#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#25277#25614#0" expanded="false" />
+            <element signature="e#25425#25604#0" expanded="false" />
+            <element signature="e#25649#25747#0" expanded="false" />
+            <element signature="e#25777#25879#0" expanded="false" />
+            <element signature="e#25924#26041#0" expanded="false" />
+            <element signature="e#26079#26345#0" expanded="false" />
+            <element signature="e#26190#26266#0" expanded="false" />
+            <element signature="n#!!block;n#removeFromCart#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#26441#26513#0" expanded="false" />
+            <element signature="e#26463#26503#0" expanded="false" />
+            <element signature="e#26528#26879#0" expanded="false" />
+            <element signature="e#26690#26869#0" expanded="false" />
+            <element signature="e#26914#27053#0" expanded="false" />
+            <element signature="e#27083#27185#0" expanded="false" />
+            <element signature="n#!!block;n#getContextData#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#27273#27283#0" expanded="false" />
+            <element signature="e#27542#28246#0" expanded="false" />
+            <element signature="e#27697#28236#0" expanded="false" />
+            <element signature="e#28281#28423#0" expanded="false" />
+            <element signature="e#28453#28507#0" expanded="false" />
+            <element signature="n#!!block;n#getMakePayment#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#28596#28749#0" expanded="false" />
+            <element signature="e#28759#28786#0" expanded="false" />
+            <element signature="e#28856#29108#0" expanded="false" />
+            <element signature="e#29005#29071#0" expanded="false" />
+            <element signature="e#29143#29466#0" expanded="false" />
+            <element signature="e#29207#29334#0" expanded="false" />
+            <element signature="e#29340#29456#0" expanded="false" />
+            <element signature="e#29496#29579#0" expanded="false" />
+            <element signature="e#31369#31617#0" expanded="false" />
+            <element signature="e#31428#31591#0" expanded="false" />
+            <element signature="e#31647#31801#0" expanded="false" />
+            <element signature="e#31853#31908#0" expanded="false" />
+            <marker date="1562308196000" expanded="false" signature="535:1724" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="25" column="58" lean-forward="false" selection-start-line="25" selection-start-column="58" selection-end-line="25" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/payment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5313">
+          <caret line="231" column="78" lean-forward="false" selection-start-line="231" selection-start-column="78" selection-end-line="231" selection-end-column="78" />
+          <folding>
+            <element signature="e#9969#10974#0" expanded="false" />
+            <marker date="1562308508000" expanded="true" signature="1082:9952" ph="..." />
+            <marker date="1562308508000" expanded="false" signature="15686:15702" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1058">
+          <caret line="46" column="63" lean-forward="false" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122107">
+          <caret line="5309" column="13" lean-forward="false" selection-start-line="5309" selection-start-column="13" selection-end-line="5309" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/janashakthi_additional_cover.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="31" lean-forward="false" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h4#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/signin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="39" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/signup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/verify-mobile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/dialog-compare.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/payment.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2737">
+          <caret line="225" column="223" lean-forward="false" selection-start-line="225" selection-start-column="38" selection-end-line="225" selection-end-column="223" />
+          <folding>
+            <element signature="e#2832#2949#0" expanded="false" />
+            <element signature="e#3165#3445#0" expanded="false" />
+            <element signature="e#3874#3895#0" expanded="false" />
+            <element signature="e#4156#5351#0" expanded="false" />
+            <element signature="e#4974#5298#0" expanded="false" />
+            <element signature="e#4992#5284#0" expanded="false" />
+            <element signature="e#5991#6015#0" expanded="false" />
+            <element signature="e#6367#6691#0" expanded="false" />
+            <element signature="e#6385#6677#0" expanded="false" />
+            <element signature="e#6802#7609#0" expanded="false" />
+            <element signature="e#7666#8507#0" expanded="false" />
+            <element signature="e#8564#9399#0" expanded="false" />
+            <element signature="e#9456#10196#0" expanded="false" />
+            <element signature="e#10253#10999#0" expanded="false" />
+            <element signature="e#10267#10277#0" expanded="false" />
+            <element signature="e#11070#11080#0" expanded="false" />
+            <element signature="e#11967#12652#0" expanded="false" />
+            <element signature="e#12042#12201#0" expanded="false" />
+            <element signature="e#12499#12646#0" expanded="false" />
+            <element signature="e#12718#12745#0" expanded="false" />
+            <element signature="e#12751#12754#0" expanded="false" />
+            <element signature="e#13032#13037#0" expanded="false" />
+            <element signature="n#!!block;n#sendReciptToBot#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#13433#13501#0" expanded="false" />
+            <element signature="e#13519#14997#0" expanded="false" />
+            <element signature="e#13673#13740#0" expanded="false" />
+            <element signature="e#13760#14987#0" expanded="false" />
+            <element signature="e#13837#13903#0" expanded="false" />
+            <element signature="e#13932#14973#0" expanded="false" />
+            <element signature="e#13968#14955#0" expanded="false" />
+            <element signature="e#14049#14933#0" expanded="false" />
+            <element signature="e#14516#14798#0" expanded="false" />
+            <element signature="e#15032#15316#0" expanded="false" />
+            <element signature="e#15245#15306#0" expanded="false" />
+            <element signature="e#15346#15545#0" expanded="false" />
+            <element signature="n#!!block;n#sendMessageToBot#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#15610#16102#0" expanded="false" />
+            <element signature="e#15764#15831#0" expanded="false" />
+            <element signature="e#15851#16092#0" expanded="false" />
+            <element signature="e#15928#15994#0" expanded="false" />
+            <element signature="e#16023#16078#0" expanded="false" />
+            <element signature="e#16137#16515#0" expanded="false" />
+            <element signature="e#16344#16402#0" expanded="false" />
+            <element signature="e#16444#16505#0" expanded="false" />
+            <element signature="e#16545#16744#0" expanded="false" />
+            <element signature="e#16799#18397#0" expanded="false" />
+            <element signature="e#16815#17950#0" expanded="false" />
+            <element signature="e#17128#17195#0" expanded="false" />
+            <element signature="e#17215#17940#0" expanded="false" />
+            <element signature="e#17292#17358#0" expanded="false" />
+            <element signature="e#17387#17926#0" expanded="false" />
+            <element signature="e#17496#17908#0" expanded="false" />
+            <element signature="e#17522#17690#0" expanded="false" />
+            <element signature="e#17716#17886#0" expanded="false" />
+            <element signature="e#17985#18159#0" expanded="false" />
+            <element signature="e#18189#18389#0" expanded="false" />
+            <element signature="n#!!block;n#getProfile#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#18483#19159#0" expanded="false" />
+            <element signature="e#18610#19149#0" expanded="false" />
+            <element signature="e#19194#19719#0" expanded="false" />
+            <element signature="e#19237#19589#0" expanded="false" />
+            <element signature="e#19595#19709#0" expanded="false" />
+            <element signature="e#19749#19851#0" expanded="false" />
+            <element signature="e#19949#20283#0" expanded="false" />
+            <element signature="e#20094#20273#0" expanded="false" />
+            <element signature="e#20702#21178#0" expanded="false" />
+            <element signature="e#22339#22453#0" expanded="false" />
+            <element signature="e#23079#24083#0" expanded="false" />
+            <element signature="e#23176#23206#0" expanded="false" />
+            <element signature="e#23310#23421#0" expanded="false" />
+            <element signature="e#23348#23411#0" expanded="false" />
+            <element signature="e#23438#23812#0" expanded="false" />
+            <element signature="e#23590#23769#0" expanded="false" />
+            <element signature="e#23847#23943#0" expanded="false" />
+            <element signature="e#23973#24075#0" expanded="false" />
+            <element signature="n#!!block;n#callautomation#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#24203#24516#0" expanded="false" />
+            <element signature="e#24531#24818#0" expanded="false" />
+            <element signature="e#24715#24781#0" expanded="false" />
+            <element signature="e#24853#25049#0" expanded="false" />
+            <element signature="e#25079#25181#0" expanded="false" />
+            <element signature="n#!!block;n#removeCart#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#25277#25614#0" expanded="false" />
+            <element signature="e#25425#25604#0" expanded="false" />
+            <element signature="e#25649#25747#0" expanded="false" />
+            <element signature="e#25777#25879#0" expanded="false" />
+            <element signature="e#25924#26041#0" expanded="false" />
+            <element signature="e#26079#26345#0" expanded="false" />
+            <element signature="e#26190#26266#0" expanded="false" />
+            <element signature="n#!!block;n#removeFromCart#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#26441#26513#0" expanded="false" />
+            <element signature="e#26463#26503#0" expanded="false" />
+            <element signature="e#26528#26879#0" expanded="false" />
+            <element signature="e#26690#26869#0" expanded="false" />
+            <element signature="e#26914#27053#0" expanded="false" />
+            <element signature="e#27083#27185#0" expanded="false" />
+            <element signature="n#!!block;n#getContextData#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#27273#27283#0" expanded="false" />
+            <element signature="e#27542#28246#0" expanded="false" />
+            <element signature="e#27697#28236#0" expanded="false" />
+            <element signature="e#28281#28423#0" expanded="false" />
+            <element signature="e#28453#28507#0" expanded="false" />
+            <element signature="n#!!block;n#getMakePayment#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#28596#28749#0" expanded="false" />
+            <element signature="e#28759#28786#0" expanded="false" />
+            <element signature="e#28856#29108#0" expanded="false" />
+            <element signature="e#29005#29071#0" expanded="false" />
+            <element signature="e#29143#29466#0" expanded="false" />
+            <element signature="e#29207#29334#0" expanded="false" />
+            <element signature="e#29340#29456#0" expanded="false" />
+            <element signature="e#29496#29579#0" expanded="false" />
+            <element signature="e#31369#31617#0" expanded="false" />
+            <element signature="e#31428#31591#0" expanded="false" />
+            <element signature="e#31647#31801#0" expanded="false" />
+            <element signature="e#31853#31908#0" expanded="false" />
+            <marker date="1562308196000" expanded="false" signature="535:1724" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
@@ -218,17 +786,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/assets/font-awesome/css/font-awesome.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="281" column="19" lean-forward="true" selection-start-line="281" selection-start-column="19" selection-end-line="281" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
+        <state relative-caret-position="118312">
           <caret line="5144" column="33" lean-forward="false" selection-start-line="5144" selection-start-column="33" selection-end-line="5144" selection-end-column="33" />
           <folding />
         </state>
@@ -236,14 +796,283 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/partials/payment.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
+        <state relative-caret-position="2116">
           <caret line="111" column="37" lean-forward="false" selection-start-line="111" selection-start-column="37" selection-end-line="111" selection-end-column="37" />
           <folding>
-            <element signature="e#4119#5304#0" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#div#4;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#li#0;n#ul#0;n#div#0;n#div#4;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#7239#8244#0" expanded="false" />
+            <element signature="e#9969#10974#0" expanded="false" />
+            <marker date="1562308508000" expanded="true" signature="1082:9952" ph="..." />
+            <marker date="1562308508000" expanded="false" signature="15686:15702" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/assets/font-awesome/css/font-awesome.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="281" column="19" lean-forward="true" selection-start-line="281" selection-start-column="19" selection-end-line="281" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/main.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-933">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/uiKernal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10478">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/user-creation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/directives/stripe.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3762">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/dialog.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/include.header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="23" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/registration-success.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-381">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/signin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="39" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/dialog-compare.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/signup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/janashakthi.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="37" lean-forward="false" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/verify-mobile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="40" column="168" lean-forward="true" selection-start-line="40" selection-start-column="168" selection-end-line="40" selection-end-column="168" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/payment.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1539">
+          <caret line="72" column="57" lean-forward="true" selection-start-line="72" selection-start-column="57" selection-end-line="72" selection-end-column="57" />
+          <folding>
+            <element signature="e#2832#2949#0" expanded="false" />
+            <element signature="e#3165#3445#0" expanded="false" />
+            <element signature="e#3874#3895#0" expanded="false" />
+            <element signature="e#4156#5351#0" expanded="false" />
+            <element signature="e#4974#5298#0" expanded="false" />
+            <element signature="e#4992#5284#0" expanded="false" />
+            <element signature="e#5991#6015#0" expanded="false" />
+            <element signature="e#6367#6691#0" expanded="false" />
+            <element signature="e#6385#6677#0" expanded="false" />
+            <element signature="e#6802#7609#0" expanded="false" />
+            <element signature="e#7666#8507#0" expanded="false" />
+            <element signature="e#8564#9399#0" expanded="false" />
+            <element signature="e#9456#10196#0" expanded="false" />
+            <element signature="e#10253#10999#0" expanded="false" />
+            <element signature="e#10267#10277#0" expanded="false" />
+            <element signature="e#11070#11080#0" expanded="false" />
+            <element signature="e#11967#12652#0" expanded="false" />
+            <element signature="e#12042#12201#0" expanded="false" />
+            <element signature="e#12499#12646#0" expanded="false" />
+            <element signature="e#12718#12745#0" expanded="false" />
+            <element signature="e#12751#12754#0" expanded="false" />
+            <element signature="e#13032#13037#0" expanded="false" />
+            <element signature="n#!!block;n#sendReciptToBot#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#13433#13501#0" expanded="false" />
+            <element signature="e#13519#14997#0" expanded="false" />
+            <element signature="e#13673#13740#0" expanded="false" />
+            <element signature="e#13760#14987#0" expanded="false" />
+            <element signature="e#13837#13903#0" expanded="false" />
+            <element signature="e#13932#14973#0" expanded="false" />
+            <element signature="e#13968#14955#0" expanded="false" />
+            <element signature="e#14049#14933#0" expanded="false" />
+            <element signature="e#14516#14798#0" expanded="false" />
+            <element signature="e#15032#15316#0" expanded="false" />
+            <element signature="e#15245#15306#0" expanded="false" />
+            <element signature="e#15346#15545#0" expanded="false" />
+            <element signature="n#!!block;n#sendMessageToBot#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#15610#16102#0" expanded="false" />
+            <element signature="e#15764#15831#0" expanded="false" />
+            <element signature="e#15851#16092#0" expanded="false" />
+            <element signature="e#15928#15994#0" expanded="false" />
+            <element signature="e#16023#16078#0" expanded="false" />
+            <element signature="e#16137#16515#0" expanded="false" />
+            <element signature="e#16344#16402#0" expanded="false" />
+            <element signature="e#16444#16505#0" expanded="false" />
+            <element signature="e#16545#16744#0" expanded="false" />
+            <element signature="e#16799#18397#0" expanded="false" />
+            <element signature="e#16815#17950#0" expanded="false" />
+            <element signature="e#17128#17195#0" expanded="false" />
+            <element signature="e#17215#17940#0" expanded="false" />
+            <element signature="e#17292#17358#0" expanded="false" />
+            <element signature="e#17387#17926#0" expanded="false" />
+            <element signature="e#17496#17908#0" expanded="false" />
+            <element signature="e#17522#17690#0" expanded="false" />
+            <element signature="e#17716#17886#0" expanded="false" />
+            <element signature="e#17985#18159#0" expanded="false" />
+            <element signature="e#18189#18389#0" expanded="false" />
+            <element signature="n#!!block;n#getProfile#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#18483#19159#0" expanded="false" />
+            <element signature="e#18610#19149#0" expanded="false" />
+            <element signature="e#19194#19719#0" expanded="false" />
+            <element signature="e#19237#19589#0" expanded="false" />
+            <element signature="e#19595#19709#0" expanded="false" />
+            <element signature="e#19749#19851#0" expanded="false" />
+            <element signature="e#19949#20283#0" expanded="false" />
+            <element signature="e#20094#20273#0" expanded="false" />
+            <element signature="e#20702#21178#0" expanded="false" />
+            <element signature="e#22339#22453#0" expanded="false" />
+            <element signature="e#23079#24083#0" expanded="false" />
+            <element signature="e#23176#23206#0" expanded="false" />
+            <element signature="e#23310#23421#0" expanded="false" />
+            <element signature="e#23348#23411#0" expanded="false" />
+            <element signature="e#23438#23812#0" expanded="false" />
+            <element signature="e#23590#23769#0" expanded="false" />
+            <element signature="e#23847#23943#0" expanded="false" />
+            <element signature="e#23973#24075#0" expanded="false" />
+            <element signature="n#!!block;n#callautomation#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#24203#24516#0" expanded="false" />
+            <element signature="e#24531#24818#0" expanded="false" />
+            <element signature="e#24715#24781#0" expanded="false" />
+            <element signature="e#24853#25049#0" expanded="false" />
+            <element signature="e#25079#25181#0" expanded="false" />
+            <element signature="n#!!block;n#removeCart#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#25277#25614#0" expanded="false" />
+            <element signature="e#25425#25604#0" expanded="false" />
+            <element signature="e#25649#25747#0" expanded="false" />
+            <element signature="e#25777#25879#0" expanded="false" />
+            <element signature="e#25924#26041#0" expanded="false" />
+            <element signature="e#26079#26345#0" expanded="false" />
+            <element signature="e#26190#26266#0" expanded="false" />
+            <element signature="n#!!block;n#removeFromCart#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#26441#26513#0" expanded="false" />
+            <element signature="e#26463#26503#0" expanded="false" />
+            <element signature="e#26528#26879#0" expanded="false" />
+            <element signature="e#26690#26869#0" expanded="false" />
+            <element signature="e#26914#27053#0" expanded="false" />
+            <element signature="e#27083#27185#0" expanded="false" />
+            <element signature="n#!!block;n#getContextData#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#27273#27283#0" expanded="false" />
+            <element signature="e#27542#28246#0" expanded="false" />
+            <element signature="e#27697#28236#0" expanded="false" />
+            <element signature="e#28281#28423#0" expanded="false" />
+            <element signature="e#28453#28507#0" expanded="false" />
+            <element signature="n#!!block;n#getMakePayment#0;n#!!block;n#paymentController#0" expanded="false" />
+            <element signature="e#28596#28749#0" expanded="false" />
+            <element signature="e#28759#28786#0" expanded="false" />
+            <element signature="e#28856#29108#0" expanded="false" />
+            <element signature="e#29005#29071#0" expanded="false" />
+            <element signature="e#29143#29466#0" expanded="false" />
+            <element signature="e#29207#29334#0" expanded="false" />
+            <element signature="e#29340#29456#0" expanded="false" />
+            <element signature="e#29496#29579#0" expanded="false" />
+            <element signature="e#31369#31617#0" expanded="false" />
+            <element signature="e#31428#31591#0" expanded="false" />
+            <element signature="e#31647#31801#0" expanded="false" />
+            <element signature="e#31853#31908#0" expanded="false" />
+            <marker date="1562308196000" expanded="false" signature="535:1724" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/janashakthi_additional_cover.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="8" column="22" lean-forward="true" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h4#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="5296" column="22" lean-forward="true" selection-start-line="5296" selection-start-column="22" selection-end-line="5296" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/payment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="185" column="37" lean-forward="false" selection-start-line="185" selection-start-column="37" selection-end-line="185" selection-end-column="37" />
+          <folding>
+            <element signature="e#9969#10974#0" expanded="false" />
+            <marker date="1562308508000" expanded="true" signature="1082:9952" ph="..." />
+            <marker date="1562308508000" expanded="false" signature="15686:15702" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="28" column="10" lean-forward="true" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>

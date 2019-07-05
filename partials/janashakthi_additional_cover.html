@@ -1,0 +1,28 @@
+<div class="clearfix">
+    <form action="" class="container" ng-submit="submitAdditionalCover($event)" ng-if="!processingAddCover && !isAddCoverSuccess">
+        <div class="row check-list">
+            <div class="col-md-12 check-list-item" ng-repeat="item in additionalCover">
+                <div class="cover-block">
+                    <input type="checkbox" id="{{item.id}}" name="{{item.id}}" ng-model="item.selected">
+                    <label for="{{item.id}}">{{item.name}}</label>
+                    <b> - {{payment.currency}} {{item.value}}</b>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center">
+            <button type="submit" class="btn btn-primary" style="padding: 10px 20px;/*font-size: large;*/">Add</button>
+        </div>
+    </form>
+    <div class="wrapper text-center" ng-if="processingAddCover">
+        <img src="img/loading.gif" style="height: 75px;">
+        <div class="line line-dashed"></div>
+        <h4 style="font-weight: bold;">Processing Additional cover</h4>
+        <p>Please do not close this window.</p>
+    </div>
+    <div class="wrapper text-center" ng-if="isAddCoverSuccess">
+        <img src="img/checked.png">
+        <div class="line line-dashed"></div>
+        <h4 style="font-weight: bold;">Additional cover added</h4>
+        <p>Your inputs have been updated. Please close the window to proceed.</p>
+    </div>
+</div>
