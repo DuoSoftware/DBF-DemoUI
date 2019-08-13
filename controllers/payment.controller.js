@@ -85,9 +85,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             ]
             $rootScope.processing = false;
         }
-        if ($scope.botID == "5cac5bb3158f7fabbad05141") {
+        if ($scope.botID == "5d41705b7ef9df644f4eb0d8") {
             // Insurance demo
-            $scope.pageAccessToken = "EAAMegfEn8iEBAAo7SgVCuUUbgsddMC8zIgxRhZBgSXilLtWUyhuFYRREEIuIZAZC8H9sbYFG7hAQKybrMwiGhaRnQoDwOZBVVKxM8bLnO6hNeBHQVTmZBhWslZBmFAvqjD4l7iOs9c5nupLG6FqOWqRs6gR8cROivxlBfiC0Bs7Qgza7WLcxFUGLtP3uuCwlgZD";
+            $scope.pageAccessToken = "EAAMegfEn8iEBAGX27rOTZAMnqAH3NMYDvUrkZBHnxZCZAzBhy8Nopr6qyG8XyvoNSKmt5LfZCTiWn69RmfZAJbQSPnnNwU0DGtVR8UZBalVMAInJbA0ZCxSrnakY7YXtWNUnydLdwwQTQPmBGEyYu18XAAl3Mp3ZB7YwuhZCVyBEnABAZDZD";
             $scope.receiptUrl = "https://www.smoothflow.io/";
             $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/smooth%20insurance.jpg";
             $scope.messagetobot = "Insurance payment has been received. Your reference no is XXXXX. Get insured with Smooth Insurance. ";
@@ -186,7 +186,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             getMakePayment(data);
         }
         if ($scope.botID == "5c66bc5cf9c5660c4a14b85f" ||
-            $scope.botID == "5cac5bb3158f7fabbad05141" ||
+            $scope.botID == "5d41705b7ef9df644f4eb0d8" ||
             $scope.botID == "5cfa4cd8aa087d1136c7e6c0" ||
             $scope.botID == "5cf8f455b3bddfc7f663af82" ||
             $scope.botID == "5cfdf9dcb855a87edbd756ac"
@@ -417,6 +417,10 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                     $scope.config.amount = $scope.payment.totalamount * 100
                     $scope.config.currency = response.data.Result.rawData.currency;
                     $scope.payment.currency = response.data.Result.rawData.currency;
+                }
+                if($scope.myCart.cartItems.length == 0){
+                    debugger
+                    removeCart($scope.userID);
                 }
                 // update stripe config
                 $rootScope.$broadcast('stripe-config-updated', $scope.config);
