@@ -9,149 +9,148 @@
 
         <form name="paymentForm" ng-if="isPaymentSuccess == 0">
             <div class="form-group">
-                <label for="customerName">Customer Name</label>
-                <input type="text" id="customerName" class="form-control" ng-model="user.name" placeholder="" ng-readonly="true">
+                <label for="inputAddress">Customer Name</label>
+                <input type="text" class="form-control" ng-model="user.name" placeholder="" ng-readonly="true">
             </div>
-            <!--<div class="form-group">-->
-                <!--<label for="inputAddress">Invoice No.</label>-->
-                <!--<input type="text" class="form-control" ng-model="payment.invoiceNo" placeholder="" ng-readonly="true">-->
-            <!--</div>-->
-            <!--<div ng-if="botID == '5c66bc5cf9c5660c4a14b85f' || botID == '5cac5bb3158f7fabbad05141'">-->
-                <!--<div class="form-group">-->
-                    <!--<label for="inputAddress">Policy Name</label>-->
-                    <!--<input type="text" class="form-control" ng-model="payment.name" placeholder="" ng-readonly="true">-->
-                <!--</div>-->
-                <!--<div class="form-check">-->
-                    <!--<label for="inputAddress">Policy Tenure</label>-->
-                    <!--<table style="width:100%">-->
-                        <!--<tr>-->
-                            <!--<th>-->
-                                <!--<div class="text-center">-->
-                                    <!--<button type="button" class="btn btn-secondary btn-group btn-group-lg"><input-->
-                                            <!--class="form-check-input" type="radio" name="exampleRadios"-->
-                                            <!--id="exampleRadios1" ng-value="{{tentureOpt1}}" checked-->
-                                            <!--ng-model="payment.totalamount">-->
-                                        <!--<label class="form-check-label" for="exampleRadios1">-->
-                                            <!--1 Year-->
-                                        <!--</label>-->
-                                    <!--</button>-->
-                                <!--</div>-->
-                            <!--</th>-->
-                            <!--<th>-->
-                                <!--<div class="text-center">-->
-                                    <!--<button type="button" class="btn btn-secondary"><input class="form-check-input"-->
-                                            <!--type="radio" name="exampleRadios" id="exampleRadios1"-->
-                                            <!--ng-value="{{tentureOpt2}}" ng-model="payment.totalamount">-->
-                                        <!--<label class="form-check-label" for="exampleRadios1">-->
-                                            <!--2 Years-->
-                                        <!--</label></button>-->
-                                <!--</div>-->
-                            <!--</th>-->
-                            <!--<th>-->
-                                <!--<div class="text-center">-->
-                                    <!--<button type="button" class="btn btn-secondary"><input class="form-check-input"-->
-                                            <!--type="radio" name="exampleRadios" id="exampleRadios1"-->
-                                            <!--ng-value="{{tentureOpt3}}" ng-model="payment.totalamount">-->
-                                        <!--<label class="form-check-label" for="exampleRadios1">-->
-                                            <!--3 Years-->
-                                        <!--</label></button>-->
-                                <!--</div>-->
-                            <!--</th>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<td>-->
-                                <!--<div class="text-center">LKR {{tentureOpt1}}</div>-->
-                            <!--</td>-->
-                            <!--<td>-->
-                                <!--<div class="text-center">LKR {{tentureOpt2}}</div>-->
-                            <!--</td>-->
-                            <!--<td>-->
-                                <!--<div class="text-center">LKR {{tentureOpt3}}</div>-->
-                            <!--</td>-->
-                        <!--</tr>-->
-                    <!--</table>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<label for="inputAddress">Premium</label>-->
-                    <!--<input type="text" class="form-control" ng-model="payment.totalamount" placeholder=""-->
-                        <!--ng-readonly="true">-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<label for="inputAddress">Auto Renew Policy</label>-->
-                    <!--<input type="checkbox" ng-model="payment.renewal" placeholder="" ng-readonly="true"-->
-                        <!--style="margin:5px;">-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<label for="inputState">Amount to Pay</label>-->
-                    <!--<p style="font-size: 20px;">-->
-                        <!--<b>{{payment.currency}} {{payment.totalamount}}.00</b>-->
-                        <!--&lt;!&ndash; <b>LKR 23,999.00</b> &ndash;&gt;-->
-                    <!--</p>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--&lt;!&ndash; <div ng-if="botID == '5c517f1a24b77186e0297aa4'">-->
-                <!--<div class="form-group">-->
-                    <!--<label for="inputAddress">Payment Type</label>-->
-                    <!--<div>-->
-                        <!--<center>-->
-                            <!--<input type="radio" name="paymenttype" value="post"> Postpaid-->
-                            <!--<input type="radio" name="paymenttype" value="pre"> Prepaid-->
-                        <!--</center>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<label for="inputAddress">Mobile No</label>-->
-                    <!--<input type="text" class="form-control" ng-model="user.mobile" placeholder="">-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<label for="inputAddress">Re-enter</label>-->
-                    <!--<input type="text" class="form-control" ng-model="user.mobile2" placeholder="">-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<label for="inputAddress">Email Addreess</label>-->
-                    <!--<input type="email" class="form-control" ng-model="user.email" placeholder="">-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<label for="inputState">Amount to Pay</label>-->
-                    <!--<input type="number" class="form-control" ng-model="payment.totalamount" placeholder="">-->
-                <!--</div>-->
-            <!--</div> &ndash;&gt;-->
-            <!--<div-->
-                <!--ng-if="botID == '5cfa4cd8aa087d1136c7e6c0' || botID == '5cfdf9dcb855a87edbd756ac' || botID == '5cf8f455b3bddfc7f663af82' || botID == '5c94b7fd158f7fa10acf68b8' || botID == '5c8747e6f9c5669f7a151c85'">-->
-                <!--<div class="form-group">-->
-                    <!--<label for="inputAddress">My Cart</label>-->
-                    <!--<p ng-if="payment.items.length == 0">Your cart is empty!</p>-->
-                    <!--<ul ng-repeat="item in payment.items" class="list-group">-->
-                        <!--<li class="list-group-item row" style="margin: 0;height: 80px">-->
-                            <!--<div class="col-xs-2 cart-item-image cart-item-centered">-->
-                                <!--<img height="50px" src="{{item.image_url}}">-->
-                            <!--</div>-->
-                            <!--<div class="col-xs-4"-->
-                                <!--style="height: 100%;display: flex;align-items: center;justify-content: center">-->
-                                <!--<span>{{item.title}}</span>-->
-                            <!--</div>-->
-                            <!--<div class="col-xs-4"-->
-                                <!--style="height: 100%;display: flex;align-items: center;justify-content: center">-->
-                                <!--<span>{{item.currency}}-->
-                                    <!--{{item.price}} x</span>-->
-                                <!--<input type="number" ng-model="item.qty"-->
-                                    <!--style="width: 45px;padding-left: 3px;margin-left: 5px;" min="1" max="100"-->
-                                    <!--ng-change="updatedQty(item)" />-->
-                            <!--</div>-->
-                            <!--<div ng-click="removeme()" class="col-xs-2 cart-item-rem cart-item-centered">-->
-                                <!--<i class="fa fa-remove"></i>-->
-                            <!--</div>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<label for="inputState">Amount to Pay</label>-->
-                    <!--<p style="font-size: 20px;">-->
-                        <!--<b>{{payment.currency}} {{payment.totalamount}}</b>-->
-                        <!--&lt;!&ndash; <b>LKR 23,999.00</b> &ndash;&gt;-->
-                    <!--</p>-->
-                <!--</div>-->
-            <!--</div>-->
+            <div class="form-group">
+                <label for="inputAddress">Invoice No.</label>
+                <input type="text" class="form-control" ng-model="payment.invoiceNo" placeholder="" ng-readonly="true">
+            </div>
+            <div ng-if="botID == '5c66bc5cf9c5660c4a14b85f' || botID == '5cac5bb3158f7fabbad05141'">
+                <div class="form-group">
+                    <label for="inputAddress">Policy Name</label>
+                    <input type="text" class="form-control" ng-model="payment.name" placeholder="" ng-readonly="true">
+                </div>
+                <div class="form-check">
+                    <label for="inputAddress">Policy Tenure</label>
+                    <table style="width:100%">
+                        <tr>
+                            <th>
+                                <center>
+                                    <button type="button" class="btn btn-secondary btn-group btn-group-lg"><input
+                                            class="form-check-input" type="radio" name="exampleRadios"
+                                            id="exampleRadios1" ng-value="{{tentureOpt1}}" checked
+                                            ng-model="payment.totalamount">
+                                        <label class="form-check-label" for="exampleRadios1">
+                                            1 Year
+                                        </label></center></button>
+
+                            </th>
+                            <th>
+                                <center>
+                                    <button type="button" class="btn btn-secondary"><input class="form-check-input"
+                                            type="radio" name="exampleRadios" id="exampleRadios1"
+                                            ng-value="{{tentureOpt2}}" ng-model="payment.totalamount">
+                                        <label class="form-check-label" for="exampleRadios1">
+                                            2 Years
+                                        </label></button>
+                                </center>
+                            </th>
+                            <th>
+                                <center>
+                                    <button type="button" class="btn btn-secondary"><input class="form-check-input"
+                                            type="radio" name="exampleRadios" id="exampleRadios1"
+                                            ng-value="{{tentureOpt3}}" ng-model="payment.totalamount">
+                                        <label class="form-check-label" for="exampleRadios1">
+                                            3 Years
+                                        </label></button>
+                                </center>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <center>LKR {{tentureOpt1}}</center>
+                            </td>
+                            <td>
+                                <center>LKR {{tentureOpt2}}</center>
+                            </td>
+                            <td>
+                                <center>LKR {{tentureOpt3}}</center>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Premium</label>
+                    <input type="text" class="form-control" ng-model="payment.totalamount" placeholder=""
+                        ng-readonly="true">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Auto Renew Policy</label>
+                    <input type="checkbox" ng-model="payment.renewal" placeholder="" ng-readonly="true"
+                        style="margin:5px;">
+                </div>
+                <div class="form-group">
+                    <label for="inputState">Amount to Pay</label>
+                    <p style="font-size: 20px;">
+                        <b>{{payment.currency}} {{payment.totalamount}}.00</b>
+                        <!-- <b>LKR 23,999.00</b> -->
+                    </p>
+                </div>
+            </div>
+            <!-- <div ng-if="botID == '5c517f1a24b77186e0297aa4'">
+                <div class="form-group">
+                    <label for="inputAddress">Payment Type</label>
+                    <div>
+                        <center>
+                            <input type="radio" name="paymenttype" value="post"> Postpaid
+                            <input type="radio" name="paymenttype" value="pre"> Prepaid
+                        </center>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Mobile No</label>
+                    <input type="text" class="form-control" ng-model="user.mobile" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Re-enter</label>
+                    <input type="text" class="form-control" ng-model="user.mobile2" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Email Addreess</label>
+                    <input type="email" class="form-control" ng-model="user.email" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="inputState">Amount to Pay</label>
+                    <input type="number" class="form-control" ng-model="payment.totalamount" placeholder="">
+                </div>
+            </div> -->
+            <div
+                ng-if="botID == '5cfa4cd8aa087d1136c7e6c0' || botID == '5cfdf9dcb855a87edbd756ac' || botID == '5cf8f455b3bddfc7f663af82' || botID == '5c94b7fd158f7fa10acf68b8' || botID == '5c8747e6f9c5669f7a151c85'">
+                <div class="form-group">
+                    <label for="inputAddress">My Cart</label>
+                    <p ng-if="payment.items.length == 0">Your cart is empty!</p>
+                    <ul ng-repeat="item in payment.items" class="list-group">
+                        <li class="list-group-item row" style="margin: 0;height: 80px">
+                            <div class="col-xs-2 cart-item-image cart-item-centered">
+                                <img height="50px" src="{{item.image_url}}">
+                            </div>
+                            <div class="col-xs-4"
+                                style="height: 100%;display: flex;align-items: center;justify-content: center">
+                                <span>{{item.title}}</span>
+                            </div>
+                            <div class="col-xs-4"
+                                style="height: 100%;display: flex;align-items: center;justify-content: center">
+                                <span>{{item.currency}}
+                                    {{item.price}} x</span>
+                                <input type="number" ng-model="item.qty"
+                                    style="width: 45px;padding-left: 3px;margin-left: 5px;" min="1" max="100"
+                                    ng-change="updatedQty(item)" />
+                            </div>
+                            <div ng-click="removeme()" class="col-xs-2 cart-item-rem cart-item-centered">
+                                <i class="fa fa-remove"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <label for="inputState">Amount to Pay</label>
+                    <p style="font-size: 20px;">
+                        <b>{{payment.currency}} {{payment.totalamount}}</b>
+                        <!-- <b>LKR 23,999.00</b> -->
+                    </p>
+                </div>
+            </div>
 
             <!-- <div class="form-group">
                 <label for="inputAddress">My Cart</label>
@@ -169,86 +168,8 @@
                     </li>
                 </ul>
             </div> -->
-            <div ng-if="botID == '5cac5bb3158f7fabbad05141'">
-                <div class="form-group">
-                    <label for="policyType">Policy type</label>
-                    <input type="text" id="policyType" class="form-control" ng-model="payment.policy" placeholder="" ng-readonly="true">
-                </div>
-                <div class="form-group">
-                    <label for="coverPeriod">Cover period</label>
-                    <input type="text" id="coverPeriod" class="form-control" ng-model="payment.period" placeholder="" ng-readonly="true">
-                </div>
-                <div class="form-group">
-                    <label for="additionalCover">Additional Cover</label>
-                    <table id="additionalCover" style="width:100%">
-                        <tr>
-                            <th>Name</th>
-                            <th>Price</th>
-                        </tr>
-                        <tr ng-repeat="item in payment.additionalCover">
-                            <td>{{item.title}}</td>
-                            <td class="text-center">{{payment.currency}} {{item.price}}</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="form-check">
-                    <!--<label for="policyName">Policy Tenure</label>-->
-                    <table style="width:100%" class="check-table">
-                        <tr>
-                            <td>
-                                <div class="text-center check-block">
-                                    <input
-                                        class="form-check-input" type="radio" name="exampleRadios"
-                                        id="exampleRadios1" ng-value="tentureOpt1" checked
-                                        ng-model="payment.totalamount" ng-change="">
-                                    <label class="form-check-label" for="exampleRadios1">
-                                        Annual
-                                    </label>
-                                    <div class="text-center">{{payment.currency}} {{tentureOpt1}}</div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="text-center check-block">
-                                    <input class="form-check-input"
-                                                                                       type="radio" name="exampleRadios" id="exampleRadios1"
-                                                                                       ng-value="tentureOpt2" ng-model="payment.totalamount">
-                                    <label class="form-check-label" for="exampleRadios1">
-                                        Half Year
-                                    </label>
-                                    <div class="text-center">{{payment.currency}} {{tentureOpt2}}</div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="text-center check-block">
-                                    <input class="form-check-input"
-                                                                                           type="radio" name="exampleRadios" id="exampleRadios1"
-                                                                                           ng-value="tentureOpt3" ng-model="payment.totalamount">
-                                    <label class="form-check-label" for="exampleRadios1">
-                                        Quarter year
-                                    </label>
-                                    <div class="text-center">{{payment.currency}} {{tentureOpt3}}</div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <!--<div class="form-group">-->
-                    <!--<label for="inputAddress">Premium</label>-->
-                    <!--<input type="text" class="form-control" ng-model="payment.totalamount" placeholder=""-->
-                           <!--ng-readonly="true">-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<label for="inputAddress">Auto Renew Policy</label>-->
-                    <!--<input type="checkbox" ng-model="payment.renewal" placeholder="" ng-readonly="true"-->
-                           <!--style="margin:5px;">-->
-                <!--</div>-->
-                <div class="form-group">
-                    <label for="inputState">Amount to Pay</label>
-                    <p style="font-size: 20px;">
-                        <b>{{payment.currency}} {{payment.totalamount}}.00</b>
-                        <!-- <b>LKR 23,999.00</b> -->
-                    </p>
-                </div>
+            <div class="form-group">
+
             </div>
             <!-- ng-click="pay()"  -->
             <div class="text-center">

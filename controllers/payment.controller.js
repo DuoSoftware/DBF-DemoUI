@@ -12,52 +12,6 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     $rootScope.processing = true;
     $scope.callAutomationFlow = false;
     $scope.myCart = null;
-    $scope.additionalCover = [{
-        id: 'additional_life_cover',
-        name: 'Additional Life cover',
-        value: 10.00,
-        selected: false
-    }, {
-        id: 'additional_accident_cover',
-        name: 'Additional accident cover',
-        value: 10.00,
-        selected: false
-    }, {
-        id: 'critical_illness',
-        name: 'Critical illness',
-        value: 10.00,
-        selected: false
-    }, {
-        id: 'hospital_cash_plan',
-        name: 'Hospital cash plan',
-        value: 10.00,
-        selected: false
-    }, {
-        id: 'hospital_reimbursement_cover',
-        name: 'Hospital reimbursement cover',
-        value: 10.00,
-        selected: false
-    }, {
-        id: 'family_income_benefit',
-        name: 'Family income benefit',
-        value: 10.00,
-        selected: false
-    }, {
-        id: 'spouse_cover',
-        name: 'Spouse cover',
-        value: 10.00,
-        selected: false
-    }, {
-        id: 'funeral_expense_benefit',
-        name: 'Funeral expense benefit',
-        value: 10.00,
-        selected: false
-    }, {
-        id: 'hospital_cashless',
-        name: 'Hospital cashless',
-        value: 10.00,
-        selected: false
-    }];
 
     if ($state.params && $state.params.name) {
         var name = $state.params.name.split(" ");
@@ -69,8 +23,6 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             sender = sender.split(":");
             $scope.botID = sender[0];
             $scope.userID = sender[1];
-            $scope.payment.policy = $state.params.policy;
-            $scope.payment.period = $state.params.period;
         } else {
             sender = $state.params.sender.split("-");
         }
@@ -140,11 +92,11 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/smooth%20insurance.jpg";
             $scope.messagetobot = "Insurance payment has been received. Your reference no is XXXXX. Get insured with Smooth Insurance. ";
 
-            // $scope.annualAmt = 0;
-            // $scope.halfYearAmt = $scope.annualAmt/2;
-            // $scope.quartYearAmt = $scope.annualAmt/4;
+            $scope.tentureOpt1 = 15000;
+            $scope.tentureOpt2 = 25000;
+            $scope.tentureOpt3 = 35000;
 
-            $scope.payment.totalamount = 0;
+            $scope.payment.totalamount = 15000;
             $scope.payment.currency = "LKR";
             $scope.payment.name = "Good Health";
             $scope.payment.tenture = "1 Year of Policy Tenure";
@@ -158,7 +110,6 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 }
             ]
             $rootScope.processing = false;
-
         }
         if ($scope.botID == "5cfdf9dcb855a87edbd756ac") {
             // Smooth Telecom
@@ -221,20 +172,6 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.removeCartOncompletion = true;
             $scope.callAutomationFlow = true;
             getContextData($scope.SessionID);
-        }
-        if ($scope.botID == "5cac5bb3158f7fabbad05141") {
-            //debugger
-            // Carlla GCC
-            $scope.pageAccessToken = "EAAMegfEn8iEBAEVZAVFTlFdtuI0QVW4okDUqeL1m95UJ1PfJcGC4miPPsWUdXE97RFAXo5CtCBQNehSx63vkRhQNXpHP3yYi8XK1R2Cnxk1sZAjr5KgpOqjtVSZAPMUuZCs90Di09vKqWrJZBEZBgpIwwlWw3gHD17IJO31OEZA8zjAZCRljdWom";
-            $scope.receiptUrl = "https://www.smoothflow.io/";
-            $scope.receiptImage = "http://www.fidaglobal.com/images/clients/janashakthi.png";
-            $scope.messagetobot = "Thank you for reaching Carela GCC. One of our representative will contact you soon. ";
-
-            getCartItems($scope.userID);
-            $scope.removeCartOncompletion = true;
-            $scope.callAutomationFlow = true;
-            getContextData($scope.SessionID);
-            $scope.payment.additionalCover = [];
         }
 
         //getProfile($state.params.name);
@@ -456,11 +393,10 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 "Content-Type": "application/json",
                 "companyInfo": "1:103"
             }
-        })
-            .then(function (response, status) {
-                if (response.data.IsSuccess) {
-                    $scope.payment.items = [];
-                    $scope.payment.totalamount = 0;
+        }).then(function (response, status) {
+            if (response.data.IsSuccess) {
+                $scope.payment.items = [];
+                $scope.payment.totalamount = 0;
                 if (response.data.Result != null) {
                     $scope.myCart = response.data.Result;
                     angular.forEach($scope.myCart.cartItems, function (item) {
@@ -473,22 +409,12 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                             "subtitle": item.shortdescription,
                             "image_url": item.image_url,
                             "qty": parseInt(item.qty)
-                        };
-                        $scope.payment.items.push(obj);
-                        $scope.payment.totalamount += parseFloat(item.price) * parseInt(item.qty);
-
-                        if(item.type && item.type == 'additional_cover') {
-                            $scope.payment.additionalCover.push(item);
-                            $scope.payment.totalamount += item.price;
                         }
+                        $scope.payment.items.push(obj);
+                        $scope.payment.totalamount += parseFloat(item.value) * parseInt(item.qty);
                     });
                     // setting config currency and amount
-                    $scope.config.amount = $scope.payment.totalamount * 100;
-
-                    $scope.tentureOpt1 = $scope.payment.totalamount;
-                    $scope.tentureOpt2 = $scope.tentureOpt1/2;
-                    $scope.tentureOpt3 = $scope.tentureOpt1/4;
-
+                    $scope.config.amount = $scope.payment.totalamount * 100
                     $scope.config.currency = response.data.Result.rawData.currency;
                     $scope.payment.currency = response.data.Result.rawData.currency;
                 }
@@ -503,19 +429,6 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         }, function (response, status) {
             alert(response.data.CustomMessage);
             $rootScope.processing = false;
-        });
-    }
-
-    function updateCart(payload) {
-        return $http({
-            method: "PUT",
-            url: "https://7b69tvp6cj.execute-api.us-east-1.amazonaws.com/Prod/cart/" + $scope.userID,
-            headers: {
-                "x-api-key": "XcY9lhgnud1JUum05XFT02r37wagFtOLdCH7RKz8",
-                "Content-Type": "application/json",
-                "companyInfo": "1:103"
-            },
-            data: payload
         });
     }
 
@@ -691,60 +604,5 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $rootScope.processing = false;
             alert(response);
         });
-    }
-
-    $scope.submitAdditionalCover = function (e) {
-        e.preventDefault();
-        var isempty = $scope.additionalCover.filter(function (value) {
-            if(value.selected) return value;
-        });
-        if (isempty.length) {
-            $scope.processingAddCover = true;
-            $http({
-                method: "GET",
-                url: "https://7b69tvp6cj.execute-api.us-east-1.amazonaws.com/Prod/cart/" + $scope.userID,
-                headers: {
-                    "x-api-key": "XcY9lhgnud1JUum05XFT02r37wagFtOLdCH7RKz8",
-                    "Content-Type": "application/json",
-                    "companyInfo": "1:103"
-                }
-            }).then(function (response, status) {
-                if (response.data.IsSuccess) {
-                    var items = response.data.Result;
-                    var payload = {
-                        "userID": $scope.userID,
-                        "cartItems": [],
-                        "rawData": {
-                            currency: "USD"
-                        }
-                    };
-                    angular.forEach($scope.additionalCover, function (item) {
-                        if (item.selected) {
-                            payload.cartItems.push({
-                                "id": '',
-                                "title": item.name,
-                                "subtitle": "",
-                                "price": parseFloat(item.value),
-                                "image_url": '',
-                                "qty": 1,
-                                "type": 'additional_cover'
-                            });
-                        }
-                    });
-                    updateCart(payload)
-                        .then(function (response, status) {
-                            if (response.data.IsSuccess) {
-                                $scope.processingAddCover = false;
-                                $scope.isAddCoverSuccess = true;
-                            }
-                        }, function (response, status) {
-                            alert(response.data.CustomMessage);
-                            $scope.processingAddCover = false;
-                        });
-                }
-            });
-        } else {
-            alert('Please select an item');
-        }
     }
 }

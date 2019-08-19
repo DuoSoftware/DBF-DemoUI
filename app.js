@@ -6,7 +6,7 @@ var app = angular.module('loginapp', [
 
 app.config(function ($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/additional_cover');
+    $urlRouterProvider.otherwise('/signup');
 
     $stateProvider
 
@@ -38,13 +38,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'DialogController'
         })
         .state('payment', {
-            url: '/payment?name&sender&title&companyname&companylogolarge&stripdescription&companylogosmall&stripebutton&stripepublishkey&checkoutbutton&policy&period',
+            url: '/payment?name&sender&title&companyname&companylogolarge&stripdescription&companylogosmall&stripebutton&stripepublishkey&checkoutbutton',
             templateUrl: 'partials/payment.html',
-            controller: 'PaymentController'
-        })
-        .state('additional_cover', {
-            url: '/additional_cover?name&sender&title&companyname&companylogolarge&stripdescription&companylogosmall&stripebutton&stripepublishkey&checkoutbutton',
-            templateUrl: 'partials/janashakthi_additional_cover.html',
             controller: 'PaymentController'
         });
 

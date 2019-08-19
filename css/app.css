@@ -5291,33 +5291,3 @@ a.text-#000000:hover {
   background-color: #4CAF50;
   color: white;
 }
-
-#additionalCover {
-  /*table-layout: fixed;*/
-  margin-bottom: 30px;
-}
-#additionalCover tr th {
-  border: solid 1px #ddd;
-  text-align: center;
-}
-#additionalCover tr td {
-  border: solid 1px #ddd;
-  padding: 10px;
-}
-.check-table {
-  table-layout:fixed
-}
-.check-table tr td {
-  padding: 10px;
-}
-.check-block {
-  border-radius: 10px;
-  box-shadow: 0 1px 5px #00000050;
-  padding: 10px 0;
-}
-.check-list {
-  padding: 20px 50px;
-}
-.check-list .check-list-item {
-  padding: 10px 0;
-}

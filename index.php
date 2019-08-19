@@ -23,7 +23,7 @@
 </head>
 
 <body ng-controller="MainController" ng-init="$root.processing = true">
-    <div class="box" ng-if="$root.processing == true">
+    <div class="box" ng-if="$root.processing == true"> <!---->
         <img src="img/loading.gif" alt="Paris" style="height: 75px; width: 75px;  margin-left: calc(50% - 37px);
   margin-top: calc(50vh - 37px);">
     </div>
@@ -49,7 +49,6 @@
     <script type="text/javascript" src="controllers/payment.controller.js"></script>
     <script type="text/javascript" src="controllers/verifymobile.controller.js"></script>
     <script type="text/javascript" src="controllers/successRegistration.controller.js"></script>
-    <script type="text/javascript" src="controllers/janashakthi.controller.js"></script>
     <script type="text/javascript" src="js/directives/stripe.js"></script>
     <!--payment getway-->
     <script src="https://checkout.stripe.com/checkout.js"></script>
