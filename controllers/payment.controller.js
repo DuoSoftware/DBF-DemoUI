@@ -193,7 +193,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/1/13/smoothflowlogo.png";
             $scope.messagetobot = "Thank you for choosing Smooth Pizza. Your order has been confirmed. A reference has been sent to your mobile. Please visit the chosen branch to collect your order.";
 
-            getCartItems($scope.userID)
+            getCartItems($scope.userID);
             $scope.removeCartOncompletion = true;
             $scope.callAutomationFlow = true;
             getContextData($scope.SessionID);
@@ -206,7 +206,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/1/13/smoothflowlogo.png";
             $scope.messagetobot = "Thank you for choosing Smoothflow Cart. Your order has been confirmed. A reference has been sent to your mobile. Please visit the chosen branch to collect your order.";
 
-            getCartItems($scope.userID)
+            getCartItems($scope.userID);
             $scope.removeCartOncompletion = true;
         }
         if ($scope.botID == "5c8747e6f9c5669f7a151c85") {
@@ -361,7 +361,6 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         }).then(function (response, status) {
             console.log(response);
             console.log("Receipt sent.")
-            $scope.isPaymentSuccess = 2;
             $rootScope.processing = false;
             if($scope.removeCartOncompletion){
                 removeCart($scope.userID);
@@ -369,6 +368,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             if ($scope.resultCount == 2) {
                 $scope.sendQuickReplyToBot();
             }
+            setAbandonedState();
         }, function (response, status) {
             console.log(response);
             console.log("else.....")
@@ -746,5 +746,20 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         } else {
             alert('Please select an item');
         }
+    };
+
+    function setAbandonedState() {
+        $http({
+            method: "PUT",
+            url: `https://9qmfbex9qj.execute-api.us-east-1.amazonaws.com/Prod/cartStatus/${$scope.botID}/${$scope.userID}/false`,
+            headers: {
+                "Content-Type": "application/json"
+            },
+            data: payload
+        }).then(function (response, status) {
+            $scope.isPaymentSuccess = 2;
+        }, function (response, status) {
+            $scope.isPaymentSuccess = 2;
+        });
     }
 }
