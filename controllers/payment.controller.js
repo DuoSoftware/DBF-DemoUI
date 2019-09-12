@@ -889,6 +889,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             // debugger
             $scope.contextData = response.data.message;
             $scope.additionalCover = $scope.contextData['limitations'];
+            $scope.payment.annually = $scope.contextData['premium_annual'];
+            $scope.payment.half_yearly = $scope.contextData['premium_half_year'];
+            $scope.payment.quarterly = $scope.contextData['premium_quarter'];
         }, function (response, status) {
             $rootScope.processing = false;
         });

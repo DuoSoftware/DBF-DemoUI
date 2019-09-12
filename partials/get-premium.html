@@ -4,67 +4,113 @@
         <h2 style="font-weight: bold;">Premium</h2>
     </div>
     <div class="ui-card form-check" style="max-width: 400px">
+        <!--<div class="ui-card-body">-->
+            <!--<div class="ui-card-list-item">-->
+                <!--<div style="display: flex;flex: 1">-->
+                    <!--<input-->
+                        <!--class="form-check-input" type="radio" name="exampleRadios"-->
+                        <!--id="premium1" value="premium1" checked-->
+                        <!--ng-model="payment.selectedPremium" ng-change="" style="margin-right: 15px">-->
+                    <!--<div>-->
+                        <!--<label class="form-check-label" for="premium1" style="display: block" ng-class="{'txt-primary': payment.selectedPremium == 'premium1'}">-->
+                            <!--<b>{{payment.currency}} 500.00</b>-->
+                        <!--</label>-->
+                        <!--<small style="display: block">Section 1</small>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<span style="display: block"><b>{{payment.currency}} 500.00</b></span>-->
+                    <!--<small style="display: block">Section 1</small>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="ui-card-list-item">-->
+                <!--<div style="display: flex;flex: 1">-->
+                    <!--<input-->
+                        <!--class="form-check-input" type="radio" name="exampleRadios"-->
+                        <!--id="premium2" value="premium2"-->
+                        <!--ng-model="payment.selectedPremium" ng-change="" style="margin-right: 15px">-->
+                    <!--<div>-->
+                        <!--<label class="form-check-label" for="premium2" style="display: block" ng-class="{'txt-primary': payment.selectedPremium == 'premium2'}">-->
+                            <!--<b>{{payment.currency}} 500.00</b>-->
+                        <!--</label>-->
+                        <!--<small style="display: block">Section 1</small>-->
+                    <!--</div>-->
+                    <!--<small style="text-decoration: line-through;line-height: 25px;margin-left: 5px">{{payment.currency}} 1212.00</small>-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<span class="txt-primary" style="display: block"><b>{{payment.currency}} 500.00</b></span>-->
+                    <!--<small style="display: block">Save</small>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="ui-card-list-item">-->
+                <!--<div style="display: flex;flex: 1">-->
+                    <!--<input-->
+                        <!--class="form-check-input" type="radio" name="exampleRadios"-->
+                        <!--id="premium3" value="premium3"-->
+                        <!--ng-model="payment.selectedPremium" ng-change="" style="margin-right: 15px">-->
+                    <!--<div>-->
+                        <!--<label class="form-check-label" for="premium3" style="display: block" ng-class="{'txt-primary': payment.selectedPremium === 'premium3'}">-->
+                            <!--<b>{{payment.currency}} 500.00</b>-->
+                        <!--</label>-->
+                        <!--<small style="display: block">Section 1</small>-->
+                    <!--</div>-->
+                    <!--<small style="text-decoration: line-through;line-height: 25px;margin-left: 5px">{{payment.currency}} 1212.00</small>-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<span class="txt-primary" style="display: block"><b>{{payment.currency}} 500.00</b></span>-->
+                    <!--<small style="display: block">Save</small>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="ui-card-body">
             <div class="ui-card-list-item">
                 <div style="display: flex;flex: 1">
-                    <input
-                        class="form-check-input" type="radio" name="exampleRadios"
-                        id="premium1" value="premium1" checked
-                        ng-model="payment.selectedPremium" ng-change="" style="margin-right: 15px">
                     <div>
-                        <label class="form-check-label" for="premium1" style="display: block" ng-class="{'txt-primary': payment.selectedPremium == 'premium1'}">
-                            <b>{{payment.currency}} 500.00</b>
+                        <label class="form-check-label txt-primary" style="display: block">
+                            <b>Annually</b>
                         </label>
-                        <small style="display: block">Section 1</small>
+                        <!--<small style="display: block">Section 1</small>-->
                     </div>
                 </div>
                 <div>
-                    <span style="display: block"><b>{{payment.currency}} 500.00</b></span>
-                    <small style="display: block">Section 1</small>
+                    <span style="display: block"><b>{{payment.currency}} {{payment.anually}}</b></span>
+                    <!--<small style="display: block">Section 1</small>-->
                 </div>
             </div>
             <div class="ui-card-list-item">
                 <div style="display: flex;flex: 1">
-                    <input
-                        class="form-check-input" type="radio" name="exampleRadios"
-                        id="premium2" value="premium2"
-                        ng-model="payment.selectedPremium" ng-change="" style="margin-right: 15px">
                     <div>
-                        <label class="form-check-label" for="premium2" style="display: block" ng-class="{'txt-primary': payment.selectedPremium == 'premium2'}">
-                            <b>{{payment.currency}} 500.00</b>
+                        <label class="form-check-label txt-primary" style="display: block">
+                            <b>Half Yearly</b>
                         </label>
-                        <small style="display: block">Section 1</small>
+                        <!--<small style="display: block">Section 1</small>-->
                     </div>
-                    <small style="text-decoration: line-through;line-height: 25px;margin-left: 5px">{{payment.currency}} 1212.00</small>
+                    <!--<small style="text-decoration: line-through;line-height: 25px;margin-left: 5px">{{payment.currency}} 1212.00</small>-->
                 </div>
                 <div>
-                    <span class="txt-primary" style="display: block"><b>{{payment.currency}} 500.00</b></span>
-                    <small style="display: block">Save</small>
+                    <span class="" style="display: block"><b>{{payment.currency}} {{payment.half_yearly}}</b></span>
+                    <!--<small style="display: block">Save</small>-->
                 </div>
             </div>
             <div class="ui-card-list-item">
                 <div style="display: flex;flex: 1">
-                    <input
-                        class="form-check-input" type="radio" name="exampleRadios"
-                        id="premium3" value="premium3"
-                        ng-model="payment.selectedPremium" ng-change="" style="margin-right: 15px">
                     <div>
-                        <label class="form-check-label" for="premium3" style="display: block" ng-class="{'txt-primary': payment.selectedPremium === 'premium3'}">
-                            <b>{{payment.currency}} 500.00</b>
+                        <label class="form-check-label txt-primary" style="display: block">
+                            <b>Quarterly</b>
                         </label>
-                        <small style="display: block">Section 1</small>
+                        <!--<small style="display: block">Section 1</small>-->
                     </div>
-                    <small style="text-decoration: line-through;line-height: 25px;margin-left: 5px">{{payment.currency}} 1212.00</small>
+                    <!--<small style="text-decoration: line-through;line-height: 25px;margin-left: 5px">{{payment.currency}} 1212.00</small>-->
                 </div>
                 <div>
-                    <span class="txt-primary" style="display: block"><b>{{payment.currency}} 500.00</b></span>
-                    <small style="display: block">Save</small>
+                    <span class="" style="display: block"><b>{{payment.currency}} {{payment.quarterly}}</b></span>
+                    <!--<small style="display: block">Save</small>-->
                 </div>
             </div>
         </div>
         <div class="ui-card-footer">
-            <span style="flex: 1">Total amount</span>
-            <b>{{payment.currency}} 400.00</b>
+            <!--<span style="flex: 1">Total amount</span>-->
+            <!--<b>{{payment.currency}} 400.00</b>-->
         </div>
     </div>
     <!--<div class="clearfix text-center" style="margin: 30px 0;">-->
