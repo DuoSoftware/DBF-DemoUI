@@ -466,6 +466,20 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             getContextData($scope.SessionID);
             $scope.payment.additionalCover = [];
         }
+        if ($scope.botID == "5d41705b7ef9df644f4eb0d8") {
+            //debugger
+            // Carlla GCC
+            $scope.pageAccessToken = "EAAMegfEn8iEBAGX27rOTZAMnqAH3NMYDvUrkZBHnxZCZAzBhy8Nopr6qyG8XyvoNSKmt5LfZCTiWn69RmfZAJbQSPnnNwU0DGtVR8UZBalVMAInJbA0ZCxSrnakY7YXtWNUnydLdwwQTQPmBGEyYu18XAAl3Mp3ZB7YwuhZCVyBEnABAZDZD";
+            $scope.receiptUrl = "https://www.smoothflow.io/";
+            $scope.receiptImage = "http://www.fidaglobal.com/images/clients/janashakthi.png";
+            $scope.messagetobot = "Thank you for reaching Janashakthi. One of our representative will contact you soon. ";
+
+            getCartItems($scope.userID);
+            $scope.removeCartOncompletion = true;
+            $scope.callAutomationFlow = true;
+            getContextData($scope.SessionID);
+            $scope.payment.additionalCover = [];
+        }
 
         //getProfile($state.params.name);
 
@@ -486,6 +500,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.botID == "5cac5bb3158f7fabbad05141" ||
             $scope.botID == "5cfa4cd8aa087d1136c7e6c0" ||
             $scope.botID == "5cf8f455b3bddfc7f663af82" ||
+            $scope.botID == "5d41705b7ef9df644f4eb0d8" ||
             $scope.botID == "5cfdf9dcb855a87edbd756ac"
         ) {
             $scope.isPaymentSuccess = 1;
