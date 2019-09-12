@@ -892,6 +892,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.payment.annually = $scope.contextData['premium_annual'];
             $scope.payment.half_yearly = $scope.contextData['premium_half_year'];
             $scope.payment.quarterly = $scope.contextData['premium_quarter'];
+            $scope.payment.monthly = $scope.contextData['premium_month'];
         }, function (response, status) {
             $rootScope.processing = false;
         });
