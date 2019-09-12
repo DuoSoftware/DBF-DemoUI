@@ -1,10 +1,8 @@
 /* use strickt */
 
 app.controller('PaymentController', ['$scope', '$rootScope', '$state', '$timeout', '$http', '$systemUrls', '$helpers', '$invoice', paymentController]);
-
 function paymentController($scope, $rootScope, $state, $timeout, $http, $systemUrls, $helpers, $invoice) {
     console.log("payment page loaded");
-
 
     $scope.user = {};
     $scope.payment = { method: "Cash", invoiceNo: "" };
@@ -12,52 +10,284 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     $rootScope.processing = true;
     $scope.callAutomationFlow = false;
     $scope.myCart = null;
-    $scope.additionalCover = [{
-        id: 'additional_life_cover',
-        name: 'Additional Life cover',
-        value: 10.00,
-        selected: false
-    }, {
-        id: 'additional_accident_cover',
-        name: 'Additional accident cover',
-        value: 10.00,
-        selected: false
-    }, {
-        id: 'critical_illness',
-        name: 'Critical illness',
-        value: 10.00,
-        selected: false
-    }, {
-        id: 'hospital_cash_plan',
-        name: 'Hospital cash plan',
-        value: 10.00,
-        selected: false
-    }, {
-        id: 'hospital_reimbursement_cover',
-        name: 'Hospital reimbursement cover',
-        value: 10.00,
-        selected: false
-    }, {
-        id: 'family_income_benefit',
-        name: 'Family income benefit',
-        value: 10.00,
-        selected: false
-    }, {
-        id: 'spouse_cover',
-        name: 'Spouse cover',
-        value: 10.00,
-        selected: false
-    }, {
-        id: 'funeral_expense_benefit',
-        name: 'Funeral expense benefit',
-        value: 10.00,
-        selected: false
-    }, {
-        id: 'hospital_cashless',
-        name: 'Hospital cashless',
-        value: 10.00,
-        selected: false
-    }];
+    $scope.additionalCoverMap = {
+        "LADDI_R1" : "Additional Life Cover",
+        "LACCID_R1" : "Additional Accident Cover/TPD/PPD",
+        "LCRITL_R1" : "Critical Illness",
+        "FIB" : "Family Income Benefit Per Month",
+        "LHOSPT_R1" : "Hospital Cash Plan Per Day",
+        "FUNEX" : "Funeral Expense",
+        "HRCL" : "Hospital Reimbursement - Cashless"
+    };
+    // $scope.additionalCover = [{
+    //     "RiderCode": "LADDI_R1",
+    //     "PolicyHolder": "LIN",
+    //     "MinimumAge": "21",
+    //     "MaximumAge": "59",
+    //     "MinimumTerm": "8",
+    //     "MaximumTerm": "30",
+    //     "MinimumAmount": "100000",
+    //     "MaximumAmount": "",
+    //     "BasicSumMultipliedBy": "8",
+    //     "MultiplesOf": "10000"
+    // }, {
+    //     "RiderCode": "LADDI_R1",
+    //     "PolicyHolder": "SPU",
+    //     "MinimumAge": "21",
+    //     "MaximumAge": "59",
+    //     "MinimumTerm": "8",
+    //     "MaximumTerm": "30",
+    //     "MinimumAmount": "100000",
+    //     "MaximumAmount": "",
+    //     "BasicSumMultipliedBy": "8",
+    //     "MultiplesOf": "10000"
+    // }, {
+    //     "RiderCode": "LADDI_R1",
+    //     "PolicyHolder": "CHL",
+    //     "MinimumAge": "",
+    //     "MaximumAge": "",
+    //     "MinimumTerm": "",
+    //     "MaximumTerm": "",
+    //     "MinimumAmount": "",
+    //     "MaximumAmount": "",
+    //     "BasicSumMultipliedBy": "8",
+    //     "MultiplesOf": "10000"
+    // }, {
+    //     "RiderCode": "LACCID_R1",
+    //     "PolicyHolder": "LIN",
+    //     "MinimumAge": "21",
+    //     "MaximumAge": "59",
+    //     "MinimumTerm": "8",
+    //     "MaximumTerm": "30",
+    //     "MinimumAmount": "100000",
+    //     "MaximumAmount": "",
+    //     "BasicSumMultipliedBy": "6",
+    //     "MultiplesOf": "10000"
+    // }, {
+    //     "RiderCode": "LACCID_R1",
+    //     "PolicyHolder": "SPU",
+    //     "MinimumAge": "21",
+    //     "MaximumAge": "59",
+    //     "MinimumTerm": "8",
+    //     "MaximumTerm": "30",
+    //     "MinimumAmount": "100000",
+    //     "MaximumAmount": "",
+    //     "BasicSumMultipliedBy": "6",
+    //     "MultiplesOf": "10000"
+    // }, {
+    //     "RiderCode": "LACCID_R1",
+    //     "PolicyHolder": "CHL",
+    //     "MinimumAge": "",
+    //     "MaximumAge": "",
+    //     "MinimumTerm": "",
+    //     "MaximumTerm": "",
+    //     "MinimumAmount": "",
+    //     "MaximumAmount": "",
+    //     "BasicSumMultipliedBy": "6",
+    //     "MultiplesOf": "10000"
+    // }, {
+    //     "RiderCode": "LCRITL_R1",
+    //     "PolicyHolder": "LIN",
+    //     "MinimumAge": "21",
+    //     "MaximumAge": "59",
+    //     "MinimumTerm": "8",
+    //     "MaximumTerm": "30",
+    //     "MinimumAmount": "100000",
+    //     "MaximumAmount": "5000000",
+    //     "BasicSumMultipliedBy": "1",
+    //     "MultiplesOf": "10000"
+    // }, {
+    //     "RiderCode": "LCRITL_R1",
+    //     "PolicyHolder": "SPU",
+    //     "MinimumAge": "21",
+    //     "MaximumAge": "59",
+    //     "MinimumTerm": "8",
+    //     "MaximumTerm": "30",
+    //     "MinimumAmount": "100000",
+    //     "MaximumAmount": "5000000",
+    //     "BasicSumMultipliedBy": "1",
+    //     "MultiplesOf": "10000"
+    // }, {
+    //     "RiderCode": "LCRITL_R1",
+    //     "PolicyHolder": "CHL",
+    //     "MinimumAge": "1",
+    //     "MaximumAge": "17",
+    //     "MinimumTerm": "8",
+    //     "MaximumTerm": "30",
+    //     "MinimumAmount": "100000",
+    //     "MaximumAmount": "5000000",
+    //     "BasicSumMultipliedBy": "1",
+    //     "MultiplesOf": "10000"
+    // }, {
+    //     "RiderCode": "FIB",
+    //     "PolicyHolder": "LIN",
+    //     "MinimumAge": "21",
+    //     "MaximumAge": "59",
+    //     "MinimumTerm": "8",
+    //     "MaximumTerm": "30",
+    //     "MinimumAmount": "5000",
+    //     "MaximumAmount": "100000",
+    //     "BasicSumMultipliedBy": "0.025",
+    //     "MultiplesOf": "500"
+    // }, {
+    //     "RiderCode": "FIB",
+    //     "PolicyHolder": "SPU",
+    //     "MinimumAge": "",
+    //     "MaximumAge": "",
+    //     "MinimumTerm": "",
+    //     "MaximumTerm": "",
+    //     "MinimumAmount": "",
+    //     "MaximumAmount": "",
+    //     "BasicSumMultipliedBy": "",
+    //     "MultiplesOf": "500"
+    // }, {
+    //     "RiderCode": "FIB",
+    //     "PolicyHolder": "CHL",
+    //     "MinimumAge": "",
+    //     "MaximumAge": "",
+    //     "MinimumTerm": "",
+    //     "MaximumTerm": "",
+    //     "MinimumAmount": "",
+    //     "MaximumAmount": "",
+    //     "BasicSumMultipliedBy": "",
+    //     "MultiplesOf": ""
+    // }, {
+    //     "RiderCode": "LHOSPT_R1",
+    //     "PolicyHolder": "LIN",
+    //     "MinimumAge": "21",
+    //     "MaximumAge": "59",
+    //     "MinimumTerm": "8",
+    //     "MaximumTerm": "30",
+    //     "MinimumAmount": "1000",
+    //     "MaximumAmount": "10000",
+    //     "BasicSumMultipliedBy": "0.1",
+    //     "MultiplesOf": "100"
+    // }, {
+    //     "RiderCode": "LHOSPT_R1",
+    //     "PolicyHolder": "SPU",
+    //     "MinimumAge": "18",
+    //     "MaximumAge": "59",
+    //     "MinimumTerm": "8",
+    //     "MaximumTerm": "30",
+    //     "MinimumAmount": "1,000",
+    //     "MaximumAmount": "10000",
+    //     "BasicSumMultipliedBy": "0.1",
+    //     "MultiplesOf": "100"
+    // }, {
+    //     "RiderCode": "LHOSPT_R1",
+    //     "PolicyHolder": "CHL",
+    //     "MinimumAge": "0",
+    //     "MaximumAge": "17",
+    //     "MinimumTerm": "8",
+    //     "MaximumTerm": "30",
+    //     "MinimumAmount": "1,000",
+    //     "MaximumAmount": "10000",
+    //     "BasicSumMultipliedBy": "0.1",
+    //     "MultiplesOf": "100"
+    // }, {
+    //     "RiderCode": "FUNEX",
+    //     "PolicyHolder": "LIN",
+    //     "MinimumAge": "18",
+    //     "MaximumAge": "54",
+    //     "MinimumTerm": "8",
+    //     "MaximumTerm": "30",
+    //     "MinimumAmount": "10000",
+    //     "MaximumAmount": "100000",
+    //     "BasicSumMultipliedBy": "0.1",
+    //     "MultiplesOf": "5000"
+    // }, {
+    //     "RiderCode": "FUNEX",
+    //     "PolicyHolder": "SPU",
+    //     "MinimumAge": "18",
+    //     "MaximumAge": "54",
+    //     "MinimumTerm": "8",
+    //     "MaximumTerm": "30",
+    //     "MinimumAmount": "10000",
+    //     "MaximumAmount": "100000",
+    //     "BasicSumMultipliedBy": "0.1",
+    //     "MultiplesOf": "5000"
+    // }, {
+    //     "RiderCode": "FUNEX",
+    //     "PolicyHolder": "CHL",
+    //     "MinimumAge": "0",
+    //     "MaximumAge": "17",
+    //     "MinimumTerm": "8",
+    //     "MaximumTerm": "30",
+    //     "MinimumAmount": "10000",
+    //     "MaximumAmount": "100000",
+    //     "BasicSumMultipliedBy": "0.1",
+    //     "MultiplesOf": "5000"
+    // }, {
+    //     "RiderCode": "HRCL",
+    //     "PolicyHolder": "LIN",
+    //     "MinimumAge": "21",
+    //     "MaximumAge": "59",
+    //     "MinimumTerm": "10",
+    //     "MaximumTerm": "30",
+    //     "MinimumAmount": "100000",
+    //     "MaximumAmount": "2000000",
+    //     "BasicSumMultipliedBy": "1",
+    //     "MultiplesOf": "100000"
+    // }, {
+    //     "RiderCode": "HRCL",
+    //     "PolicyHolder": "SPU",
+    //     "MinimumAge": "18",
+    //     "MaximumAge": "58",
+    //     "MinimumTerm": "10",
+    //     "MaximumTerm": "30",
+    //     "MinimumAmount": "100000",
+    //     "MaximumAmount": "2000000",
+    //     "BasicSumMultipliedBy": "1",
+    //     "MultiplesOf": "100000"
+    // }, {
+    //     "RiderCode": "HRCL",
+    //     "PolicyHolder": "CHL",
+    //     "MinimumAge": "0.5",
+    //     "MaximumAge": "17",
+    //     "MinimumTerm": "10",
+    //     "MaximumTerm": "30",
+    //     "MinimumAmount": "100000",
+    //     "MaximumAmount": "2000000",
+    //     "BasicSumMultipliedBy": "1",
+    //     "MultiplesOf": "100000"
+    // }];
+    $scope.additionalCover = [];
+
+    function setAbandonedState() {
+        $http({
+            method: "PUT",
+            url: `https://9qmfbex9qj.execute-api.us-east-1.amazonaws.com/Prod/cartStatus/${$scope.botID}/${$scope.userID}/false`,
+            headers: {
+                "Content-Type": "application/json"
+            },
+            data: payload
+        }).then(function (response, status) {
+            $scope.isPaymentSuccess = 2;
+        }, function (response, status) {
+            $scope.isPaymentSuccess = 2;
+        });
+    }
+
+    $scope.quotation = [];
+    function getPremium() {
+        $scope.quotation = [{
+            name: 'Package 1',
+            price: 100
+        }, {
+            name: 'Package 1',
+            price: 100
+        }, {
+            name: 'Package 1',
+            price: 100
+        }, {
+            name: 'Package 1',
+            price: 100
+        }, {
+            name: 'Package 1',
+            price: 100
+        }];
+        $scope.premiumPackage = {};
+    }
 
     if ($state.params && $state.params.name) {
         var name = $state.params.name.split(" ");
@@ -238,6 +468,10 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         }
 
         //getProfile($state.params.name);
+
+        if ($state.current.name === "get_quote") {
+            getPremium();
+        }
     }
 
     $scope.$on('stripe-token-received', function (event, data) {
@@ -654,8 +888,29 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             console.log("Context Data retrived.");
             // debugger
             $scope.contextData = response.data.message;
+            $scope.additionalCover = $scope.contextData['limitations'];
         }, function (response, status) {
             $rootScope.processing = false;
+        });
+    }
+    function setContextData(sessionID, payload) {
+        //debugger
+        // accepting the session ID like the bellow
+        //dbf-5c8747e6f9c5669f7a151c85-2549010211837333
+        sessionID = sessionID.replace(':', '-');
+        sessionID = sessionID.replace(':', '-');
+        $rootScope.processing = true;
+        return $http({
+            method: "POST",
+            url: "https://smoothbotdispatcher.plus.smoothflow.io/DBF/API/1.0.0/setContext/" + sessionID +"/" + 'riders',
+            headers: {
+                "Authorization": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzdWtpdGhhIiwianRpIjoiYWEzOGRmZWYtNDFhOC00MWUyLTgwMzktOTJjZTY0YjM4ZDFmIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE5MDIzODExMTgsInRlbmFudCI6LTEsImNvbXBhbnkiOi0xLCJzY29wZSI6W3sicmVzb3VyY2UiOiJhbGwiLCJhY3Rpb25zIjoiYWxsIn1dLCJpYXQiOjE0NzAzODExMTh9.Gmlu00Uj66Fzts-w6qEwNUz46XYGzE8wHUhAJOFtiRo",
+                "Content-Type": "application/json",
+                "companyInfo": "1:103"
+            },
+            data: {
+                "value": payload
+            }
         });
     }
 
@@ -693,73 +948,181 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         });
     }
 
-    $scope.submitAdditionalCover = function (e) {
+    $scope.add_cover_amount = 0;
+    $scope.genValidationsForAddCover = function () {
+        // var package = $scope.contextData.Package_codes;
+        // $scope.ridersToGo = $scope.contextData[package];
+        $scope.basic_cover = $scope.contextData.Insure_amount;
+        // $scope.basic_cover = 100000;
+
+        angular.forEach($scope.additionalCover, function (c) {
+            if (
+                c.MinimumAmount === "" &&
+                c.MaximumAmount === "" &&
+                c.MultiplesOf === "" &&
+                c.BasicSumMultipliedBy === ""
+            ) {
+                c.PolicyHolder = null;
+            }
+            c.userval = 0;
+        })
+    };
+    $scope.genValidationsForAddCover();
+
+    // $scope.submitAdditionalCover = function (e) {
+    //     e.preventDefault();
+    //     var form = $(e.target).serializeArray();
+    //     var isempty = $scope.additionalCover.filter(function (value) {
+    //         if(value.selected) return value;
+    //     });
+    //     if (isempty.length) {
+    //         $scope.processingAddCover = true;
+    //         $http({
+    //             method: "GET",
+    //             url: "https://7b69tvp6cj.execute-api.us-east-1.amazonaws.com/Prod/cart/" + $scope.userID,
+    //             headers: {
+    //                 "x-api-key": "XcY9lhgnud1JUum05XFT02r37wagFtOLdCH7RKz8",
+    //                 "Content-Type": "application/json",
+    //                 "companyInfo": "1:103"
+    //             }
+    //         }).then(function (response, status) {
+    //             if (response.data.IsSuccess) {
+    //                 var items = response.data.Result;
+    //                 var payload = {
+    //                     "userID": $scope.userID,
+    //                     "cartItems": [],
+    //                     "rawData": {
+    //                         currency: "USD"
+    //                     }
+    //                 };
+    //                 angular.forEach($scope.additionalCover, function (item) {
+    //                     if (item.selected) {
+    //                         payload.cartItems.push({
+    //                             "id": '',
+    //                             "title": item.name,
+    //                             "subtitle": "",
+    //                             "price": parseFloat(item.value),
+    //                             "image_url": '',
+    //                             "qty": 1,
+    //                             "type": 'additional_cover'
+    //                         });
+    //                     }
+    //                 });
+    //                 updateCart(payload)
+    //                     .then(function (response, status) {
+    //                         if (response.data.IsSuccess) {
+    //                             $scope.processingAddCover = false;
+    //                             $scope.isAddCoverSuccess = true;
+    //                         }
+    //                     }, function (response, status) {
+    //                         alert(response.data.CustomMessage);
+    //                         $scope.processingAddCover = false;
+    //                     });
+    //             }
+    //         });
+    //     } else {
+    //         alert('Please select an item');
+    //     }
+    // };
+    $scope.isAdditionalCompleted = false;
+    $scope.additionalCoverToContext = function (e) {
+        var additionalCovers = {
+            LIN: {},
+            SPU: {},
+            CHL: {}
+        };
         e.preventDefault();
-        var isempty = $scope.additionalCover.filter(function (value) {
-            if(value.selected) return value;
-        });
-        if (isempty.length) {
-            $scope.processingAddCover = true;
-            $http({
-                method: "GET",
-                url: "https://7b69tvp6cj.execute-api.us-east-1.amazonaws.com/Prod/cart/" + $scope.userID,
-                headers: {
-                    "x-api-key": "XcY9lhgnud1JUum05XFT02r37wagFtOLdCH7RKz8",
-                    "Content-Type": "application/json",
-                    "companyInfo": "1:103"
-                }
-            }).then(function (response, status) {
-                if (response.data.IsSuccess) {
-                    var items = response.data.Result;
-                    var payload = {
-                        "userID": $scope.userID,
-                        "cartItems": [],
-                        "rawData": {
-                            currency: "USD"
-                        }
-                    };
-                    angular.forEach($scope.additionalCover, function (item) {
-                        if (item.selected) {
-                            payload.cartItems.push({
-                                "id": '',
-                                "title": item.name,
-                                "subtitle": "",
-                                "price": parseFloat(item.value),
-                                "image_url": '',
-                                "qty": 1,
-                                "type": 'additional_cover'
-                            });
-                        }
-                    });
-                    updateCart(payload)
-                        .then(function (response, status) {
-                            if (response.data.IsSuccess) {
-                                $scope.processingAddCover = false;
-                                $scope.isAddCoverSuccess = true;
-                            }
-                        }, function (response, status) {
-                            alert(response.data.CustomMessage);
-                            $scope.processingAddCover = false;
-                        });
-                }
+        if ($scope.additionalCoverForm.$valid) {
+            $rootScope.processing = true;
+            var form = $(e.target).serializeArray();
+            angular.forEach(form, function (c) {
+                additionalCovers[c.name.split('_').pop()][c.name] = parseInt(c.value);
             });
+            setContextData('12345', additionalCovers)
+                .then(function (response, status) {
+                    console.log("Context Data updated.");
+                    $rootScope.processing = false;
+                    $scope.isAdditionalCompleted = true;
+                }, function (response, status) {
+                    $rootScope.processing = false;
+                });
         } else {
-            alert('Please select an item');
+            alert("Invalid inputs");
         }
     };
-
-    function setAbandonedState() {
-        $http({
-            method: "PUT",
-            url: `https://9qmfbex9qj.execute-api.us-east-1.amazonaws.com/Prod/cartStatus/${$scope.botID}/${$scope.userID}/false`,
-            headers: {
-                "Content-Type": "application/json"
-            },
-            data: payload
-        }).then(function (response, status) {
-            $scope.isPaymentSuccess = 2;
-        }, function (response, status) {
-            $scope.isPaymentSuccess = 2;
-        });
+    $scope.setForm = function (form) {
+        $scope.additionalCoverForm = form;
     }
 }
+
+app.directive('validateCover', function () {
+    return {
+        restrict: 'EAA',
+        scope: {
+            cover: '=',
+            basic: '=',
+            currency: '=',
+            userval: '=',
+            pform: '='
+        },
+        templateUrl: './partials/cover-input-template.html',
+        link: function (scope, iElement) {
+            scope.coverValue = null;
+            scope.errorMsg = '';
+            scope.minAmount = null;
+            scope.maxAmount = null;
+            scope.validating = false;
+
+            function setMinAmount() {
+                if (scope.cover.MinimumAmount !== "") {
+                    scope.minAmount = parseInt(scope.cover.MinimumAmount);
+                }
+            }
+
+            function setMaxAmount() {
+                var sbasmul = scope.cover.BasicSumMultipliedBy;
+                var smax = scope.cover.MaximumAmount;
+
+                if (smax !== "") {
+                    scope.maxAmount = parseInt(smax);
+                } else if (sbasmul !== "") {
+                    scope.maxAmount = parseInt(sbasmul) * scope.basic;
+                }
+            }
+
+            (function () {
+                setMaxAmount();
+                setMinAmount();
+                scope.coverValue = 0;
+            })();
+            
+            function multiplesOf() {
+                 var x = scope.coverValue % parseInt(scope.cover.MultiplesOf);
+                 return x;
+            }
+
+            scope.validateInput = function (el) {
+                var f = scope.pform[scope.cover.RiderCode+'_'+scope.cover.PolicyHolder];
+                if (!scope.coverValue) {
+                    scope.errorMsg = '';
+                    f.$setValidity("invalid", true);
+                } else if (scope.coverValue > scope.maxAmount) {
+                    scope.errorMsg = 'Maximum value is ' + scope.maxAmount;
+                    f.$setValidity("invalid", false);
+                } else if (scope.coverValue < scope.minAmount) {
+                    scope.errorMsg = 'Minimum value is ' + scope.minAmount;
+                    f.$setValidity("invalid", false);
+                } else if (multiplesOf() > 0) {
+                    scope.errorMsg = 'Amount should be dividable by ' + scope.cover.MultiplesOf;
+                    f.$setValidity("invalid", false);
+                } else {
+                    scope.errorMsg = '';
+                    f.$setValidity("invalid", true);
+                }
+                scope.userval = scope.coverValue;
+            };
+
+        }
+    }
+});
+

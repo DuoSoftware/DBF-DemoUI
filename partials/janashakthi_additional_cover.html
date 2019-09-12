@@ -1,16 +1,44 @@
-<div class="clearfix">
-    <form action="" class="container" ng-submit="submitAdditionalCover($event)" ng-if="!processingAddCover && !isAddCoverSuccess">
+<div class="clearfix" ng-if="!isAdditionalCompleted">
+    <img src="./img/Life Logo-01.png" alt="" style="width: 65px;position: absolute;left: 20px;top: 20px">
+    <div class="wrapper text-center" style="margin-top: 50px">
+        <h2 class="text-center" style="font-weight: bold;">Additional Covers</h2>
+    </div>
+    <form name="additionalCoverForm" class="container" ng-submit="additionalCoverToContext($event)" ng-if="!processingAddCover && !isAddCoverSuccess">
+        <div ng-init="setForm(additionalCoverForm);"></div>
         <div class="row check-list">
-            <div class="col-md-12 check-list-item" ng-repeat="item in additionalCover">
-                <div class="cover-block">
-                    <input type="checkbox" id="{{item.id}}" name="{{item.id}}" ng-model="item.selected">
-                    <label for="{{item.id}}">{{item.name}}</label>
-                    <b> - {{payment.currency}} {{item.value}}</b>
+            <!--<div class="col-md-12 check-list-item" ng-repeat="item in additionalCover">-->
+                <!--<div class="cover-block">-->
+                    <!--<input type="checkbox" id="{{item.id}}" name="{{item.id}}" ng-model="item.selected">-->
+                    <!--<label for="{{item.id}}">{{item.name}}</label>-->
+                    <!--<b> - {{payment.currency}} {{item.value}}</b>-->
+                <!--</div>-->
+
+                <!--<div class="add-cover-sub-group">-->
+
+                <!--</div>-->
+            <!--</div>-->
+
+            <div ng-repeat="(key, value) in additionalCover | groupBy: 'RiderCode'" style="margin-bottom: 30px">
+                <div class="ui-card" style="max-width: 700px">
+                    <h3 style="margin-top: 0">{{additionalCoverMap[key]}}</h3>
+                    <div class="ui-card-body">
+                        <validate-cover
+                                cover="pak"
+                                basic="basic_cover"
+                                currency="payment.currency"
+                                pform="additionalCoverForm"
+                                userval="pak.userval"
+                                ng-repeat="pak in value" ng-if="pak.PolicyHolder && pak.MinimumAge !== ''  && pak.MaximumAge !== ''"></validate-cover>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row text-center">
-            <button type="submit" class="btn btn-primary" style="padding: 10px 20px;/*font-size: large;*/">Add</button>
+        <div class="row text-center" style="padding: 0 0 20px 0">
+            <button type="submit" class="btn btn-primary" style="padding: 10px 50px;font-size: large;background: #ffa60c;border: none">Add</button>
+        </div>
+
+        <div style="text-align: center;padding: 10px 0;font-size: 14px;display: flex;align-items: center;justify-content: center">
+            Powered by <img src="./img/logo-smoothflow-beta-purple.svg" alt="" style="width: 100px;margin-left: 6px">
         </div>
     </form>
     <div class="wrapper text-center" ng-if="processingAddCover">
@@ -25,4 +53,10 @@
         <h4 style="font-weight: bold;">Additional cover added</h4>
         <p>Your inputs have been updated. Please close the window to proceed.</p>
     </div>
+</div>
+<div class="wrapper text-center" ng-if="isAdditionalCompleted">
+    <img src="img/checked.png">
+    <div class="line line-dashed"></div>
+    <h4 style="font-weight: bold;">Success</h4>
+    <p>Additional Covers added successfully. Please close the window to proceed.</p>
 </div>

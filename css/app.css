@@ -23,7 +23,7 @@
 }
 
 html {
-  background-color: #f0f3f4;
+  background-color: #eee;
 }
 
 body {
@@ -32,7 +32,7 @@ body {
   -webkit-font-smoothing: antialiased;
   line-height: 1.42857143;
   color: #58666e;
-  background-color: transparent;
+  background-color: #eee;
 }
 
 *:focus {
@@ -5320,4 +5320,95 @@ a.text-#000000:hover {
 }
 .check-list .check-list-item {
   padding: 10px 0;
+}
+
+.ui-card {
+  margin: 0 auto;
+  /*-webkit-box-shadow: 0 2px 5px #aaaaaa;*/
+  /*-moz-box-shadow: 0 2px 5px #aaaaaa;*/
+  /*box-shadow: 0 2px 5px #aaaaaa;*/
+}
+.ui-card-body {
+  background: #ffffff;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+}
+.ui-card-footer {
+  padding: 20px;
+  background: #555;
+  color: #ffffff;
+  display: flex;
+  border-radius: 0 0 10px 10px;
+  margin-top: -10px;
+  position: relative;
+  z-index: 1;
+}
+.ui-card-list-item {
+  display: flex;
+  margin-bottom: 30px;
+}
+.ui-card-list-item input[type="radio"]{
+  margin-top: 6px;
+}
+.ui-card-list-item .form-check-label{
+  font-size: 18px;
+}
+.ui-card-body .ui-card-list-item:not(:last-child) {
+  border-bottom: solid 1px #dddddd;
+  padding-bottom: 20px;
+}
+.txt-primary {
+  color: #ffa60c;
+}
+.error-msg {
+  color: red;
+  font-size: 13px;
+  margin-top: 10px;
+}
+.validate-cover {
+  display: flex;
+  position: relative;
+  padding-left: 15px;
+}
+.validate-cover .is-added{
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: -8px;
+  top: 3px;
+}
+.validate-cover .is-added.not_completed{
+  -ms-filter: grayscale(1);
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+.ui-card-body validate-cover:not(:last-child) .validate-cover {
+  margin-bottom: 30px;
+}
+.cover-input-wrap {
+  display: flex;
+  flex: 1;
+}
+.cover-input {
+  /*display: flex;*/
+  flex: 1;
+}
+.cover-input input {
+  height: 35px;
+}
+.cover-input input.ng-invalid {
+  border-color: red;
+}
+.cover-input-cond {
+  line-height: 20px;
+  font-size: 13px;
+  color: #ffa60c;
+  margin: 0;
+  list-style: none;
+  padding-left: 15px;
 }

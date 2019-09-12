@@ -53,6 +53,7 @@
     <script type="text/javascript" src="js/directives/stripe.js"></script>
     <!--payment getway-->
     <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script type="text/javascript" src="node_modules/angular-filter/dist/angular-filter.js"></script>
 
 </body>
 

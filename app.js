@@ -1,7 +1,8 @@
 var app = angular.module('loginapp', [
     'ui.router',
     'uiKernel',
-    'stripe-payment-tools'
+    'stripe-payment-tools',
+    'angular.filter'
 ]);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
@@ -45,6 +46,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('additional_cover', {
             url: '/additional_cover?name&sender&title&companyname&companylogolarge&stripdescription&companylogosmall&stripebutton&stripepublishkey&checkoutbutton',
             templateUrl: 'partials/janashakthi_additional_cover.html',
+            controller: 'PaymentController'
+        })
+        .state('get_premium', {
+            url: '/get_premium?name&sender&title&companyname&companylogolarge&stripdescription&companylogosmall&stripebutton&stripepublishkey&checkoutbutton',
+            templateUrl: 'partials/get-premium.html',
             controller: 'PaymentController'
         });
 

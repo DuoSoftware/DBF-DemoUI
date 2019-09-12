@@ -1,0 +1,19 @@
+<div class="validate-cover">
+    <img class="is-added" src="./img/checked.png" alt="" ng-if="coverValue" ng-class="{'not_completed':errorMsg}">
+    <span style="width: 110px;display: inline-block">{{
+        cover.PolicyHolder == 'SPU' ? 'For Spouse' :
+        cover.PolicyHolder == 'LIN' ? 'For yourself' :
+        cover.PolicyHolder == 'CHL' ? 'For child' :
+        null
+        }}</span>
+    <div class="cover-input-wrap">
+        <div class="cover-input">
+            <input class="form-control" type="number" name="{{cover.RiderCode+'_'+cover.PolicyHolder}}" ng-model="coverValue" ng-change="validateInput(this)">
+            <div class="error-msg">{{errorMsg}}</div>
+        </div>
+        <ul class="cover-input-cond">
+            <li>Minimum Amount: <b>{{minAmount ? currency + ' ' + minAmount : 'N/A'}}</b></li>
+            <li>Maximum Amount: <b>{{maxAmount ? currency + ' ' + maxAmount : 'N/A'}}</b></li>
+        </ul>
+    </div>
+</div>
