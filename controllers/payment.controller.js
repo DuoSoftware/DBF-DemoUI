@@ -904,10 +904,10 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             // debugger
             $scope.contextData = response.data.message;
             $scope.additionalCover = $scope.contextData['limitations'];
-            $scope.payment.annually = $scope.contextData['premium_annual'];
-            $scope.payment.half_yearly = $scope.contextData['premium_half_year'];
-            $scope.payment.quarterly = $scope.contextData['premium_quarter'];
-            $scope.payment.monthly = $scope.contextData['premium_month'];
+            $scope.payment.annually = $scope.contextData.premium ? $scope.contextData.premium['premium_annual'] : '';
+            $scope.payment.half_yearly = $scope.contextData.premium ? $scope.contextData.premium['premium_half_year'] : '';
+            $scope.payment.quarterly = $scope.contextData.premium ? $scope.contextData.premium['premium_quarter'] : '';
+            $scope.payment.monthly = $scope.contextData.premium ? $scope.contextData.premium['premium_month'] : '';
         }, function (response, status) {
             $rootScope.processing = false;
         });
