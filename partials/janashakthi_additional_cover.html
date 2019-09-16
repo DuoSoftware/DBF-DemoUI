@@ -1,46 +1,51 @@
 <div class="clearfix" ng-if="!isAdditionalCompleted">
     <img src="./img/Life Logo-01.png" alt="" style="width: 65px;position: absolute;left: 20px;top: 20px">
     <div class="wrapper text-center" style="margin-top: 50px">
-        <h2 class="text-center" style="font-weight: bold;">Additional Covers</h2>
+        <h2 class="text-center" style="font-weight: bold;">Riders</h2>
     </div>
-    <form name="additionalCoverForm" class="container" ng-submit="additionalCoverToContext($event)" ng-if="!processingAddCover && !isAddCoverSuccess">
-        <div ng-init="setForm(additionalCoverForm);"></div>
-        <div class="row check-list">
-            <!--<div class="col-md-12 check-list-item" ng-repeat="item in additionalCover">-->
+    <div ng-if="additionalCover.length">
+        <form name="additionalCoverForm" class="container" ng-submit="additionalCoverToContext($event)" ng-if="!processingAddCover && !isAddCoverSuccess">
+            <div ng-init="setForm(additionalCoverForm);"></div>
+            <div class="row check-list">
+                <!--<div class="col-md-12 check-list-item" ng-repeat="item in additionalCover">-->
                 <!--<div class="cover-block">-->
-                    <!--<input type="checkbox" id="{{item.id}}" name="{{item.id}}" ng-model="item.selected">-->
-                    <!--<label for="{{item.id}}">{{item.name}}</label>-->
-                    <!--<b> - {{payment.currency}} {{item.value}}</b>-->
+                <!--<input type="checkbox" id="{{item.id}}" name="{{item.id}}" ng-model="item.selected">-->
+                <!--<label for="{{item.id}}">{{item.name}}</label>-->
+                <!--<b> - {{payment.currency}} {{item.value}}</b>-->
                 <!--</div>-->
 
                 <!--<div class="add-cover-sub-group">-->
 
                 <!--</div>-->
-            <!--</div>-->
+                <!--</div>-->
 
-            <div ng-repeat="(key, value) in additionalCover | groupBy: 'RiderCode'" style="margin-bottom: 30px">
-                <div class="ui-card" style="max-width: 700px">
-                    <h3 style="margin-top: 0">{{additionalCoverMap[key]}}</h3>
-                    <div class="ui-card-body">
-                        <validate-cover
-                                cover="pak"
-                                basic="basic_cover"
-                                currency="payment.currency"
-                                pform="additionalCoverForm"
-                                userval="pak.userval"
-                                ng-repeat="pak in value" ng-if="pak.PolicyHolder && pak.MinimumAge !== ''  && pak.MaximumAge !== ''"></validate-cover>
+                <div ng-repeat="(key, value) in additionalCover | groupBy: 'RiderCode'" style="margin-bottom: 30px">
+                    <div class="ui-card" style="max-width: 700px">
+                        <h3 style="margin-top: 0">{{additionalCoverMap[key]}}</h3>
+                        <div class="ui-card-body">
+                            <validate-cover
+                                    cover="pak"
+                                    basic="basic_cover"
+                                    currency="payment.currency"
+                                    pform="additionalCoverForm"
+                                    userval="pak.userval"
+                                    ng-repeat="pak in value" ng-if="pak.PolicyHolder && pak.MinimumAge !== ''  && pak.MaximumAge !== ''"></validate-cover>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row text-center" style="padding: 0 0 20px 0">
-            <button type="submit" class="btn btn-primary" style="padding: 10px 50px;font-size: large;background: #ffa60c;border: none">Add</button>
-        </div>
+            <div class="row text-center" style="padding: 0 0 20px 0">
+                <button type="submit" class="btn btn-primary" style="padding: 10px 50px;font-size: large;background: #ffa60c;border: none">Add</button>
+            </div>
 
-        <div style="text-align: center;padding: 10px 0;font-size: 14px;display: flex;align-items: center;justify-content: center">
-            Powered by <img src="./img/logo-smoothflow-beta-purple.svg" alt="" style="width: 100px;margin-left: 6px">
-        </div>
-    </form>
+            <div style="text-align: center;padding: 10px 0;font-size: 14px;display: flex;align-items: center;justify-content: center">
+                Powered by <img src="./img/logo-smoothflow-beta-purple.svg" alt="" style="width: 100px;margin-left: 6px">
+            </div>
+        </form>
+    </div>
+    <div ng-if="!additionalCover.length" class="text-center">
+        No additional covers to show
+    </div>
     <div class="wrapper text-center" ng-if="processingAddCover">
         <img src="img/loading.gif" style="height: 75px;">
         <div class="line line-dashed"></div>
