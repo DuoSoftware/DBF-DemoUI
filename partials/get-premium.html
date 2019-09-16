@@ -67,14 +67,29 @@
                 <div style="display: flex;flex: 1">
                     <div>
                         <label class="form-check-label txt-primary" style="display: block">
-                            <b>Annually</b>
+                            <b>Monthly</b>
                         </label>
                         <!--<small style="display: block">Section 1</small>-->
                     </div>
                 </div>
                 <div>
-                    <span style="display: block"><b>{{payment.currency}} {{payment.anually}}</b></span>
+                    <span style="display: block"><b>{{payment.currency}} {{payment.monthly}}</b></span>
                     <!--<small style="display: block">Section 1</small>-->
+                </div>
+            </div>
+            <div class="ui-card-list-item">
+                <div style="display: flex;flex: 1">
+                    <div>
+                        <label class="form-check-label txt-primary" style="display: block">
+                            <b>Quarterly</b>
+                        </label>
+                        <!--<small style="display: block">Section 1</small>-->
+                    </div>
+                    <!--<small style="text-decoration: line-through;line-height: 25px;margin-left: 5px">{{payment.currency}} 1212.00</small>-->
+                </div>
+                <div>
+                    <span class="" style="display: block"><b>{{payment.currency}} {{payment.quarterly}}</b></span>
+                    <!--<small style="display: block">Save</small>-->
                 </div>
             </div>
             <div class="ui-card-list-item">
@@ -96,29 +111,14 @@
                 <div style="display: flex;flex: 1">
                     <div>
                         <label class="form-check-label txt-primary" style="display: block">
-                            <b>Monthly</b>
+                            <b>Annually</b>
                         </label>
                         <!--<small style="display: block">Section 1</small>-->
                     </div>
                     <!--<small style="text-decoration: line-through;line-height: 25px;margin-left: 5px">{{payment.currency}} 1212.00</small>-->
                 </div>
                 <div>
-                    <span class="" style="display: block"><b>{{payment.currency}} {{payment.monthly}}</b></span>
-                    <!--<small style="display: block">Save</small>-->
-                </div>
-            </div>
-            <div class="ui-card-list-item">
-                <div style="display: flex;flex: 1">
-                    <div>
-                        <label class="form-check-label txt-primary" style="display: block">
-                            <b>Quarterly</b>
-                        </label>
-                        <!--<small style="display: block">Section 1</small>-->
-                    </div>
-                    <!--<small style="text-decoration: line-through;line-height: 25px;margin-left: 5px">{{payment.currency}} 1212.00</small>-->
-                </div>
-                <div>
-                    <span class="" style="display: block"><b>{{payment.currency}} {{payment.quarterly}}</b></span>
+                    <span class="" style="display: block"><b>{{payment.currency}} {{payment.annually}}</b></span>
                     <!--<small style="display: block">Save</small>-->
                 </div>
             </div>
