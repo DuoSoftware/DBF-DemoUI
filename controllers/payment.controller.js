@@ -310,7 +310,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         $scope.companylogolarge = $state.params.companylogolarge;//     https://smoothflow.io/facetone/DBF-DemoUI/img/dialog.png
         $scope.companylogosmall = $state.params.companylogosmall;//     https://smoothflow.io/facetone/DBF-DemoUI/img/dialog.png
         $scope.checkoutbutton = $state.params.checkoutbutton;
-        if ($scope.checkoutbutton[$scope.checkoutbutton.length - 1] == "/") {
+        if ($scope.checkoutbutton && $scope.checkoutbutton[$scope.checkoutbutton.length - 1] == "/") {
             $scope.checkoutbutton = $scope.checkoutbutton.substring(0, $scope.checkoutbutton.length - 1);
         }
         $scope.stripdescription = $state.params.stripdescription;
