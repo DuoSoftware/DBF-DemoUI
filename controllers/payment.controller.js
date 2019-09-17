@@ -1058,7 +1058,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             angular.forEach(form, function (c) {
                 additionalCovers[c.name.split('_').pop()][c.name] = parseInt(c.value);
             });
-            setContextData('12345', additionalCovers)
+            setContextData($scope.sessionId, additionalCovers)
                 .then(function (response, status) {
                     console.log("Context Data updated.");
                     $rootScope.processing = false;
