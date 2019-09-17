@@ -908,6 +908,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.payment.half_yearly = $scope.contextData.premium ? $scope.contextData.premium['premium_half_year'] : '';
             $scope.payment.quarterly = $scope.contextData.premium ? $scope.contextData.premium['premium_quarter'] : '';
             $scope.payment.monthly = $scope.contextData.premium ? $scope.contextData.premium['premium_month'] : '';
+            $scope.basic_cover = $scope.contextData.Insure_amount;
         }, function (response, status) {
             $rootScope.processing = false;
         });
