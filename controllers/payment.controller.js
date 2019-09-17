@@ -1101,12 +1101,22 @@ app.directive('validateCover', function () {
             function setMaxAmount() {
                 var sbasmul = scope.cover.BasicSumMultipliedBy;
                 var smax = scope.cover.MaximumAmount;
+                var submax = 0;
 
                 if (smax !== "") {
-                    scope.maxAmount = parseInt(smax);
-                } else if (sbasmul !== "") {
-                    scope.maxAmount = parseInt(sbasmul) * scope.basic;
+                    submax = parseInt(smax);
                 }
+                if (sbasmul !== "") {
+                    var ma = parseInt(sbasmul) * scope.basic;
+                    if (submax > 0) {
+                        if (ma < submax) {
+                            submax = ma;
+                        }
+                    } else {
+                        submax = ma;
+                    }
+                }
+                scope.maxAmount = submax;
             }
 
             (function () {
