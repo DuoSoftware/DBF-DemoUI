@@ -5370,7 +5370,7 @@ a.text-#000000:hover {
   margin-top: 10px;
 }
 .validate-cover {
-  display: flex;
+  /*display: flex;*/
   position: relative;
   padding-left: 15px;
 }
