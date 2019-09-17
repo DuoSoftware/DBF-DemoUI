@@ -1105,7 +1105,7 @@ app.directive('validateCover', function () {
                 var submax = 0;
 
                 if (smax !== "") {
-                    submax = parseInt(smax);
+                    submax = parseInt(smax.replace(/,/g, ''));
                 }
                 if (sbasmul !== "") {
                     var ma = parseInt(sbasmul) * scope.basic;
