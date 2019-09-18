@@ -1127,7 +1127,7 @@ app.directive('validateCover', function () {
             })();
             
             function multiplesOf() {
-                 var x = scope.coverValue % parseInt(scope.cover.MultiplesOf);
+                 var x = scope.coverValue % parseInt(scope.cover.MultiplesOf.replace(/,/g, ''));
                  return x;
             }
 
