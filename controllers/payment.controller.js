@@ -884,6 +884,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     }
 
     $scope.contextData = {};
+    $scope.insured_people = "";
     function getContextData(sessionID) {
         //debugger
         // accepting the session ID like the bellow
@@ -909,6 +910,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.payment.quarterly = $scope.contextData.premium ? $scope.contextData.premium['premium_quarter'] : '';
             $scope.payment.monthly = $scope.contextData.premium ? $scope.contextData.premium['premium_month'] : '';
             $scope.basic_cover = $scope.contextData.Insure_amount;
+            $scope.insured_people = $scope.contextData.insuredPeople;
         }, function (response, status) {
             $rootScope.processing = false;
         });

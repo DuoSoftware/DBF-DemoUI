@@ -29,7 +29,11 @@
                                     currency="payment.currency"
                                     pform="additionalCoverForm"
                                     userval="pak.userval"
-                                    ng-repeat="pak in value" ng-if="pak.PolicyHolder && pak.MinimumAge !== ''  && pak.MaximumAge !== ''"></validate-cover>
+                                    ng-repeat="pak in value"
+                                    ng-if="pak.PolicyHolder && insured_people == 'family' ||
+                                    pak.PolicyHolder && insured_people == 'self' && pak.PolicyHolder != 'CHL' && pak.PolicyHolder != 'SPU' ||
+                                    pak.PolicyHolder && insured_people == 'selfAndSpouse' && pak.PolicyHolder != 'CHL'"
+                                    ></validate-cover>
                         </div>
                     </div>
                 </div>
