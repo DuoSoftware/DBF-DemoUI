@@ -30,7 +30,8 @@
                                     pform="additionalCoverForm"
                                     userval="pak.userval"
                                     ng-repeat="pak in value"
-                                    ng-if="pak.PolicyHolder && insured_people == '' ||
+                                    ng-if="pak.PolicyHolder && insured_people == undefined ||
+                                    pak.PolicyHolder && insured_people == '' ||
                                     pak.PolicyHolder && insured_people == 'family' ||
                                     pak.PolicyHolder && insured_people == 'self' && pak.PolicyHolder != 'CHL' && pak.PolicyHolder != 'SPU' ||
                                     pak.PolicyHolder && insured_people == 'selfAndSpouse' && pak.PolicyHolder != 'CHL'"
