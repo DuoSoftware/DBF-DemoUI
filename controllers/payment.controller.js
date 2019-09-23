@@ -1097,7 +1097,7 @@ app.directive('validateCover', function () {
 
             function setMinAmount() {
                 if (scope.cover.MinimumAmount !== "") {
-                    scope.minAmount = parseInt(scope.cover.MinimumAmount);
+                    scope.minAmount = parseInt(scope.cover.MinimumAmount.replace(/,/g, ''));
                 }
             }
 
