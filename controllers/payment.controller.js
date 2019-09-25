@@ -905,12 +905,14 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             // debugger
             $scope.contextData = response.data.message;
             $scope.additionalCover = $scope.contextData['limitations'];
-            $scope.payment.annually = $scope.contextData.premium ? $scope.contextData.premium['premium_annual'] : '';
-            $scope.payment.half_yearly = $scope.contextData.premium ? $scope.contextData.premium['premium_half_year'] : '';
-            $scope.payment.quarterly = $scope.contextData.premium ? $scope.contextData.premium['premium_quarter'] : '';
-            $scope.payment.monthly = $scope.contextData.premium ? $scope.contextData.premium['premium_month'] : '';
-            $scope.basic_cover = $scope.contextData.Insure_amount;
-            $scope.insured_people = $scope.contextData.insuredPeople;
+                $scope.payment.annually = $scope.contextData.premium ? $scope.contextData.premium['premium_annual'] : '';
+                $scope.payment.half_yearly = $scope.contextData.premium ? $scope.contextData.premium['premium_half_year'] : '';
+                $scope.payment.quarterly = $scope.contextData.premium ? $scope.contextData.premium['premium_quarter'] : '';
+                $scope.payment.monthly = $scope.contextData.premium ? $scope.contextData.premium['premium_month'] : '';
+                $scope.basic_cover = $scope.contextData.Insure_amount;
+            if ($scope.contextData.plandetails) {
+                $scope.insured_people = $scope.contextData.plandetails.insuredPeople;
+            }
         }, function (response, status) {
             $rootScope.processing = false;
         });
