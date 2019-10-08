@@ -917,7 +917,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $rootScope.processing = false;
         });
     }
-    function setContextData(sessionID, payload) {
+    function setContextData(sessionID, payload, endpoint) {
         //debugger
         // accepting the session ID like the bellow
         //dbf-5c8747e6f9c5669f7a151c85-2549010211837333
@@ -926,7 +926,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         $rootScope.processing = true;
         return $http({
             method: "POST",
-            url: "https://smoothbotdispatcher.plus.smoothflow.io/DBF/API/1.0.0/setContext/" + sessionID +"/" + 'riders',
+            url: "https://smoothbotdispatcher.plus.smoothflow.io/DBF/API/1.0.0/setContext/" + sessionID +"/" + endpoint,
             headers: {
                 "Authorization": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzdWtpdGhhIiwianRpIjoiYWEzOGRmZWYtNDFhOC00MWUyLTgwMzktOTJjZTY0YjM4ZDFmIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE5MDIzODExMTgsInRlbmFudCI6LTEsImNvbXBhbnkiOi0xLCJzY29wZSI6W3sicmVzb3VyY2UiOiJhbGwiLCJhY3Rpb25zIjoiYWxsIn1dLCJpYXQiOjE0NzAzODExMTh9.Gmlu00Uj66Fzts-w6qEwNUz46XYGzE8wHUhAJOFtiRo",
                 "Content-Type": "application/json",
@@ -1062,7 +1062,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             angular.forEach(form, function (c) {
                 additionalCovers[c.name.split('_').pop()][c.name] = parseInt(c.value);
             });
-            setContextData($scope.SessionID, additionalCovers)
+            setContextData($scope.SessionID, additionalCovers, 'riders')
                 .then(function (response, status) {
                     console.log("Context Data updated.");
                     $rootScope.processing = false;
@@ -1131,7 +1131,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 date: $scope.bookedDate,
                 time: $scope.bookTime.selectedOccur
             };
-            setContextData($scope.SessionID, bookingDetails)
+            setContextData($scope.SessionID, bookingDetails, 'bookingDetails')
                 .then(function (response, status) {
                     console.log("Context Data updated.");
                     $rootScope.processing = false;
