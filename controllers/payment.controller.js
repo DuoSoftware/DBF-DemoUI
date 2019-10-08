@@ -1076,7 +1076,73 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     };
     $scope.setForm = function (form) {
         $scope.additionalCoverForm = form;
-    }
+    };
+
+
+    $scope.bookedDate = new Date();
+    $scope.bookTime = {};
+    $scope.bookTime.selectedOccur = '';
+    $scope.availableTimes = [{
+        value: '10.00am',
+        available: false,
+        selected: false
+    }, {
+        value: '11.00am',
+        available: true,
+        selected: false
+    }, {
+        value: '12.00am',
+        available: false,
+        selected: false
+    }, {
+        value: '1.00pm',
+        available: true,
+        selected: false
+    }, {
+        value: '2.00pm',
+        available: true,
+        selected: false
+    }, {
+        value: '3.00pm',
+        available: true,
+        selected: false
+    }, {
+        value: '4.00pm',
+        available: true,
+        selected: false
+    }, {
+        value: '5.00pm',
+        available: true,
+        selected: false
+    }, {
+        value: '6.00pm',
+        available: true,
+        selected: false
+    }];
+    $scope.isDateCompleted = false;
+    $scope.setBookForm = function (form) {
+        $scope.bookDateForm = form;
+    };
+    $scope.addBookDate = function (e) {
+        e.preventDefault();
+        if ($scope.bookTime.selectedOccur !== '') {
+            $rootScope.processing = true;
+            var bookingDetails = {
+                date: $scope.bookedDate,
+                time: $scope.bookTime.selectedOccur
+            };
+            setContextData($scope.SessionID, bookingDetails)
+                .then(function (response, status) {
+                    console.log("Context Data updated.");
+                    $rootScope.processing = false;
+                    $scope.isDateCompleted = true;
+                }, function (response, status) {
+                    $rootScope.processing = false;
+                });
+        } else {
+            alert("Select Time");
+        }
+    };
 }
 
 app.directive('validateCover', function () {

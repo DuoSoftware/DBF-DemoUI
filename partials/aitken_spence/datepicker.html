@@ -1,0 +1,41 @@
+<div class="container" ng-if="!isDateCompleted">
+    <div class="wrapper text-center" style="margin-top: 20px">
+        <h2 style="font-weight: bold;">Book a Date</h2>
+    </div>
+    <form name="bookDateForm" class="container" ng-submit="addBookDate($event)">
+        <div ng-init="setBookForm(bookDateForm);"></div>
+        <div class="ui-card form-check" style="max-width: 400px">
+            <div class="ui-card-body" style="height: 400px">
+                <datepicker datepicker-show="true">
+                    <input ng-model="bookedDate" type="text" style="display: none"/>
+                </datepicker>
+            </div>
+            <div class="ui-card-footer" style="background: #004585; display: block">
+                <h4 style="color: #88c6ff">Available Time</h4>
+                <div class="time-container">
+                    <ul>
+                        <li ng-repeat="t in availableTimes track by $index">
+                            <input type="radio" name="bookTime" id="{{t.value}}" value="{{t.value}}" ng-model="bookTime.selectedOccur" ng-disabled="!t.available">
+                            <label for="{{t.value}}">{{t.value}}</label>
+                            <!--<img class="is-added" src="./img/checked.png" alt="" ng-if="bookTime == t.value" style="width: 15px;">-->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center" style="padding: 20px">
+            <button type="submit" class="btn btn-primary"
+                    style="padding: 10px 50px;font-size: large;background: #138efb;border: none">Done
+            </button>
+        </div>
+    </form>
+    <div style="text-align: center;padding: 10px 0;font-size: 14px;display: flex;align-items: center;justify-content: center">
+        Powered by <img src="./img/logo-smoothflow-beta-purple.svg" alt="" style="width: 100px;margin-left: 6px">
+    </div>
+</div>
+<div class="wrapper text-center" ng-if="isDateCompleted">
+    <img src="img/checked.png">
+    <div class="line line-dashed"></div>
+    <h4 style="font-weight: bold;">Success</h4>
+    <p>Date has been booked. Please close the window to proceed.</p>
+</div>

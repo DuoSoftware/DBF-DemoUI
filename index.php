@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/font.css" type="text/css" />
     <link rel="stylesheet" href="css/app.css" type="text/css" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="node_modules/angularjs-datepicker/dist/angular-datepicker.css">
 
 </head>
 
@@ -41,6 +42,7 @@
     <script src="js/ui-client.js"></script>
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="node_modules/angularjs-datepicker/dist/angular-datepicker.js"></script>
     <script type="text/javascript" src="js/controllers/uiKernal.js"></script>
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="controllers/signin.controller.js"></script>

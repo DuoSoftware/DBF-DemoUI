@@ -2,7 +2,8 @@ var app = angular.module('loginapp', [
     'ui.router',
     'uiKernel',
     'stripe-payment-tools',
-    'angular.filter'
+    'angular.filter',
+    '720kb.datepicker'
 ]);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
@@ -51,6 +52,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('get_premium', {
             url: '/get_premium?name&sender&title&companyname&companylogolarge&stripdescription&companylogosmall&stripebutton&stripepublishkey&checkoutbutton',
             templateUrl: 'partials/get-premium.html',
+            controller: 'PaymentController'
+        })
+        .state('book_date', {
+            url: '/book_date?name&sender&title&companyname&companylogolarge&stripdescription&companylogosmall&stripebutton&stripepublishkey&checkoutbutton',
+            templateUrl: 'partials/aitken_spence/datepicker.html',
             controller: 'PaymentController'
         });
 
