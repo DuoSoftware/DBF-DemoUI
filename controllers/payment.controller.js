@@ -1,7 +1,7 @@
 /* use strickt */
 
-app.controller('PaymentController', ['$scope', '$rootScope', '$state', '$timeout', '$http', '$systemUrls', '$helpers', '$invoice', paymentController]);
-function paymentController($scope, $rootScope, $state, $timeout, $http, $systemUrls, $helpers, $invoice) {
+app.controller('PaymentController', ['$scope', '$rootScope', '$state', '$timeout', '$http', '$systemUrls', '$helpers', '$invoice', '$filter', paymentController]);
+function paymentController($scope, $rootScope, $state, $timeout, $http, $systemUrls, $helpers, $invoice, $filter) {
     console.log("payment page loaded");
 
     $scope.user = {};
@@ -1080,7 +1080,12 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
 
     $scope.bookedDate = new Date();
+    $scope.noOfRooms = 1;
+    $scope.noOfAdults = 1;
+    $scope.noOfChildren = 0;
     $scope.bookTime = {};
+    $scope.bookRoomStart = null;
+    $scope.bookRoomEnd = null;
     $scope.bookTime.selectedOccur = '';
     $scope.availableTimes = [{
         value: '10.00am',
@@ -1143,6 +1148,35 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             alert("Select Time");
         }
     };
+    $scope.formatDateStart = function (e) {
+        e.bookRoomStart = $filter('date')(new Date(e.bookRoomStart), "dd/MM/yyyy");
+    };
+    $scope.formatDateEnd = function (e) {
+        e.bookRoomEnd = $filter('date')(new Date(e.bookRoomEnd), "dd/MM/yyyy");
+    }
+    $scope.saveRoomBooking = function () {
+        e.preventDefault();
+        if ($scope.bookRoomStart && $scope.bookRoomEnd) {
+            $rootScope.processing = true;
+            var roomBookingDetails = {
+                startDate: $scope.bookRoomStart,
+                endDate: $scope.bookRoomEnd,
+                rooms: $scope.noOfRooms,
+                adults: $scope.noOfAdults,
+                children: $scope.noOfChildren
+            };
+            setContextData($scope.SessionID, roomBookingDetails, 'roomBookingDetails')
+                .then(function (response, status) {
+                    console.log("Context Data updated.");
+                    $rootScope.processing = false;
+                    $scope.isDateCompleted = true;
+                }, function (response, status) {
+                    $rootScope.processing = false;
+                });
+        } else {
+            alert("Select Dates");
+        }
+    }
 }
 
 app.directive('validateCover', function () {

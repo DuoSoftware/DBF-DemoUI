@@ -5461,8 +5461,8 @@ a.text-#000000:hover {
   height: 13px;
   background: #6ac158;
   position: absolute;
-  top: 4px;
-  left: 4px;
+  top: 8px;
+  left: 6px;
   border-radius: 100%;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
@@ -5485,11 +5485,12 @@ a.text-#000000:hover {
 .time-container > ul li {
   display: flex;
   align-items: center;
-  padding: 10px 0;
+  padding: 5px 0;
   position: relative;
 }
 .time-container > ul li > label {
   flex: 1;
+  padding: 5px 5px 5px 28px;
 }
 .time-container > ul li:not(:first-child):before {
   content: '';
@@ -5497,7 +5498,7 @@ a.text-#000000:hover {
   height: 50%;
   background: #ffffff50;
   position: absolute;
-  left: 10px;
+  left: 12px;
   top: 0;
 }
 .time-container > ul li:not(:last-child):after {
@@ -5506,13 +5507,17 @@ a.text-#000000:hover {
   height: 50%;
   background: #ffffff50;
   position: absolute;
-  left: 10px;
+  left: 12px;
   bottom: 0;
   z-index: -1;
 }
 .time-container > ul li > [type="radio"]:checked + label {
-  color: #6ac057;
+  /*color: #6ac057;*/
   font-weight: bold;
+  background: #128efc;
+  padding: 5px 5px 5px 28px;
+  border-radius: 6px;
+  color: #fff;
 }
 .time-container > ul li > [type="radio"]:disabled + label {
   color: #46729a;
@@ -5521,10 +5526,38 @@ a.text-#000000:hover {
   background: #2d5880!important;
 }
 .time-container > ul li > label:before {
-  left: 1px!important;
-  top: 1px!important;
+  left: 3px!important;
+  top: 5px!important;
   width: 19px!important;
   height: 19px!important;
   border: none!important;
   background: #4f7aa2!important;
+}
+
+/* Styles used for the counter. */
+.counter-container .counter-minus, .counter-plus {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: #128efb;
+  color: white;
+  margin: 0;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 100%;
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+}
+.counter-container .counter-minus {
+  padding: 2px 10px;
+}
+
+.counter-container .counter-field {
+  margin: 0;
+  padding: 5px;
+  text-align: center;
+  width: 60px;
+  color: #000!important;
 }

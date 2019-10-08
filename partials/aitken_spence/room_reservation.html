@@ -1,0 +1,55 @@
+<div class="container" ng-if="!isDateCompleted">
+    <div class="wrapper text-center" style="margin-top: 20px">
+        <h2 style="font-weight: bold;">Rooms Booking</h2>
+    </div>
+    <form name="bookDateForm" class="container" ng-submit="addBookDate($event)">
+        <div ng-init="setBookForm(bookDateForm);"></div>
+        <div class="ui-card form-check" style="max-width: 400px">
+            <div class="ui-card-body" style="height: 200px">
+                <div class="form-group clearfix">
+                    <label for="bookRoomStart">From</label>
+                        <datepicker>
+                            <input class="form-control" ng-model="bookRoomStart" type="text" id="bookRoomStart" placeholder="Click to add a date.." style="padding-right: 30px;" ng-change="formatDateStart(this)"/>
+                            <span class="glyphicon glyphicon-calendar" style="position:absolute;right: 10px;top: 0;bottom: 0;margin: auto;height: 15px;"></span>
+                        </datepicker>
+                </div>
+                <div class="form-group" style="margin-top: 20px">
+                    <label for="bookRoomStart">To</label>
+                    <datepicker>
+                        <input class="form-control" ng-model="bookRoomEnd" type="text" id="bookRoomEnd"
+                               placeholder="Click to add a date.." style="padding-right: 30px;" ng-change="formatDateEnd(this)"/>
+                        <span class="glyphicon glyphicon-calendar" style="position:absolute;right: 10px;top: 0;bottom: 0;margin: auto;height: 15px;"></span>
+                    </datepicker>
+                </div>
+            </div>
+            <div class="ui-card-footer" style="background: #004585; display: block">
+               <div style="display: flex;align-items: center;margin-bottom: 10px">
+                   <span style="color: #88c6ff; flex: 1">Rooms</span>
+                   <div counter value="noOfRooms" min="1"></div>
+               </div>
+               <div style="display: flex;align-items: center;margin-bottom: 10px">
+                   <span style="color: #88c6ff; flex: 1">Adults</span>
+                   <div counter value="noOfAdults" min="1"></div>
+               </div>
+               <div style="display: flex;align-items: center">
+                   <span style="color: #88c6ff; flex: 1">Children</span>
+                   <div counter value="noOfChildren" min="0"></div>
+               </div>
+            </div>
+        </div>
+        <div class="row text-center" style="padding: 20px">
+            <button type="submit" class="btn btn-primary"
+                    style="padding: 10px 50px;font-size: large;background: #138efb;border: none">Done
+            </button>
+        </div>
+    </form>
+    <div style="text-align: center;padding: 10px 0;font-size: 14px;display: flex;align-items: center;justify-content: center">
+        Powered by <img src="./img/logo-smoothflow-beta-purple.svg" alt="" style="width: 100px;margin-left: 6px">
+    </div>
+</div>
+<div class="wrapper text-center" ng-if="isDateCompleted">
+    <img src="img/checked.png">
+    <div class="line line-dashed"></div>
+    <h4 style="font-weight: bold;">Success</h4>
+    <p>Date has been booked. Please close the window to proceed.</p>
+</div>
