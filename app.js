@@ -44,6 +44,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'partials/payment.html',
             controller: 'PaymentController'
         })
+        .state('as_checkout', {
+            url: '/as_checkout?name&sender&title&companyname&companylogolarge&stripdescription&companylogosmall&stripebutton&stripepublishkey&checkoutbutton&policy&period',
+            templateUrl: 'partials/aitken_spence/as_checkout.html',
+            controller: 'PaymentController'
+        })
         .state('additional_cover', {
             url: '/additional_cover?name&sender&title&companyname&companylogolarge&stripdescription&companylogosmall&stripebutton&stripepublishkey&checkoutbutton',
             templateUrl: 'partials/janashakthi_additional_cover.html',

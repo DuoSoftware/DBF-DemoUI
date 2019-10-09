@@ -250,11 +250,65 @@
                     </p>
                 </div>
             </div>
+            <div ng-if="botID == '5d6e0f4e80dafb3278b56f3f'" class="ui-card form-check" style="max-width: 400px">
+                <div class="ui-card-body book-confirm">
+                    <div class="form-group clearfix">
+                        <div class="ui-card-list-item">
+                            <div style="display: flex;flex: 1">
+                                <div>
+                                    <label class="form-check-label txt-primary" style="display: block">
+                                        <b>Dates</b>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <span style="display: block"><b>{{contextData.roomBookingDetails.startDate}} - {{contextData.roomBookingDetails.endDate}}</b></span>
+                            </div>
+                        </div>
+                        <div class="ui-card-list-item">
+                            <div style="display: flex;flex: 1">
+                                <div>
+                                    <label class="form-check-label txt-primary" style="display: block">
+                                        <b>Room type:</b>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <span style="display: block"><b>{{contextData.roomBookingDetails.rooms}}</b></span>
+                            </div>
+                        </div>
+                        <div class="ui-card-list-item">
+                            <div style="display: flex;flex: 1">
+                                <div>
+                                    <label class="form-check-label txt-primary" style="display: block">
+                                        <b>Adults:</b>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <span style="display: block"><b>{{contextData.roomBookingDetails.adults}}</b></span>
+                            </div>
+                        </div>
+                        <div class="ui-card-list-item">
+                            <div style="display: flex;flex: 1">
+                                <div>
+                                    <label class="form-check-label txt-primary" style="display: block">
+                                        <b>Children:</b>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <span style="display: block"><b>{{contextData.roomBookingDetails.children}}</b></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- ng-click="pay()"  -->
-            <div class="text-center">
+            <div class="text-center" style="margin: 20px 0 50px 0">
                 <button type="submit" class="btn btn-primary" stripe-payment="config"
-                    ng-disabled="paymentForm.$invalid || processing"
-                    style="padding: 10px 20px;/*font-size: large;*/">{{checkoutbutton}}</button>
+                    ng-disabled="paymentForm.$invalid || processing" style="padding: 10px 50px;font-size: large;background: #138efb;border: none">{{checkoutbutton}}</button>
             </div>
 
             <div class="text-center">

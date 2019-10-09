@@ -1,0 +1,89 @@
+<div class="container" ng-if="!asPaymentConfirmed">
+    <div class="wrapper text-center" style="margin-top: 20px">
+        <h2 style="font-weight: bold;">Booking Confirmation</h2>
+    </div>
+
+    <div class="ui-card form-check" style="max-width: 400px">
+        <div class="ui-card-body book-confirm">
+            <div class="form-group clearfix">
+                <div class="ui-card-list-item">
+                    <div style="display: flex;flex: 1">
+                        <div>
+                            <label class="form-check-label txt-primary" style="display: block">
+                                <b>Dates</b>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <span style="display: block"><b>{{payment.currency}} {{payment.monthly}}</b></span>
+                    </div>
+                </div>
+                <div class="ui-card-list-item">
+                    <div style="display: flex;flex: 1">
+                        <div>
+                            <label class="form-check-label txt-primary" style="display: block">
+                                <b>Room type:</b>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <span style="display: block"><b>{{payment.currency}} {{payment.monthly}}</b></span>
+                    </div>
+                </div>
+                <div class="ui-card-list-item">
+                    <div style="display: flex;flex: 1">
+                        <div>
+                            <label class="form-check-label txt-primary" style="display: block">
+                                <b>Adults:</b>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <span style="display: block"><b>{{payment.currency}} {{payment.monthly}}</b></span>
+                    </div>
+                </div>
+                <div class="ui-card-list-item">
+                    <div style="display: flex;flex: 1">
+                        <div>
+                            <label class="form-check-label txt-primary" style="display: block">
+                                <b>Children:</b>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <span style="display: block"><b>{{payment.currency}} {{payment.monthly}}</b></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center" style="margin: 20px 0 50px 0">
+        <button type="submit" class="btn btn-primary"
+                style="padding: 10px 50px;font-size: large;background: #138efb;border: none">Confirm and Pay
+        </button>
+    </div>
+
+    <div class="text-center">
+
+        <div style="margin-top:20px;">
+            <img style="padding:3px; height: 40px;" src="img/visa.png" alt="visa">
+            <img style="padding:3px; height: 40px;" src="img/mastercard.png" alt="visa">
+            <img style="padding:3px; height: 40px;" src="img/amex.png" alt="visa">
+            <img style="padding:3px; height: 40px;" src="img/discover.png" alt="visa">
+            <img style="padding:3px; height: 40px;" src="img/jbc.png" alt="visa">
+            <img style="padding:3px; height: 40px;" src="img/dinersclub.png" alt="visa">
+        </div>
+
+        <img style="padding:15px;" src="img/powered_by_stripe.svg" alt="stripe">
+
+        <ul style="list-style: none;padding: 0px;">
+            <li><span style="color:green; font-weight: bold">✓</span> <span style="font-size: 12px">HTTPS and
+                            HSTS Connections</span></li>
+            <li><span style="color:green; font-weight: bold">✓</span> <span style="font-size: 12px">Encryption
+                            of Sensitive</span></li>
+            <li><span style="color:green; font-weight: bold">✓</span> <span style="font-size: 12px">PGP
+                            Standards</span></li>
+        </ul>
+    </div>
+</div>

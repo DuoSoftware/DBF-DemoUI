@@ -1,23 +1,24 @@
 /* use strickt */
 
 app.controller('PaymentController', ['$scope', '$rootScope', '$state', '$timeout', '$http', '$systemUrls', '$helpers', '$invoice', '$filter', paymentController]);
+
 function paymentController($scope, $rootScope, $state, $timeout, $http, $systemUrls, $helpers, $invoice, $filter) {
     console.log("payment page loaded");
 
     $scope.user = {};
-    $scope.payment = { method: "Cash", invoiceNo: "" };
+    $scope.payment = {method: "Cash", invoiceNo: ""};
     $scope.isPaymentSuccess = 0;
     $rootScope.processing = true;
     $scope.callAutomationFlow = false;
     $scope.myCart = null;
     $scope.additionalCoverMap = {
-        "LADDI_R1" : "Additional Life Cover",
-        "LACCID_R1" : "Additional Accident Cover/TPD/PPD",
-        "LCRITL_R1" : "Critical Illness",
-        "FIB" : "Family Income Benefit Per Month",
-        "LHOSPT_R1" : "Hospital Cash Plan Per Day",
-        "FUNEX" : "Funeral Expense",
-        "HRCL" : "Hospital Reimbursement - Cashless"
+        "LADDI_R1": "Additional Life Cover",
+        "LACCID_R1": "Additional Accident Cover/TPD/PPD",
+        "LCRITL_R1": "Critical Illness",
+        "FIB": "Family Income Benefit Per Month",
+        "LHOSPT_R1": "Hospital Cash Plan Per Day",
+        "FUNEX": "Funeral Expense",
+        "HRCL": "Hospital Reimbursement - Cashless"
     };
     // $scope.additionalCover = [{
     //     "RiderCode": "LADDI_R1",
@@ -269,6 +270,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     }
 
     $scope.quotation = [];
+
     function getPremium() {
         $scope.quotation = [{
             name: 'Package 1',
@@ -480,6 +482,10 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             getContextData($scope.SessionID);
             $scope.payment.additionalCover = [];
         }
+        if ($scope.botID == "5d6e0f4e80dafb3278b56f3f") {
+            $scope.title = 'Booking Confirmation';
+            $scope.checkoutbutton = 'Confirm and Pay';
+        }
 
         //getProfile($state.params.name);
 
@@ -514,7 +520,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
     }
 
-    // 
+    //
     // "address": {
     //     "street_1": "No.06, Charles Terrance",
     //     "street_2": "Alfred Terrece, Colombo 07",
@@ -611,7 +617,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             console.log(response);
             console.log("Receipt sent.")
             $rootScope.processing = false;
-            if($scope.removeCartOncompletion){
+            if ($scope.removeCartOncompletion) {
                 removeCart($scope.userID);
             }
             if ($scope.resultCount == 2) {
@@ -710,49 +716,49 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 if (response.data.IsSuccess) {
                     $scope.payment.items = [];
                     $scope.payment.totalamount = 0;
-                if (response.data.Result != null) {
-                    $scope.myCart = response.data.Result;
-                    angular.forEach($scope.myCart.cartItems, function (item) {
-                        var obj = {
-                            "id": item.id,
-                            "title": item.name,
-                            "subtitle": "",
-                            "price": parseFloat(item.value),
-                            "currency": response.data.Result.rawData.currency,
-                            "subtitle": item.shortdescription,
-                            "image_url": item.image_url,
-                            "qty": parseInt(item.qty)
-                        };
-                        $scope.payment.items.push(obj);
-                        $scope.payment.totalamount += parseFloat(item.price) * parseInt(item.qty);
+                    if (response.data.Result != null) {
+                        $scope.myCart = response.data.Result;
+                        angular.forEach($scope.myCart.cartItems, function (item) {
+                            var obj = {
+                                "id": item.id,
+                                "title": item.name,
+                                "subtitle": "",
+                                "price": parseFloat(item.value),
+                                "currency": response.data.Result.rawData.currency,
+                                "subtitle": item.shortdescription,
+                                "image_url": item.image_url,
+                                "qty": parseInt(item.qty)
+                            };
+                            $scope.payment.items.push(obj);
+                            $scope.payment.totalamount += parseFloat(item.price) * parseInt(item.qty);
 
-                        if(item.type && item.type == 'additional_cover') {
-                            $scope.payment.additionalCover.push(item);
-                            $scope.payment.totalamount += item.price;
-                        }
-                    });
-                    // setting config currency and amount
-                    $scope.config.amount = $scope.payment.totalamount * 100;
+                            if (item.type && item.type == 'additional_cover') {
+                                $scope.payment.additionalCover.push(item);
+                                $scope.payment.totalamount += item.price;
+                            }
+                        });
+                        // setting config currency and amount
+                        $scope.config.amount = $scope.payment.totalamount * 100;
 
-                    $scope.tentureOpt1 = $scope.payment.totalamount;
-                    $scope.tentureOpt2 = $scope.tentureOpt1/2;
-                    $scope.tentureOpt3 = $scope.tentureOpt1/4;
+                        $scope.tentureOpt1 = $scope.payment.totalamount;
+                        $scope.tentureOpt2 = $scope.tentureOpt1 / 2;
+                        $scope.tentureOpt3 = $scope.tentureOpt1 / 4;
 
-                    $scope.config.currency = response.data.Result.rawData.currency;
-                    $scope.payment.currency = response.data.Result.rawData.currency;
+                        $scope.config.currency = response.data.Result.rawData.currency;
+                        $scope.payment.currency = response.data.Result.rawData.currency;
+                    }
+                    // update stripe config
+                    $rootScope.$broadcast('stripe-config-updated', $scope.config);
+                    $rootScope.processing = false;
+                    $scope.$apply();
+                } else {
+                    alert(response.data.CustomMessage);
+                    $rootScope.processing = false;
                 }
-                // update stripe config
-                $rootScope.$broadcast('stripe-config-updated', $scope.config);
-                $rootScope.processing = false;
-                $scope.$apply();
-            } else {
+            }, function (response, status) {
                 alert(response.data.CustomMessage);
                 $rootScope.processing = false;
-            }
-        }, function (response, status) {
-            alert(response.data.CustomMessage);
-            $rootScope.processing = false;
-        });
+            });
     }
 
     function updateCart(payload) {
@@ -857,6 +863,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         // }
         $scope.$apply();
     }
+
     function removeFromCart(id) {
         $rootScope.processing = true;
 
@@ -885,6 +892,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
     $scope.contextData = {};
     $scope.insured_people = "";
+
     function getContextData(sessionID) {
         //debugger
         // accepting the session ID like the bellow
@@ -905,18 +913,20 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             // debugger
             $scope.contextData = response.data.message;
             $scope.additionalCover = $scope.contextData['limitations'];
-                $scope.payment.annually = $scope.contextData.premium ? $scope.contextData.premium['premium_annual'] : '';
-                $scope.payment.half_yearly = $scope.contextData.premium ? $scope.contextData.premium['premium_half_year'] : '';
-                $scope.payment.quarterly = $scope.contextData.premium ? $scope.contextData.premium['premium_quarter'] : '';
-                $scope.payment.monthly = $scope.contextData.premium ? $scope.contextData.premium['premium_month'] : '';
-                $scope.basic_cover = $scope.contextData.Insure_amount;
+            $scope.payment.annually = $scope.contextData.premium ? $scope.contextData.premium['premium_annual'] : '';
+            $scope.payment.half_yearly = $scope.contextData.premium ? $scope.contextData.premium['premium_half_year'] : '';
+            $scope.payment.quarterly = $scope.contextData.premium ? $scope.contextData.premium['premium_quarter'] : '';
+            $scope.payment.monthly = $scope.contextData.premium ? $scope.contextData.premium['premium_month'] : '';
+            $scope.basic_cover = $scope.contextData.Insure_amount;
             if ($scope.contextData.plandetails) {
                 $scope.insured_people = $scope.contextData.plandetails.insuredPeople;
             }
+            $scope.bookingDetails = $scope.contextData.roomBookingDetails;
         }, function (response, status) {
             $rootScope.processing = false;
         });
     }
+
     function setContextData(sessionID, payload, endpoint) {
         //debugger
         // accepting the session ID like the bellow
@@ -926,7 +936,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         $rootScope.processing = true;
         return $http({
             method: "POST",
-            url: "https://smoothbotdispatcher.plus.smoothflow.io/DBF/API/1.0.0/setContext/" + sessionID +"/" + endpoint,
+            url: "https://smoothbotdispatcher.plus.smoothflow.io/DBF/API/1.0.0/setContext/" + sessionID + "/" + endpoint,
             headers: {
                 "Authorization": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzdWtpdGhhIiwianRpIjoiYWEzOGRmZWYtNDFhOC00MWUyLTgwMzktOTJjZTY0YjM4ZDFmIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE5MDIzODExMTgsInRlbmFudCI6LTEsImNvbXBhbnkiOi0xLCJzY29wZSI6W3sicmVzb3VyY2UiOiJhbGwiLCJhY3Rpb25zIjoiYWxsIn1dLCJpYXQiOjE0NzAzODExMTh9.Gmlu00Uj66Fzts-w6qEwNUz46XYGzE8wHUhAJOFtiRo",
                 "Content-Type": "application/json",
@@ -1176,7 +1186,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         } else {
             alert("Select Dates");
         }
-    }
+    };
+    $scope.asPaymentConfirmed = false;
 }
 
 app.directive('validateCover', function () {
@@ -1229,14 +1240,14 @@ app.directive('validateCover', function () {
                 setMinAmount();
                 scope.coverValue = 0;
             })();
-            
+
             function multiplesOf() {
-                 var x = scope.coverValue % parseInt(scope.cover.MultiplesOf.replace(/,/g, ''));
-                 return x;
+                var x = scope.coverValue % parseInt(scope.cover.MultiplesOf.replace(/,/g, ''));
+                return x;
             }
 
             scope.validateInput = function (el) {
-                var f = scope.pform[scope.cover.RiderCode+'_'+scope.cover.PolicyHolder];
+                var f = scope.pform[scope.cover.RiderCode + '_' + scope.cover.PolicyHolder];
                 if (!scope.coverValue) {
                     scope.errorMsg = '';
                     f.$setValidity("invalid", true);

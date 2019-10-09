@@ -5361,8 +5361,15 @@ a.text-#000000:hover {
   border-bottom: solid 1px #dddddd;
   padding-bottom: 20px;
 }
+.book-confirm .ui-card-list-item:not(:last-child), .ui-card-footer .ui-card-list-item:not(:last-child) {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.book-confirm .ui-card-list-item:last-child {
+  margin-bottom: 0px;
+}
 .txt-primary {
-  color: #ffa60c;
+  color: #004585;
 }
 .error-msg {
   color: red;
