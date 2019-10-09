@@ -1149,12 +1149,12 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         }
     };
     $scope.formatDateStart = function (e) {
-        e.bookRoomStart = $filter('date')(new Date(e.bookRoomStart), "dd/MM/yyyy");
+        e.bookRoomStart = $scope.bookRoomStart = $filter('date')(new Date(e.bookRoomStart), "dd/MM/yyyy");
     };
     $scope.formatDateEnd = function (e) {
-        e.bookRoomEnd = $filter('date')(new Date(e.bookRoomEnd), "dd/MM/yyyy");
+        e.bookRoomEnd = $scope.bookRoomEnd = $filter('date')(new Date(e.bookRoomEnd), "dd/MM/yyyy");
     }
-    $scope.saveRoomBooking = function () {
+    $scope.saveRoomBooking = function (e) {
         e.preventDefault();
         if ($scope.bookRoomStart && $scope.bookRoomEnd) {
             $rootScope.processing = true;
