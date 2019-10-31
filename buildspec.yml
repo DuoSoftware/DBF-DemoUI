@@ -8,6 +8,6 @@ phases:
     build:
       commands:
         - echo 'Starting to move files'
-        - aws s3 sync build s3://smoothflow-prod/forms
+        - aws s3 sync s3://smoothflow-prod/forms
       finally:
         - echo 'DEMO UIs Deployement Succeded.'
