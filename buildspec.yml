@@ -2,6 +2,9 @@ version: 0.2
 #version: 0.2
 
 phases:
+    install:
+      finally:
+        - echo 'Completed installing '
     build:
       commands:
         - npm run-script build
