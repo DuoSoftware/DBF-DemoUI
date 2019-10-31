@@ -1,0 +1,115 @@
+<div class="container" ng-if="!isDateCompleted">
+    <div class="wrapper text-center" style="margin-top: 20px">
+        <h2 style="font-weight: bold;">Appointment Booking</h2>
+    </div>
+    <form name="bookDateForm" class="container" ng-submit="saveRoomBooking($event)">
+        <div ng-init="setBookForm(bookDateForm);"></div>
+        <div class="ui-card form-check" style="max-width: 400px">
+            <div class="ui-card-body" style="height: 240px">
+               <div class="custom-date-picker">
+                   <div style="margin-bottom: 10px; color: #88c6ff">Date</div>
+                   <h4 class="text-center">October</h4>
+                   <ul class="days">
+                       <li class="c-day">
+                           <button type="button">Mon</button>
+                       </li>
+                       <li class="c-day">
+                           <button type="button" class="day-selected">Tue</button>
+                       </li>
+                       <li class="c-day">
+                           <button type="button">Wed</button>
+                       </li>
+                       <li class="c-day">
+                           <button type="button">Thu</button>
+                       </li>
+                       <li class="c-day">
+                           <button type="button">Fri</button>
+                       </li>
+                       <li class="c-day">
+                           <button type="button">Sat</button>
+                       </li>
+                       <li class="c-day">
+                           <button type="button">Sun</button>
+                       </li>
+                   </ul>
+                   <hr>
+                   <ul class="dates">
+                       <li class="c-date">
+                           <button type="button">1</button>
+                       </li>
+                       <li class="c-date">
+                           <button type="button">2</button>
+                       </li>
+                       <li class="c-date">
+                           <button type="button" class="day-selected">3</button>
+                       </li>
+                       <li class="c-date">
+                           <button type="button">4</button>
+                       </li>
+                       <li class="c-date">
+                           <button type="button">5</button>
+                       </li>
+                       <li class="c-date">
+                           <button type="button">6</button>
+                       </li>
+                       <li class="c-date">
+                           <button type="button">7</button>
+                       </li>
+                   </ul>
+               </div>
+            </div>
+            <div class="ui-card-footer" style="background: #004585; display: block">
+               <div style="display: flex;align-items: center;margin-bottom: 10px">
+                   <span style="color: #88c6ff; width: 110px">Time</span>
+                   <div style="flex: 1">
+                       <select class="form-control">
+                           <option value="one">One</option>
+                           <option value="two">Two</option>
+                           <option value="three">Three</option>
+                       </select>
+                   </div>
+               </div>
+               <div style="display: flex;align-items: center;margin-bottom: 10px">
+                   <span style="color: #88c6ff; width: 110px">No of Guests</span>
+                   <div style="flex: 1">
+                       <input type="number" class="form-control" placeholder="Enter number">
+                   </div>
+               </div>
+               <div style="display: flex;align-items: center;margin-bottom: 10px">
+                   <span style="color: #88c6ff; width: 110px">Service</span>
+                   <div style="flex: 1">
+                       <select class="form-control">
+                           <option value="one">One</option>
+                           <option value="two">Two</option>
+                           <option value="three">Three</option>
+                       </select>
+                   </div>
+               </div>
+               <div style="display: flex;align-items: center">
+                   <span style="color: #88c6ff; width: 110px">Duration</span>
+                   <div style="flex: 1">
+                       <select class="form-control">
+                           <option value="one">1 day</option>
+                           <option value="two">2 days</option>
+                           <option value="three">3 days</option>
+                       </select>
+                   </div>
+               </div>
+            </div>
+        </div>
+        <div class="row text-center" style="padding: 20px">
+            <button type="submit" class="btn btn-primary"
+                    style="padding: 10px 50px;font-size: large;background: #138efb;border: none">Done
+            </button>
+        </div>
+    </form>
+    <div style="text-align: center;padding: 10px 0;font-size: 14px;display: flex;align-items: center;justify-content: center">
+        Powered by <img src="./img/logo-smoothflow-beta-purple.svg" alt="" style="width: 100px;margin-left: 6px">
+    </div>
+</div>
+<div class="wrapper text-center" ng-if="isDateCompleted">
+    <img src="img/checked.png">
+    <div class="line line-dashed"></div>
+    <h4 style="font-weight: bold;">Success</h4>
+    <p>Date has been booked. Please close the window to proceed.</p>
+</div>

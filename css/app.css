@@ -5338,7 +5338,7 @@ a.text-#000000:hover {
   padding: 20px;
 }
 .ui-card-footer {
-  padding: 20px;
+  padding: 30px 20px 20px 20px;
   background: #555;
   color: #ffffff;
   display: flex;
@@ -5567,4 +5567,40 @@ a.text-#000000:hover {
   text-align: center;
   width: 60px;
   color: #000!important;
+}
+
+.custom-date-picker ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+    justify-content: space-around;
+}
+.custom-date-picker ul li {
+  display: inline-block;
+  line-height: initial;
+  text-align: center;
+}
+.days li.c-day button.day-selected,
+.dates li.c-date button.day-selected {
+    background: #128efb;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+}
+.days li.c-day button {
+    color: #004585;
+    background: #eee;
+}
+.dates li.c-date button {
+    border: solid 1px #ddd;
+}
+.custom-date-picker ul li button {
+  text-align: center;
+  padding: 10px 0px;
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  text-transform: uppercase;
+  font-size: 13px;
+  border: none;
 }

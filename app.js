@@ -68,8 +68,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/room_reservation?name&sender&title&companyname&companylogolarge&stripdescription&companylogosmall&stripebutton&stripepublishkey&checkoutbutton',
             templateUrl: 'partials/aitken_spence/room_reservation.html',
             controller: 'PaymentController'
+        })
+        .state('appointment_booking', {
+            url: '/appointment_booking?name&sender&title&companyname&companylogolarge&stripdescription&companylogosmall&stripebutton&stripepublishkey&checkoutbutton',
+            templateUrl: 'partials/aitken_spence/appointment_booking.html',
+            controller: 'PaymentController'
         });
-
 }
 
 );
