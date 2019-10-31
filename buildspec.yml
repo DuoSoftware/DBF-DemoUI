@@ -1,13 +1,10 @@
 version: 0.2
-#version: 0.2
 
 phases:
     install:
-      finally:
-        - echo 'Completed installing '
-    build:
-      commands:
+        commands:
         - echo 'Starting to move files'
-        - aws s3 sync s3://smoothflow-prod/forms
+        - aws s3 sync $CODEBUILD_SRC_DIR/ s3://smoothflow-prod/forms
+        - echo 'Smoothflow Built Succeded.'
       finally:
         - echo 'DEMO UIs Deployement Succeded.'
