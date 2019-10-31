@@ -7,7 +7,6 @@ phases:
         - echo 'Completed installing '
     build:
       commands:
-        - npm run-script build
         - echo 'Starting to move files'
         - aws s3 sync build s3://smoothflow-prod/forms
       finally:
