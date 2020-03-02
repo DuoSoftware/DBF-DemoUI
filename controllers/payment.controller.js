@@ -466,7 +466,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             getContextData($scope.SessionID);
             $scope.payment.additionalCover = [];
         }
-        if ($scope.botID == "5d41705b7ef9df644f4eb0d8") {
+        if ($scope.botID == "5d41705b7ef9df644f4eb0d8" || $scope.botID == "5e54c79373cf8b5832f7c162") {
             //debugger
             // Carlla GCC
             $scope.pageAccessToken = "EAAMegfEn8iEBAGX27rOTZAMnqAH3NMYDvUrkZBHnxZCZAzBhy8Nopr6qyG8XyvoNSKmt5LfZCTiWn69RmfZAJbQSPnnNwU0DGtVR8UZBalVMAInJbA0ZCxSrnakY7YXtWNUnydLdwwQTQPmBGEyYu18XAAl3Mp3ZB7YwuhZCVyBEnABAZDZD";
