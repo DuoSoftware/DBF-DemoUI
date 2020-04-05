@@ -394,7 +394,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         }
         if ($scope.botID == "5e86efa9002501e86c89282b") {
             // Smooth Telecom
-            $scope.pageAccessToken = "EAAMegfEn8iEBADwZBU6CsEv5uBl4NMXjKe6Xh3X53Kyhbtd4hQNiyvf86WXjTtR1uaxbfqSlmxoZAjuZBsUZBU9QddcgWDyQYSf5vdjJSDCLfE1fae43BcA3DN02sn3ARfAbPUaOb01PuKGGRf5gmdf7ZChGnEUtEErfxES9ZBEgZDZD";
+            $scope.pageAccessToken = "EAAMegfEn8iEBAE7E8vGWGNcsIkcmaF9h8cJrqNgebxWqBOKB4EFU9E5j3bGyF5fF1JpRunYzW2kn0VecWZCwbVRJZA2F5T7X71OfZA6RjBXgQYW67pNK2ZCG38ZCeaCWjCZCkitfcFOZABuEFI7SdzbH5eE1RAWWZC7ROGnes3pdqQZDZD";
             $scope.receiptUrl = "https://www.smoothflow.io/";
             $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/smooth-Telecom.jpg";
             $scope.messagetobot = "Thank you for choosing Sri Lanka Telecom. Your order has been confirmed. A reference has been sent to your mobile. Please visit the chosen branch to collect your order.";
