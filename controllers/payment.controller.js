@@ -393,6 +393,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
         }
         if ($scope.botID == "5e86efa9002501e86c89282b") {
+            debugger
             // Smooth Telecom
             $scope.pageAccessToken = "EAAMegfEn8iEBAE7E8vGWGNcsIkcmaF9h8cJrqNgebxWqBOKB4EFU9E5j3bGyF5fF1JpRunYzW2kn0VecWZCwbVRJZA2F5T7X71OfZA6RjBXgQYW67pNK2ZCG38ZCeaCWjCZCkitfcFOZABuEFI7SdzbH5eE1RAWWZC7ROGnes3pdqQZDZD";
             $scope.receiptUrl = "https://www.smoothflow.io/";
