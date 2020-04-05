@@ -390,6 +390,18 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $rootScope.processing = false;
 
         }
+        if ($scope.botID == "5e86efa9002501e86c89282b") {
+            // Smooth Telecom
+            $scope.pageAccessToken = "EAAMegfEn8iEBADwZBU6CsEv5uBl4NMXjKe6Xh3X53Kyhbtd4hQNiyvf86WXjTtR1uaxbfqSlmxoZAjuZBsUZBU9QddcgWDyQYSf5vdjJSDCLfE1fae43BcA3DN02sn3ARfAbPUaOb01PuKGGRf5gmdf7ZChGnEUtEErfxES9ZBEgZDZD";
+            $scope.receiptUrl = "https://www.smoothflow.io/";
+            $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/smooth-Telecom.jpg";
+            $scope.messagetobot = "Thank you for choosing Sri Lanka Telecom. Your order has been confirmed. A reference has been sent to your mobile. Please visit the chosen branch to collect your order.";
+
+            getCartItems($scope.userID)
+            $scope.removeCartOncompletion = true;
+            $scope.callAutomationFlow = true;
+            getContextData($scope.SessionID);
+        }
         if ($scope.botID == "5cfdf9dcb855a87edbd756ac") {
             // Smooth Telecom
             $scope.pageAccessToken = "EAAMegfEn8iEBADwZBU6CsEv5uBl4NMXjKe6Xh3X53Kyhbtd4hQNiyvf86WXjTtR1uaxbfqSlmxoZAjuZBsUZBU9QddcgWDyQYSf5vdjJSDCLfE1fae43BcA3DN02sn3ARfAbPUaOb01PuKGGRf5gmdf7ZChGnEUtEErfxES9ZBEgZDZD";
