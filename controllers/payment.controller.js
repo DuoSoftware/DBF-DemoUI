@@ -392,6 +392,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $rootScope.processing = false;
 
         }
+        debugger
         if ($scope.botID == "5e86efa9002501e86c89282b") {
             debugger
             // Smooth Telecom
