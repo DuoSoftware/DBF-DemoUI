@@ -173,6 +173,19 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.callAutomationFlow = true;
             getContextData($scope.SessionID);
         }
+        if ($scope.botID == "5e86efa9002501e86c89282b") {
+            //debugger
+            // Cargills Bundle cart
+            $scope.pageAccessToken = "EAAMegfEn8iEBAE7E8vGWGNcsIkcmaF9h8cJrqNgebxWqBOKB4EFU9E5j3bGyF5fF1JpRunYzW2kn0VecWZCwbVRJZA2F5T7X71OfZA6RjBXgQYW67pNK2ZCG38ZCeaCWjCZCkitfcFOZABuEFI7SdzbH5eE1RAWWZC7ROGnes3pdqQZDZD";
+            $scope.receiptUrl = "https://www.smoothflow.io/";
+            $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/501/676/paynow.png";
+            $scope.messagetobot = "Thank you for shopping with Cargkeells. Your order is confirmed and an order number has been sent to your mobile. Our team will contact you once the order is ready.";
+
+            getCartItems($scope.userID)
+            $scope.removeCartOncompletion = true;
+            $scope.callAutomationFlow = true;
+            getContextData($scope.SessionID);
+        }
 
         //getProfile($state.params.name);
     }
@@ -189,7 +202,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.botID == "5d41705b7ef9df644f4eb0d8" ||
             $scope.botID == "5cfa4cd8aa087d1136c7e6c0" ||
             $scope.botID == "5cf8f455b3bddfc7f663af82" ||
-            $scope.botID == "5cfdf9dcb855a87edbd756ac"
+            $scope.botID == "5cfdf9dcb855a87edbd756ac" ||
+            $scope.botID == "5e86efa9002501e86c89282b"
         ) {
             $scope.isPaymentSuccess = 1;
             sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
@@ -199,7 +213,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     $scope.resultCount = 0;
     $scope.pay = function (token) {
         //debugger
-
+        sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
     }
 
     // 
@@ -258,7 +272,15 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                                 "total_cost": $scope.payment.totalamount
                             },
                             "adjustments": [],
-                            "elements": $scope.payment.items
+                            "elements": $scope.payment.items,
+                            "address": {
+                                "street_1": $scope.contextData.customeraddress,
+                                "street_2": "",
+                                "city": $scope.contextData.customermobile,
+                                "postal_code": "-",
+                                "state": "-",
+                                "country": "LK"
+                            }
                         }
                     }
                 }
@@ -300,7 +322,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             console.log("Receipt sent.")
             $scope.isPaymentSuccess = 2;
             $rootScope.processing = false;
-            if($scope.removeCartOncompletion){
+            if ($scope.removeCartOncompletion) {
                 removeCart($scope.userID);
             }
             if ($scope.resultCount == 2) {
@@ -418,10 +440,13 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                     $scope.config.currency = response.data.Result.rawData.currency;
                     $scope.payment.currency = response.data.Result.rawData.currency;
                 }
-                if($scope.myCart.cartItems.length == 0){
-                    debugger
-                    removeCart($scope.userID);
+                if ($scope.myCart != null) {
+                    if ($scope.myCart.cartItems.length == 0) {
+                        debugger
+                        removeCart($scope.userID);
+                    }
                 }
+
                 // update stripe config
                 $rootScope.$broadcast('stripe-config-updated', $scope.config);
                 $rootScope.processing = false;
