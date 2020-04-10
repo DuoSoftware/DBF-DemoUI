@@ -60,7 +60,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
         $scope.payment.package = $state.params.package;
         //$scope.payment.totalamount = Math.floor((Math.random() * 10000) + 1);
-
+        // the the page token
         // the the page token
         // smooth dialog = EAAMegfEn8iEBAB7DqOh0roEZB3LvjQcxQsGOrGfTpiQLvO7c1EJzsHMqXqkYqmXeaf3ctj1JZAj3h45odjev5MSswAi3JWZAQHolMIxlwSbTzATmIYxxta4wvyLymp0oDDJ0Iw6L4YKPaouadv77gamVf3n1U7ootbluZCZBJTAZDZD
         if ($scope.botID == "5c66bc5cf9c5660c4a14b85f") {
