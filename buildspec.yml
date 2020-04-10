@@ -1,0 +1,8 @@
+version: 0.2
+
+phases:
+    install:
+        commands:
+        - echo 'Starting to move files'
+        - aws s3 sync $CODEBUILD_SRC_DIR/ s3://smoothflow-prod/forms-dynamic
+        - echo 'DEMO UIs Deployement Succeded.'
