@@ -207,6 +207,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         ) {
             $scope.isPaymentSuccess = 1;
             sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
+
+            updatecontext($scope.SessionID, "paymentsuccessful", "true");
         }
     });
 
@@ -512,6 +514,42 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             console.log("Automation invoked");
             $rootScope.processing = false;
             sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
+        }, function (response, status) {
+            alert(response.data.CustomMessage);
+            $rootScope.processing = false;
+        });
+    }
+
+    function updatecontext(sessionId, contextKey, contextvalue) {
+        debugger
+        $rootScope.processing = true;
+        var payload = {
+            "value": contextvalue
+        }
+        // var config = {
+        //     method: "POST",
+        //     url: "https://hx3wkswmv1.execute-api.us-east-1.amazonaws.com/Prod/DBF/API/1.0.0/setContext/" + sessionId + "/" + contextKey,
+        //     headers: {
+        //         "x-api-key": "7UpMhY6cZi1E3YnczwKk7EA0iEyCCA81RVM9Lh0b",
+        //         "companyInfo": "1:103",
+        //         "Content-Type": "application/json"
+        //     },
+        //     data: payload
+        // }
+
+        var config = {
+            method: "POST",
+            url: "https://smoothbotdispatcher.plus.smoothflow.io/DBF/API/1.0.0/setContext/" + sessionId + "/" + contextKey,
+            headers: {
+                "Authorization": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzdWtpdGhhIiwianRpIjoiYWEzOGRmZWYtNDFhOC00MWUyLTgwMzktOTJjZTY0YjM4ZDFmIiwic3ViIjoiNTZhOWU3NTlmYjA3MTkwN2EwMDAwMDAxMjVkOWU4MGI1YzdjNGY5ODQ2NmY5MjExNzk2ZWJmNDMiLCJleHAiOjE5MDIzODExMTgsInRlbmFudCI6LTEsImNvbXBhbnkiOi0xLCJzY29wZSI6W3sicmVzb3VyY2UiOiJhbGwiLCJhY3Rpb25zIjoiYWxsIn1dLCJpYXQiOjE0NzAzODExMTh9.Gmlu00Uj66Fzts-w6qEwNUz46XYGzE8wHUhAJOFtiRo",
+                "Content-Type": "application/json",
+                "companyInfo": "1:103"
+            },
+            data: payload
+        }
+        $http(config).then(function (response, status) {
+            console.log("Context updated. Key: " + contextKey + " Value: " + contextvalue);
+            $rootScope.processing = false;
         }, function (response, status) {
             alert(response.data.CustomMessage);
             $rootScope.processing = false;
