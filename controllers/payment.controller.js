@@ -209,6 +209,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
 
             updatecontext($scope.SessionID, "paymentsuccessful", "true");
+
+            callautomation($scope.SessionID);
         }
     });
 
@@ -495,29 +497,53 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
     function callautomation(sessionID) {
         debugger
         $rootScope.processing = true;
-        var payload = {
-            "InSessionID": sessionID,
-            "SessionData": "{}",
-            "InCustName": $scope.contextData.custName,
-            "InCustAddress": $scope.contextData.custAddress,
-            "InCustMobile": $scope.contextData.custMobile,
-            "InCustEmail": $scope.contextData.custEmail
+
+        if ($scope.botID == "5c8747e6f9c5669f7a151c85") {
+            var payload = {
+                "InSessionID": sessionID,
+                "SessionData": "{}",
+                "InCustName": $scope.contextData.custName,
+                "InCustAddress": $scope.contextData.custAddress,
+                "InCustMobile": $scope.contextData.custMobile,
+                "InCustEmail": $scope.contextData.custEmail
+            }
+            $http({
+                method: "POST",
+                url: "https://222245carelaemailconfirmation.plus.smoothflow.io/222245carelaemailconfirmation/smoothflow/Invoke?apikey=",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: payload
+            }).then(function (response, status) {
+                console.log("Automation invoked");
+                $rootScope.processing = false;
+                sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
+            }, function (response, status) {
+                alert(response.data.CustomMessage);
+                $rootScope.processing = false;
+            });
+
+        } if ($scope.botID == "5e86efa9002501e86c89282b") {
+            var payload = {
+                "InSessionID": sessionID,
+                "SessionData": "{}"
+            }
+            $http({
+                method: "POST",
+                url: "https://654827sendsms.plus.smoothflow.io/654827sendsms/smoothflow/Invoke?apikey=",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: payload
+            }).then(function (response, status) {
+                console.log("Automation invoked");
+                $rootScope.processing = false;
+                sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
+            }, function (response, status) {
+                alert(response.data.CustomMessage);
+                $rootScope.processing = false;
+            });
         }
-        $http({
-            method: "POST",
-            url: "https://222245carelaemailconfirmation.plus.smoothflow.io/222245carelaemailconfirmation/smoothflow/Invoke?apikey=",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            data: payload
-        }).then(function (response, status) {
-            console.log("Automation invoked");
-            $rootScope.processing = false;
-            sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
-        }, function (response, status) {
-            alert(response.data.CustomMessage);
-            $rootScope.processing = false;
-        });
     }
 
     function updatecontext(sessionId, contextKey, contextvalue) {
