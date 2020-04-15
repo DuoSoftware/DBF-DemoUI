@@ -499,6 +499,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         $rootScope.processing = true;
 
         if ($scope.botID == "5c8747e6f9c5669f7a151c85") {
+            // Carela
             var payload = {
                 "InSessionID": sessionID,
                 "SessionData": "{}",
@@ -524,6 +525,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             });
 
         } if ($scope.botID == "5e86efa9002501e86c89282b") {
+            // Cargkeells
             var payload = {
                 "InSessionID": sessionID,
                 "SessionData": "{}"
@@ -538,7 +540,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             }).then(function (response, status) {
                 console.log("Automation invoked");
                 $rootScope.processing = false;
-                sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
+                // sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
             }, function (response, status) {
                 alert(response.data.CustomMessage);
                 $rootScope.processing = false;
