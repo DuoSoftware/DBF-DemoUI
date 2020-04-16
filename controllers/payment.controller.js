@@ -176,7 +176,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
         if ($scope.botID == "5e86efa9002501e86c89282b") {
             //debugger
             // Cargills Bundle cart
-            $scope.pageAccessToken = "EAAMegfEn8iEBAE7E8vGWGNcsIkcmaF9h8cJrqNgebxWqBOKB4EFU9E5j3bGyF5fF1JpRunYzW2kn0VecWZCwbVRJZA2F5T7X71OfZA6RjBXgQYW67pNK2ZCG38ZCeaCWjCZCkitfcFOZABuEFI7SdzbH5eE1RAWWZC7ROGnes3pdqQZDZD";
+            $scope.pageAccessToken = "EAAMegfEn8iEBAEDU4d5naux2rsL4ZAQWlXoacjh9ZAertHDKB5ZBbNxd5c2Bfp4aHsLXZBW28Mr7JVUaPDltXN9Pp7U6k4monUOohJqoJnnN4HPHyDJeYMCIYfsUXm4RmwKhhjsyIbGkoovB4uKbTBKtnwqFKNRB1sPQfc3GYgZDZD"
+            // $scope.pageAccessToken = "EAAMegfEn8iEBAE7E8vGWGNcsIkcmaF9h8cJrqNgebxWqBOKB4EFU9E5j3bGyF5fF1JpRunYzW2kn0VecWZCwbVRJZA2F5T7X71OfZA6RjBXgQYW67pNK2ZCG38ZCeaCWjCZCkitfcFOZABuEFI7SdzbH5eE1RAWWZC7ROGnes3pdqQZDZD";
             $scope.receiptUrl = "https://www.smoothflow.io/";
             $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/501/676/paynow.png";
             $scope.messagetobot = "Thank you for shopping with Cargkeells. Your order is confirmed and an order number has been sent to your mobile. Our team will contact you once the order is ready.";
