@@ -180,7 +180,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             // $scope.pageAccessToken = "EAAMegfEn8iEBAE7E8vGWGNcsIkcmaF9h8cJrqNgebxWqBOKB4EFU9E5j3bGyF5fF1JpRunYzW2kn0VecWZCwbVRJZA2F5T7X71OfZA6RjBXgQYW67pNK2ZCG38ZCeaCWjCZCkitfcFOZABuEFI7SdzbH5eE1RAWWZC7ROGnes3pdqQZDZD";
             $scope.receiptUrl = "https://www.smoothflow.io/";
             $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/501/676/paynow.png";
-            $scope.messagetobot = "Thank you for shopping with Cargkeells. Your order is confirmed and an order number has been sent to your mobile. Our team will contact you once the order is ready.";
+            $scope.messagetobot = "Thank you for shopping with Cargills. Your order is confirmed and an order number has been sent to your mobile. Our team will contact you once the order is ready.";
 
             getCartItems($scope.userID)
             $scope.removeCartOncompletion = true;
