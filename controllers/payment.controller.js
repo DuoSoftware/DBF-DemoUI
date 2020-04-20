@@ -84,8 +84,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 }
             ]
             $rootScope.processing = false;
-        }
-        if ($scope.botID == "5d41705b7ef9df644f4eb0d8") {
+
+        } else if ($scope.botID == "5d41705b7ef9df644f4eb0d8") {
+
             // Insurance demo
             $scope.pageAccessToken = "EAAMegfEn8iEBAGX27rOTZAMnqAH3NMYDvUrkZBHnxZCZAzBhy8Nopr6qyG8XyvoNSKmt5LfZCTiWn69RmfZAJbQSPnnNwU0DGtVR8UZBalVMAInJbA0ZCxSrnakY7YXtWNUnydLdwwQTQPmBGEyYu18XAAl3Mp3ZB7YwuhZCVyBEnABAZDZD";
             $scope.receiptUrl = "https://www.smoothflow.io/";
@@ -110,8 +111,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 }
             ]
             $rootScope.processing = false;
-        }
-        if ($scope.botID == "5cfdf9dcb855a87edbd756ac") {
+
+        } else if ($scope.botID == "5cfdf9dcb855a87edbd756ac") {
+
             // Smooth Telecom
             $scope.pageAccessToken = "EAAMegfEn8iEBADwZBU6CsEv5uBl4NMXjKe6Xh3X53Kyhbtd4hQNiyvf86WXjTtR1uaxbfqSlmxoZAjuZBsUZBU9QddcgWDyQYSf5vdjJSDCLfE1fae43BcA3DN02sn3ARfAbPUaOb01PuKGGRf5gmdf7ZChGnEUtEErfxES9ZBEgZDZD";
             $scope.receiptUrl = "https://www.smoothflow.io/";
@@ -122,8 +124,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.removeCartOncompletion = true;
             $scope.callAutomationFlow = true;
             getContextData($scope.SessionID);
-        }
-        if ($scope.botID == "5cfa4cd8aa087d1136c7e6c0") {
+
+        } else if ($scope.botID == "5cfa4cd8aa087d1136c7e6c0") {
+
             debugger
             // Smooth Apperal
             $scope.pageAccessToken = "EAAMegfEn8iEBACZCkddYgddkBUFytZCt4rzBat2MB5n3z5woEHYI7hknxos7nAfAOIl8q78Gxvd0dDI2KZCjibZBjrvPObyUpi1deYh82WUPGaMgTxpGP37IntJwEWMJdVEVwOiH1ZBIcbhbOEnJiI1LFx3YNIQHfF6YMpxqRFVYgZCd3dBQUj";
@@ -135,8 +138,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.removeCartOncompletion = true;
             $scope.callAutomationFlow = true;
             getContextData($scope.SessionID);
-        }
-        if ($scope.botID == "5cf8f455b3bddfc7f663af82") {
+
+        } else if ($scope.botID == "5cf8f455b3bddfc7f663af82") {
+
             debugger
             // Smooth Pizza
             $scope.pageAccessToken = "EAAMegfEn8iEBACVdEdX5ia9cRYbKRfDFZCZADm6uJqypjohTDfC8eTsRF9lWCVzYB4fLHFt5KsTbYi0Fwim6RK1O7LZB5and7dZASdZBdwU55KZA9aAmsyPrEQoUmZAGwRyRV2T0q7OtRPDyqHHi44GuZBYPLaWX342zfUULLZApGzbqYuEMvjWuf";
@@ -148,8 +152,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.removeCartOncompletion = true;
             $scope.callAutomationFlow = true;
             getContextData($scope.SessionID);
-        }
-        if ($scope.botID == "5c94b7fd158f7fa10acf68b8") {
+
+        } else if ($scope.botID == "5c94b7fd158f7fa10acf68b8") {
+
             debugger
             // Smoothflow Cart
             $scope.pageAccessToken = "EAAMegfEn8iEBAM8L6UUo26ttMd9Bc4v0HvS5gdGFVZBttnE3Eax1ZCTisZBQvWIEiKlyOtUwQn6HeNDtNBs0CVXKL2bauRwE8MewhHhdARiMl6wSGEWihpKuet8vCh6ZAdpr9OOvBik7o7drKy9r00JIVacx50ZCHZApemTVnCKQZDZD";
@@ -159,8 +164,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
 
             getCartItems($scope.userID)
             $scope.removeCartOncompletion = true;
-        }
-        if ($scope.botID == "5c8747e6f9c5669f7a151c85") {
+
+        } else if ($scope.botID == "5c8747e6f9c5669f7a151c85") {
+
             //debugger
             // Carlla GCC
             $scope.pageAccessToken = "EAAMegfEn8iEBAEVZAVFTlFdtuI0QVW4okDUqeL1m95UJ1PfJcGC4miPPsWUdXE97RFAXo5CtCBQNehSx63vkRhQNXpHP3yYi8XK1R2Cnxk1sZAjr5KgpOqjtVSZAPMUuZCs90Di09vKqWrJZBEZBgpIwwlWw3gHD17IJO31OEZA8zjAZCRljdWom";
@@ -172,8 +178,9 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.removeCartOncompletion = true;
             $scope.callAutomationFlow = true;
             getContextData($scope.SessionID);
-        }
-        if ($scope.botID == "5e86efa9002501e86c89282b") {
+
+        } else if ($scope.botID == "5e86efa9002501e86c89282b") {
+
             //debugger
             // Cargills Bundle cart
             $scope.pageAccessToken = "EAAMegfEn8iEBAEDU4d5naux2rsL4ZAQWlXoacjh9ZAertHDKB5ZBbNxd5c2Bfp4aHsLXZBW28Mr7JVUaPDltXN9Pp7U6k4monUOohJqoJnnN4HPHyDJeYMCIYfsUXm4RmwKhhjsyIbGkoovB4uKbTBKtnwqFKNRB1sPQfc3GYgZDZD"
@@ -181,6 +188,21 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.receiptUrl = "https://www.smoothflow.io/";
             $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/501/676/paynow.png";
             $scope.messagetobot = "Thank you for shopping with Cargills. Your order is confirmed and an order number has been sent to your mobile. Our team will contact you once the order is ready.";
+
+            getCartItems($scope.userID)
+            $scope.removeCartOncompletion = true;
+            $scope.callAutomationFlow = true;
+            getContextData($scope.SessionID);
+
+        } else if ($scope.botID == "5e9d2d87c3a7daf3d96b5226") {
+
+            //debugger
+            // Cargills Bundle cart
+            $scope.pageAccessToken = "EAAMegfEn8iEBAO1jPahgDKbaDUOjNMzavBIeTXnX4wRsWnBTovZCac6m2j79wlwqZCv2oZCsVKTGi18ZCXG0o9NR4zH1txYBTVv0YFBtdvPjo2P14VfZAdhqdOhWzmcwwGmfPTCBnABnKZCOO8GmzS35kebYNH6lzbKCWgZC7ToNr1JzgUf6t8e"
+            // $scope.pageAccessToken = "EAAMegfEn8iEBAE7E8vGWGNcsIkcmaF9h8cJrqNgebxWqBOKB4EFU9E5j3bGyF5fF1JpRunYzW2kn0VecWZCwbVRJZA2F5T7X71OfZA6RjBXgQYW67pNK2ZCG38ZCeaCWjCZCkitfcFOZABuEFI7SdzbH5eE1RAWWZC7ROGnes3pdqQZDZD";
+            $scope.receiptUrl = "https://www.smoothflow.io/";
+            $scope.receiptImage = "https://s3.amazonaws.com/botmediastorage/501/676/paynow.png";
+            $scope.messagetobot = "Thank you for shopping with Keells. Your order is confirmed and an order number has been sent to your mobile. Our team will contact you once the order is ready.";
 
             getCartItems($scope.userID)
             $scope.removeCartOncompletion = true;
@@ -204,7 +226,8 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $scope.botID == "5cfa4cd8aa087d1136c7e6c0" ||
             $scope.botID == "5cf8f455b3bddfc7f663af82" ||
             $scope.botID == "5cfdf9dcb855a87edbd756ac" ||
-            $scope.botID == "5e86efa9002501e86c89282b"
+            $scope.botID == "5e86efa9002501e86c89282b" ||
+            $scope.botID == "5e9d2d87c3a7daf3d96b5226"
         ) {
             $scope.isPaymentSuccess = 1;
             sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
@@ -525,7 +548,7 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
                 $rootScope.processing = false;
             });
 
-        } if ($scope.botID == "5e86efa9002501e86c89282b") {
+        } else if ($scope.botID == "5e86efa9002501e86c89282b") {
             // Cargkeells
             var payload = {
                 "InSessionID": sessionID,
@@ -534,6 +557,27 @@ function paymentController($scope, $rootScope, $state, $timeout, $http, $systemU
             $http({
                 method: "POST",
                 url: "https://654827sendsms.plus.smoothflow.io/654827sendsms/smoothflow/Invoke?apikey=",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: payload
+            }).then(function (response, status) {
+                console.log("Automation invoked");
+                $rootScope.processing = false;
+                // sendReciptToBot($scope.payment.invoiceNo, $scope.receiptUrl, $scope.receiptImage);
+            }, function (response, status) {
+                alert(response.data.CustomMessage);
+                $rootScope.processing = false;
+            });
+        } else if ($scope.botID == "5e9d2d87c3a7daf3d96b5226") {
+            // Cargkeells
+            var payload = {
+                "InSessionID": sessionID,
+                "SessionData": "{}"
+            }
+            $http({
+                method: "POST",
+                url: "https://654827sendsmskeells.plus.smoothflow.io/654827sendsmskeells/smoothflow/Invoke?apikey=",
                 headers: {
                     "Content-Type": "application/json"
                 },
